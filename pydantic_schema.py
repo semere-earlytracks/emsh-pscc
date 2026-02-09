@@ -366,12 +366,6 @@ class PersonalMedicalHistory(BaseDocumentModel):
     @classmethod
     def _parse_date(cls, v):
         return parse_eu_date(v)
-    @field_validator("contextsentence", mode="before")
-    @classmethod
-    def _coerce_contextsentence(cls, v):
-        if v is None:
-            return ""
-        return v
 
     @field_validator("relatedpathologycode", mode="before")
     @classmethod
@@ -404,13 +398,6 @@ class TumorSizeClinic(TumorSizeBase):
     @classmethod
     def _parse_date(cls, v):
         return parse_eu_date(v)
-
-    @field_validator("contextsentence", mode="before")
-    @classmethod
-    def _coerce_contextsentence(cls, v):
-        if v is None:
-            return ""
-        return v
 
 
 class TumorSizePatho(TumorSizeBase):
@@ -468,6 +455,8 @@ class PrimaryTumor(BaseDocumentModel):
         default_factory=list,
         description="Tumor size measurements"
     )
+
+    contextsentence: str = Field(..., description="Sentence supporting this information")
 
     @field_validator("cancerdiagnosisdate", mode="before")
     @classmethod

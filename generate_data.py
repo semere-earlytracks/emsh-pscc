@@ -26,6 +26,8 @@ from pydantic_schema import Document
 
 
 class DocumentAndText(BaseModel):
+	date_of_document: str
+	summary_of_case_till_now: Optional[str] = None
 	document: Document
 	text: str
 
@@ -48,11 +50,12 @@ def build_prompt() -> str:
 
 	prompt = (
 		"You are a data generator. Produce a single JSON object (and ONLY the JSON)\n"
-		"with three top-level fields: `date_of_document`, `document`, and `text`.\n"
+		"with four top-level fields: `date_of_document`, `summary_of_case_till_now`, `document`, and `text`.\n"
 		"- `date_of_document` should be a string representing the date the document was written, relative to which the dates in the text should be.\n"
+		"- `summary_of_case_till_now` should be a string summarizing the case up to the current document, including a few tumor events (this is a complex case).\n"
 		"- `document` must conform to the provided JSON Schema for the Pydantic `Document` model.\n"
 		"- `text` must be a short natural-language document (a clinical note) that exactly matches and supports the structured fields in `document`.\n"
-		"Use dates in DD/MM/YYYY or YYYY-MM-DD format. Use the enumerated literal values where applicable.\n"
+		"Use dates in DD/MM/YYYY or YYYY-MM-DD format. For fields taking values, assume the logical unit (mm for tumor size, cm for patient height, kg for patient weight, etc...), do not write it down only write a number. Use the enumerated literal values where applicable.\n"
 		"Return valid JSON only — no surrounding markdown, commentary or extra fields at the top level. The `document` field must contain structured fields as in the schema. In `contextsentence` write a realistic sentence which contains that information, and which you will include in the final `text` field, do not use null. In these context sentences, only include text that is natural in a clinical note, avoiding the codes themselves; dates will often be expressed in a relative format such as 'yesterday' or 'last week', relative to the `date_of_document`. Start the document 'text' with a date at which the document was written; format it as a letter from the oncological hospital to the GP of the patient. Include the contextsentence exactly as they were defined above, but feel free to add new sentences.\n\n"
 		"Here is the JSON Schema for `Document` (Pydantic):\n"
 		f"{schema_json}\n"
@@ -160,7 +163,7 @@ def save_example(obj: DocumentAndText, out_dir: str = "data/generated") -> Path:
 	out_path.mkdir(parents=True, exist_ok=True)
 
 	# Build a JSON-serializable dict using the model helper to convert dates
-	data = {"document": obj.document.to_json_serializable(), "text": obj.text}
+	data = {"date_of_document": obj.date_of_document, "document": obj.document.to_json_serializable(), "text": obj.text}
 
 	# Use canonical JSON of the model dump to compute md5
 	canonical = json.dumps(data, sort_keys=True, ensure_ascii=False)
