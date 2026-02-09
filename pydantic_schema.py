@@ -77,6 +77,8 @@ class BaseDocumentModel(BaseModel):
             if isinstance(values, dict) and "contextsentence" in cls.model_fields:
                 if "contextsentence" not in values:
                     values["contextsentence"] = ""
+                elif values["contextsentence"] is None:
+                    values["contextsentence"] = ""
         except Exception:
             pass
         return values
