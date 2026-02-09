@@ -48,7 +48,8 @@ def build_prompt() -> str:
 
 	prompt = (
 		"You are a data generator. Produce a single JSON object (and ONLY the JSON)\n"
-		"with two top-level fields: `document` and `text`.\n"
+		"with three top-level fields: `date_of_document`, `document`, and `text`.\n"
+		"- `date_of_document` should be a string representing the date the document was written, relative to which the dates in the text should be.\n"
 		"- `document` must conform to the provided JSON Schema for the Pydantic `Document` model.\n"
 		"- `text` must be a short natural-language document (a clinical note) that exactly matches and supports the structured fields in `document`.\n"
 		"Use dates in DD/MM/YYYY or YYYY-MM-DD format. Use the enumerated literal values where applicable.\n"
