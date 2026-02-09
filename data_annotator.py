@@ -130,7 +130,7 @@ def generate_annotation(
     client: OpenAI,
     text: str,
     history_messages: List[Dict[str, str]],
-    schema_str: str,
+    schema: Any,
     metadata: Dict[str, Any] = None
 ) -> Dict[str, Any]:
     """
@@ -140,7 +140,7 @@ def generate_annotation(
         client: OpenAI client configured for vLLM
         text: Clinical text to annotate
         history_messages: Few-shot examples as message history
-        schema_str: JSON schema as a string for response formatting
+        schema: JSON schema for response formatting
         metadata: Optional metadata to include in the result
         
     Returns:
@@ -161,7 +161,10 @@ def generate_annotation(
             messages=messages,
             temperature=TEMPERATURE,
             max_tokens=MAX_TOKENS,
-            response_format={"type": "json_object", "schema": schema_str},  # Force JSON output
+            response_format={  # Force JSON output
+                "type": "json_schema", 
+                "json_schema": {"name": "DocumentSchema", "schema": schema},
+            },
         )
         
         # Extract the generated content
@@ -218,7 +221,7 @@ def generate_annotation(
 def process_texts_parallel(
     texts: List[str],
     history_messages: List[Dict[str, str]],
-    schema_str: str,
+    schema: Any,
     max_workers: int = MAX_WORKERS
 ) -> List[Dict[str, Any]]:
     """
@@ -248,7 +251,7 @@ def process_texts_parallel(
                 client,
                 text,
                 history_messages,
-                schema_str,
+                schema,
                 {"index": idx}
             ): (idx, text)
             for idx, text in enumerate(texts)
@@ -326,7 +329,7 @@ def main():
         "10/05/2024\n\nFollow-up consultation. Patient with history of breast cancer diagnosed in 2020. Recent mammogram shows no recurrence. Patient tolerating tamoxifen well. Continue current treatment plan."
     ]
     
-    results = process_texts_parallel(sample_texts, history_messages, schema_str)
+    results = process_texts_parallel(sample_texts, history_messages, schema)
     
     # Save results
     print("\n4. Saving results...")

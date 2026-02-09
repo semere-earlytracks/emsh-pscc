@@ -46,7 +46,7 @@ def get_openai_client(api_key: Optional[str] = None, base_url: Optional[str] = N
 def build_prompt() -> str:
 	# Provide the Document JSON Schema to the LLM and ask for a JSON output
 	schema = Document.model_json_schema()
-	schema_json = json.dumps(schema, indent=2, ensure_ascii=False)
+	schema_json = json.dumps(schema, ensure_ascii=False)
 
 	prompt = (
 		"You are a data generator. Produce a single JSON object (and ONLY the JSON)\n"
