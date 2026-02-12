@@ -53,6 +53,52 @@ def load_few_shot_examples() -> List[Dict[str, Any]]:
     return examples
 
 
+def load_documents_from_directory(directory: Path) -> List[Dict[str, Any]]:
+    """
+    Load all JSON files recursively from a directory and extract text from 'extract_txt_anon' key.
+    
+    Args:
+        directory: Path to the directory containing JSON files
+        
+    Returns:
+        List of dictionaries with 'text', 'source_path', and 'relative_path' keys
+    """
+    documents = []
+    
+    if not directory.exists():
+        print(f"Warning: Directory {directory} does not exist")
+        return documents
+    
+    # Find all JSON files recursively
+    json_files = list(directory.rglob("*.json"))
+    print(f"Found {len(json_files)} JSON files in {directory}")
+    
+    for json_file in json_files:
+        try:
+            with open(json_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                
+                # Extract text from 'extract_txt_anon' key
+                if "extract_txt_anon" in data:
+                    text = data["extract_txt_anon"]
+                    relative_path = json_file.relative_to(directory)
+                    
+                    documents.append({
+                        "text": text,
+                        "source_path": str(json_file),
+                        "relative_path": str(relative_path),
+                        "original_data": data  # Keep original data for reference
+                    })
+                else:
+                    print(f"Warning: 'extract_txt_anon' key not found in {json_file}")
+                    
+        except Exception as e:
+            print(f"Error loading {json_file}: {e}")
+    
+    print(f"Loaded {len(documents)} documents with text")
+    return documents
+
+
 def get_document_schema() -> Dict[str, Any]:
     """
     Get the JSON schema for the Document model (excluding documentid).
@@ -87,20 +133,7 @@ def prepare_history_messages(examples: List[Dict[str, Any]], schema_str: str) ->
     
     system_message = {
         "role": "system",
-        "content": (
-            "You are a medical data extraction assistant. "
-            "Given clinical text, extract structured medical information including "
-            "patient history, diagnoses, treatments, imaging, biomarkers, and events. \n\n"
-            "You MUST return the output as valid JSON following this exact schema (documentid field is optional and can be omitted):\n\n"
-            f"{schema_str}\n\n"
-            "Important guidelines:\n"
-            "- Return ONLY valid JSON, no additional text or explanations\n"
-            "- All date fields must be in ISO format (YYYY-MM-DD)\n"
-            "- Use empty arrays [] for missing list fields\n"
-            "- Include contextsentence field for each extracted entity\n"
-            "- Match enum values exactly from the allowed options\n"
-            "- Omit the documentid field from your output"
-        )
+        "content": open("data/system_prompt.md", "r", encoding="utf-8").read().format(schema_str=schema_str)
     }
     messages.append(system_message)
     
@@ -295,8 +328,39 @@ def save_results(results: List[Dict[str, Any]], output_file: Path):
     print(f"Results saved to {output_file}")
 
 
-def main():
-    """Main execution function."""
+def save_result_with_structure(result: Dict[str, Any], output_base_dir: Path, relative_path: str):
+    """
+    Save a single result maintaining the directory structure with _predictions suffix.
+    
+    Args:
+        result: Single annotation result
+        output_base_dir: Base output directory
+        relative_path: Relative path from input directory (e.g., 'subdir/file.json')
+    """
+    # Parse the relative path
+    rel_path_obj = Path(relative_path)
+    
+    # Add _predictions suffix to filename
+    output_filename = rel_path_obj.stem + "_predictions" + rel_path_obj.suffix
+    output_path = output_base_dir / rel_path_obj.parent / output_filename
+    
+    # Create directory structure
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Save the result
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(result, f, indent=2, ensure_ascii=False)
+    
+    return output_path
+
+
+def main(input_directory: str = None, output_directory: str = None):
+    """Main execution function.
+    
+    Args:
+        input_directory: Path to directory containing JSON files to process
+        output_directory: Path to output directory for results
+    """
     print("=" * 60)
     print("Data Annotator - Clinical Text Extraction")
     print("=" * 60)
@@ -305,8 +369,11 @@ def main():
     schema = get_document_schema()
     schema_str = json.dumps(schema, ensure_ascii=False)
 
-    with open("data/schema.json", "w", encoding="utf-8") as f:
-        json.dump(schema, f, ensure_ascii=False)
+    schema_file = Path("data/schema.json")
+    schema_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(schema_file, "w", encoding="utf-8") as f:
+        json.dump(schema, f, indent=2, ensure_ascii=False)
+    print(f"Schema saved to {schema_file}")
 
     # Load few-shot examples
     print("\n1. Loading few-shot examples...")
@@ -322,24 +389,50 @@ def main():
     history_messages = prepare_history_messages(examples, schema_str)
     print(f"   Prepared {len(history_messages)} messages")
     
-    # Example: Process sample texts (replace with your actual data)
-    print("\n3. Processing sample texts...")
-    sample_texts = [
-        "25/04/2024\n\nPatient presents with chest pain. Diagnosed with myocardial infarction on April 25, 2024. ECG shows ST elevation. Troponin levels elevated. Patient started on aspirin and statin therapy.",
-        "10/05/2024\n\nFollow-up consultation. Patient with history of breast cancer diagnosed in 2020. Recent mammogram shows no recurrence. Patient tolerating tamoxifen well. Continue current treatment plan."
-    ]
+    # Load documents from input directory
+    print("\n3. Loading documents...")
+    input_dir = Path(input_directory) if input_directory else Path("data/input")
+    output_dir = Path(output_directory) if output_directory else Path("data/output")
     
-    results = process_texts_parallel(sample_texts, history_messages, schema)
+    documents = load_documents_from_directory(input_dir)
     
-    # Save results
-    print("\n4. Saving results...")
-    output_file = OUTPUT_DIR / "annotations.json"
-    save_results(results, output_file)
+    if not documents:
+        print("Error: No documents found. Exiting.")
+        return
+    
+    # Extract texts for processing
+    texts = [doc["text"] for doc in documents]
+    
+    # Process all texts
+    print(f"\n4. Processing {len(texts)} documents...")
+    results = process_texts_parallel(texts, history_messages, schema)
+    
+    # Save results maintaining directory structure
+    print("\n5. Saving results...")
+    saved_count = 0
+    for idx, result in enumerate(results):
+        if idx < len(documents):
+            relative_path = documents[idx]["relative_path"]
+            try:
+                output_path = save_result_with_structure(result, output_dir, relative_path)
+                saved_count += 1
+                if (idx + 1) % 10 == 0 or idx == len(results) - 1:
+                    print(f"   Saved {saved_count}/{len(results)} results...")
+            except Exception as e:
+                print(f"   Error saving result for {relative_path}: {e}")
     
     print("\n" + "=" * 60)
-    print(f"Processing complete! Generated {len(results)} annotations")
+    print(f"Processing complete!")
+    print(f"  - Processed: {len(results)} documents")
+    print(f"  - Saved to: {output_dir}")
     print("=" * 60)
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    
+    # Parse command line arguments
+    input_dir = sys.argv[1] if len(sys.argv) > 1 else None
+    output_dir = sys.argv[2] if len(sys.argv) > 2 else None
+    
+    main(input_dir, output_dir)

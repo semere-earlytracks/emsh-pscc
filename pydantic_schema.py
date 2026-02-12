@@ -274,12 +274,12 @@ _NAME_MAP = {
     "measuretype": "MeasureType",
     #"surgerytype": "SurgeryType",
     #"moleculecode": "MoleculeCode",
-    "radiotherapytype": "RadiotherapyType",
-    "imagingmodality": "ImagingModality",
+    #"radiotherapytype": "RadiotherapyType",
+    #"imagingmodality": "ImagingModality",
     "specimentype": "SpecimenType",
     "specimennature": "SpecimenNature",
     #"specimentopographycode": "SpecimenTopographyCode",
-    "biomarkername": "BiomarkerName",
+    #"biomarkername": "BiomarkerName",
     #"metastasistopocode": "MetastasisTopocode",
     "tumeventtype": "TumeventType",
 }
@@ -770,9 +770,9 @@ class TumorEvent(BaseDocumentModel):
 class Document(BaseDocumentModel):
     """Single extracted medical document."""
 
-    documentid: str = Field(
-        ..., description="Unique document identifier"
-    )
+    # documentid: str = Field(
+    #     ..., description="Unique document identifier"
+    # )
 
     personal_medical_history_comorbidities_and_adverse: List[
         PersonalMedicalHistory
