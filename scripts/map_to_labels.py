@@ -141,7 +141,7 @@ def main():
         emb = F.normalize(emb, dim=1)
 
         # compute cosine similarity and pick top-1
-        sims = torch.matmul(emb, label_embs.t())
+        sims = torch.matmul(emb.to(label_embs.dtype), label_embs.t())
         topidx = sims.argmax(dim=1).cpu()
         for idx in topidx:
             counts[int(idx)] += 1
