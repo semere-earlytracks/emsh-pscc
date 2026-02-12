@@ -139,7 +139,7 @@ def main():
         emb = F.normalize(emb, dim=1)
 
         # compute cosine similarity and pick top candidates
-        sims = torch.matmul(emb, label_embs.t())
+        sims = torch.matmul(emb.to(label_embs.dtype), label_embs.t())
         # For each entity: search top (3 * K_SELECT) indices, then select up to
         # K_SELECT unique label NAMES (this avoids incrementing the same label
         # name multiple times when duplicates exist).
