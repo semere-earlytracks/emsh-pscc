@@ -10,6 +10,7 @@ Uses ThreadPool for parallel processing of vLLM API calls via OpenAI Chat Comple
 
 import json
 import os
+import random
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any
@@ -26,6 +27,7 @@ MODEL_NAME = os.getenv("VLLM_MODEL_NAME", "ig1/medgemma-27b-text-it-FP8-Dynamic"
 MAX_WORKERS = int(os.getenv("MAX_WORKERS", "4"))
 TEMPERATURE = float(os.getenv("TEMPERATURE", "0.2"))
 MAX_TOKENS = int(os.getenv("MAX_TOKENS", "4096"))
+NUM_SAMPLES = int(os.getenv("NUM_SAMPLES", "0"))  # 0 means process all files
 
 
 def load_few_shot_examples() -> List[Dict[str, Any]]:
@@ -53,12 +55,14 @@ def load_few_shot_examples() -> List[Dict[str, Any]]:
     return examples
 
 
-def load_documents_from_directory(directory: Path) -> List[Dict[str, Any]]:
+def load_documents_from_directory(directory: Path, num_samples: int = 0) -> List[Dict[str, Any]]:
     """
-    Load all JSON files recursively from a directory and extract text from 'extract_txt_anon' key.
+    Load JSON files recursively from a directory and extract text from 'extract_txt_anon' key.
+    Optionally randomly sample n files.
     
     Args:
         directory: Path to the directory containing JSON files
+        num_samples: Number of files to randomly sample (0 = all files)
         
     Returns:
         List of dictionaries with 'text', 'source_path', and 'relative_path' keys
@@ -71,7 +75,13 @@ def load_documents_from_directory(directory: Path) -> List[Dict[str, Any]]:
     
     # Find all JSON files recursively
     json_files = list(directory.rglob("*.json"))
-    print(f"Found {len(json_files)} JSON files in {directory}")
+    total_files = len(json_files)
+    print(f"Found {total_files} JSON files in {directory}")
+    
+    # Randomly sample if num_samples > 0
+    if num_samples > 0 and num_samples < total_files:
+        json_files = random.sample(json_files, num_samples)
+        print(f"Randomly selected {len(json_files)} files")
     
     for json_file in json_files:
         try:
@@ -252,17 +262,21 @@ def generate_annotation(
 
 
 def process_texts_parallel(
-    texts: List[str],
+    documents: List[Dict[str, Any]],
     history_messages: List[Dict[str, str]],
     schema: Any,
+    output_dir: Path,
     max_workers: int = MAX_WORKERS
 ) -> List[Dict[str, Any]]:
     """
     Process multiple texts in parallel using ThreadPoolExecutor.
+    Saves results as they are completed.
     
     Args:
-        texts: List of clinical texts to annotate
+        documents: List of document dictionaries with 'text' and 'relative_path' keys
         history_messages: Few-shot examples as message history
+        schema: JSON schema for response formatting
+        output_dir: Output directory to save results
         max_workers: Maximum number of parallel workers
         
     Returns:
@@ -275,36 +289,54 @@ def process_texts_parallel(
     )
     
     results = []
+    saved_count = 0
     
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Submit all tasks
-        future_to_text = {
+        # Submit all tasks with document metadata
+        future_to_doc = {
             executor.submit(
                 generate_annotation,
                 client,
-                text,
+                doc["text"],
                 history_messages,
                 schema,
-                {"index": idx}
-            ): (idx, text)
-            for idx, text in enumerate(texts)
+                {"index": idx, "relative_path": doc["relative_path"]}
+            ): (idx, doc)
+            for idx, doc in enumerate(documents)
         }
         
-        # Collect results as they complete
-        for future in as_completed(future_to_text):
-            idx, text = future_to_text[future]
+        # Collect results as they complete and save immediately
+        for future in as_completed(future_to_doc):
+            idx, doc = future_to_doc[future]
             try:
                 result = future.result()
                 results.append(result)
-                print(f"Completed annotation {idx + 1}/{len(texts)}")
+                
+                # Save result immediately
+                relative_path = doc["relative_path"]
+                try:
+                    output_path = save_result_with_structure(result, output_dir, relative_path)
+                    saved_count += 1
+                    print(f"✓ [{saved_count}/{len(documents)}] Saved: {relative_path}")
+                except Exception as e:
+                    print(f"✗ Error saving {relative_path}: {e}")
+                
             except Exception as e:
-                print(f"Error processing text {idx}: {e}")
-                results.append({
-                    "input": text,
+                print(f"✗ Error processing document {idx}: {e}")
+                result = {
+                    "input": doc.get("text", ""),
                     "output": None,
                     "error": str(e),
-                    "metadata": {"index": idx}
-                })
+                    "metadata": {"index": idx, "relative_path": doc["relative_path"]}
+                }
+                results.append(result)
+                
+                # Try to save error result too
+                try:
+                    save_result_with_structure(result, output_dir, doc["relative_path"])
+                    saved_count += 1
+                except Exception:
+                    pass
     
     # Sort results by index to maintain order
     results.sort(key=lambda x: x.get("metadata", {}).get("index", 0))
@@ -354,12 +386,13 @@ def save_result_with_structure(result: Dict[str, Any], output_base_dir: Path, re
     return output_path
 
 
-def main(input_directory: str = None, output_directory: str = None):
+def main(input_directory: str = None, output_directory: str = None, num_samples: int = None):
     """Main execution function.
     
     Args:
         input_directory: Path to directory containing JSON files to process
         output_directory: Path to output directory for results
+        num_samples: Number of files to randomly sample (None/0 = all files)
     """
     print("=" * 60)
     print("Data Annotator - Clinical Text Extraction")
@@ -393,33 +426,20 @@ def main(input_directory: str = None, output_directory: str = None):
     print("\n3. Loading documents...")
     input_dir = Path(input_directory) if input_directory else Path("data/input")
     output_dir = Path(output_directory) if output_directory else Path("data/output")
+    n_samples = num_samples if num_samples is not None else NUM_SAMPLES
     
-    documents = load_documents_from_directory(input_dir)
+    documents = load_documents_from_directory(input_dir, n_samples)
     
     if not documents:
         print("Error: No documents found. Exiting.")
         return
     
-    # Extract texts for processing
-    texts = [doc["text"] for doc in documents]
+    # Process all documents (saving happens inside process_texts_parallel)
+    print(f"\n4. Processing {len(documents)} documents...")
+    print(f"   Saving results to: {output_dir}")
+    print(f"   Results will be saved as they are generated...\n")
     
-    # Process all texts
-    print(f"\n4. Processing {len(texts)} documents...")
-    results = process_texts_parallel(texts, history_messages, schema)
-    
-    # Save results maintaining directory structure
-    print("\n5. Saving results...")
-    saved_count = 0
-    for idx, result in enumerate(results):
-        if idx < len(documents):
-            relative_path = documents[idx]["relative_path"]
-            try:
-                output_path = save_result_with_structure(result, output_dir, relative_path)
-                saved_count += 1
-                if (idx + 1) % 10 == 0 or idx == len(results) - 1:
-                    print(f"   Saved {saved_count}/{len(results)} results...")
-            except Exception as e:
-                print(f"   Error saving result for {relative_path}: {e}")
+    results = process_texts_parallel(documents, history_messages, schema, output_dir)
     
     print("\n" + "=" * 60)
     print(f"Processing complete!")
@@ -434,5 +454,6 @@ if __name__ == "__main__":
     # Parse command line arguments
     input_dir = sys.argv[1] if len(sys.argv) > 1 else None
     output_dir = sys.argv[2] if len(sys.argv) > 2 else None
+    num_samples = int(sys.argv[3]) if len(sys.argv) > 3 else None
     
-    main(input_dir, output_dir)
+    main(input_dir, output_dir, num_samples)
