@@ -6,7 +6,8 @@ CRITICAL OUTPUT RULES:
    - If a field is a scalar (string/date), output null when its value is not mentioned in the input text.
    - If a field is an array, output [] when no items are mentioned in the input text.
 3) Dates: use ISO format for dates (e.g. 2022-01-01).
-   - If the note gives only a month/year (e.g., "January 2022") or relative time (e.g., "last month"), set the date field to the first day that could match the mention.
+   - If the note gives only a month/year (e.g., "January 2022") or relative time (e.g., "last month"), write the range of plausible values in the range "start" and "end" fields. 
+   - If the note gives a specific date (e.g. "Janary 3rd, 2022"), write that precise date in both the "start" and "end" fields of the date range.
 4) contextsentence:
    - This is a sentence from the text from where the information was extracted.
    - Must be an exact quote copied from the note (one sentence, or a short snippet of relevant text).

@@ -15,7 +15,7 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any
 from openai import OpenAI
-from pydantic_schema import Document
+from pydantic_schema_with_ranges import Document
 
 
 # Configuration
