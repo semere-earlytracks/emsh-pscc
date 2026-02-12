@@ -91,8 +91,11 @@ def load_documents_from_directory(directory: Path, num_samples: int = 0) -> List
                 # Extract text from 'extract_txt_anon' key
                 if "extract_txt_anon" in data:
                     text = data["extract_txt_anon"]
+                    # Append date if available
+                    doc_date = data.get("date")
+                    if doc_date:
+                        text = f"{text}\nDate of the document: {{{doc_date}}}"
                     relative_path = json_file.relative_to(directory)
-                    
                     documents.append({
                         "text": text,
                         "source_path": str(json_file),
