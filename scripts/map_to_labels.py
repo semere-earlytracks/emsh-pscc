@@ -68,11 +68,18 @@ def expand_globs(patterns: List[str]) -> List[Path]:
     return uniq
 
 
-def save_counts_json(out_path: Path, labels: List[str], counts: List[int]):
-    mapping = {name: int(counts[i]) for i, name in enumerate(labels)}
+def save_counts_json(out_path: Path, labels: List[str], counts: torch.Tensor | List[int]):
+    # `counts` can be a torch Tensor or an indexable sequence. Convert to ints.
+    int_counts = [int(c) for c in counts]
+    # Create list of (label, count) and sort by count descending so JSON is
+    # written in order of most-frequent matches first. Explicitly disable
+    # json key-sorting to preserve this order.
+    pairs = [(labels[i], int_counts[i]) for i in range(min(len(labels), len(int_counts)))]
+    pairs.sort(key=lambda x: x[1], reverse=True)
+    mapping = {name: cnt for name, cnt in pairs}
     tmp = out_path.with_name(out_path.name + ".tmp")
     with tmp.open("w", encoding="utf-8") as fh:
-        json.dump(mapping, fh, indent=2, ensure_ascii=False)
+        json.dump(mapping, fh, indent=2, ensure_ascii=False, sort_keys=False)
     tmp.replace(out_path)
 
 

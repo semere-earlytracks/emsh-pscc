@@ -113,8 +113,17 @@ def main():
     values, mapping = build_value_index(labels)
     print(f"Total values to embed: {len(values)}")
 
+    # Prepare texts to embed: remove any leading code up to the first ", "
+    # (do not modify `values` which will be written to the labels.txt file).
+    def _strip_code(s: str) -> str:
+        if ", " in s:
+            return s.split(", ", 1)[1]
+        return s
+
+    values_for_embedding = [_strip_code(v) for v in values]
+
     print(f"Loading model '{args.model}' on device '{args.device or ('cuda' if torch.cuda.is_available() else 'cpu')}'")
-    embeddings = embed_values(args.model, values, device=args.device, batch_size=args.batch_size)
+    embeddings = embed_values(args.model, values_for_embedding, device=args.device, batch_size=args.batch_size)
 
     out = {
         "keys": list(labels.keys()),
