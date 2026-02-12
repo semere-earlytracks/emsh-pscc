@@ -10,7 +10,6 @@ import difflib
 import sys
 
 from pydantic import BaseModel, Field, field_validator, model_validator
-from pydantic import get_origin, get_args
 
 
 # ---------------------------------------------------------------------
