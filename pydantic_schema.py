@@ -443,13 +443,13 @@ TumorSize = Annotated[
 class PrimaryTumor(BaseDocumentModel):
     """Primary tumor description."""
 
-    cancerdiagnosisdate: date = Field(
+    topographycode: TopographyCode = Field(..., description="Which part of the body the tumor is located in, using a standardized code")
+
+    morphologycode: MorphologyCode = Field(..., description="Which medical morphology code best describes the tumor type")
+
+    cancerdiagnosisdate: date | None = Field(
         ..., description="Date of cancer diagnosis"
     )
-
-    topographycode: TopographyCode = Field(..., description="Tumor topography code")
-
-    morphologycode: MorphologyCode = Field(..., description="Tumor morphology code")
 
     tumorsize: List[TumorSize] = Field(
         default_factory=list,
@@ -780,7 +780,7 @@ class Document(BaseDocumentModel):
         PersonalMedicalHistory
     ] = Field(default_factory=list, description="List of comorbidities and adverse medical history mentioned in the document, along with their date if available")
 
-    primary_tumor: List[PrimaryTumor] = Field(default_factory=list, description="Description of the primary tumor(s) of the patient, including diagnosis date, topography and morphology codes, and tumor size measurements")
+    primary_tumor: List[PrimaryTumor] = Field(default_factory=list, description="Description of the primary tumor(s) of the patient, including diagnosis date, topography and morphology codes, and tumor size measurements (if mentioned in the document). If the patient is followed for a tumor, this is likely the primary tumor, even if not explicitly stated as such in the text.")
 
     general_condition_and_physical_examination: List[
         GeneralCondition
