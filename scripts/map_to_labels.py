@@ -54,7 +54,7 @@ def load_label_embeddings(pt_path: Path, device: str = "cpu") -> (torch.Tensor, 
         emb = emb[:n]
         labels = labels[:n]
 
-    emb = emb.to(torch.float32).to(device)
+    emb = emb.to(device)
     emb = F.normalize(emb, dim=1)
     return emb, labels
 
@@ -68,14 +68,10 @@ def expand_globs(patterns: List[str]) -> List[Path]:
     return uniq
 
 
-def save_counts_json(out_path: Path, labels: List[str], counts: torch.Tensor | List[int]):
-    # `counts` can be a torch Tensor or an indexable sequence. Convert to ints.
-    int_counts = [int(c) for c in counts]
-    # Create list of (label, count) and sort by count descending so JSON is
-    # written in order of most-frequent matches first. Explicitly disable
-    # json key-sorting to preserve this order.
-    pairs = [(labels[i], int_counts[i]) for i in range(min(len(labels), len(int_counts)))]
-    pairs.sort(key=lambda x: x[1], reverse=True)
+def save_counts_json(out_path: Path, counts: Dict[str, int]):
+    # `counts` is a mapping label -> int. Sort by count descending and write
+    # JSON without key sorting to preserve the order.
+    pairs = sorted(counts.items(), key=lambda x: x[1], reverse=True)
     mapping = {name: cnt for name, cnt in pairs}
     tmp = out_path.with_name(out_path.name + ".tmp")
     with tmp.open("w", encoding="utf-8") as fh:
@@ -91,6 +87,7 @@ def main():
     parser.add_argument("--output", required=True, help="JSON output file path for counts")
     parser.add_argument("--device", default=None, help="Device to run on (cpu or cuda). Defaults to cuda if available")
     parser.add_argument("--batch_size", type=int, default=64, help="Batch size for encoding")
+    parser.add_argument("--topk", type=int, default=9, help="Number of unique top label names to count per entity")
     args = parser.parse_args()
 
     device = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
@@ -101,7 +98,8 @@ def main():
     print(f"Loading label embeddings from: {labels_pt}")
     label_embs, label_names = load_label_embeddings(labels_pt, device=device)
     n_labels = label_embs.shape[0]
-    counts = torch.zeros(n_labels, dtype=torch.int64)
+    # Use a mapping from label name -> count so we don't need to index by position.
+    counts: Dict[str, int] = {name: 0 for name in label_names}
 
     # Expand and shuffle files
     files = expand_globs(args.patterns)
@@ -123,14 +121,14 @@ def main():
         except Exception as e:
             print(f"Failed to load {fp}: {e}")
             # update partial results and continue
-            save_counts_json(out_path, label_names, counts)
+            save_counts_json(out_path, counts)
             continue
 
         ents = doc.get("entities") or []
         texts = [e.get("word") for e in ents if e.get("entity") in ("TIME", "POSOLOGY") and e.get("word")]
         if not texts:
             # still write partial results
-            save_counts_json(out_path, label_names, counts)
+            save_counts_json(out_path, counts)
             continue
 
         # embed texts in batches via model.encode
@@ -140,17 +138,32 @@ def main():
         emb = emb.to(device)
         emb = F.normalize(emb, dim=1)
 
-        # compute cosine similarity and pick top-1
-        sims = torch.matmul(emb.to(label_embs.dtype), label_embs.t())
-        topidx = sims.argmax(dim=1).cpu()
-        for idx in topidx:
-            counts[int(idx)] += 1
+        # compute cosine similarity and pick top candidates
+        sims = torch.matmul(emb, label_embs.t())
+        # For each entity: search top (3 * K_SELECT) indices, then select up to
+        # K_SELECT unique label NAMES (this avoids incrementing the same label
+        # name multiple times when duplicates exist).
+        K_SELECT = args.topk
+        K_SEARCH = 3 * K_SELECT
+        k_search = min(K_SEARCH, sims.shape[1])
+        vals, idxs = torch.topk(sims, k=k_search, dim=1)
+        # idxs: (n_texts, k_search)
+        for row in idxs.cpu().tolist():
+            top_label_names = set()
+            for idx in row:
+                name = label_names[int(idx)]
+                if name in top_label_names:
+                    continue
+                counts[name] = counts.get(name, 0) + 1
+                top_label_names.add(name)
+                if len(top_label_names) >= K_SELECT:
+                    break
 
         # write partial counts after each file
-        save_counts_json(out_path, label_names, counts)
+        save_counts_json(out_path, counts)
 
     # final save (already saved incrementally but ensure final)
-    save_counts_json(out_path, label_names, counts)
+    save_counts_json(out_path, counts)
     print(f"Finished. Wrote counts to {out_path}")
 
 
