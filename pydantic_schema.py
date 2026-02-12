@@ -355,12 +355,12 @@ def _coerce_enum_value(enum_cls, v):
 class PersonalMedicalHistory(BaseDocumentModel):
     """Comorbidity or adverse medical history item."""
 
-    relatedpathologycode: RelatedPathologyCode = Field(..., description="Pathology or condition code")
+    relatedpathologycode: RelatedPathologyCode = Field(..., description="Pathology or condition code related to the patient's medical history (not a body part)")
 
     relateddiagnosisdate: Optional[date] = Field(
-        None, description="Date of diagnosis"
+        None, description="Date of diagnosis/onset of the historical condition (if mentioned in text, otherwise null)"
     )
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("relateddiagnosisdate", mode="before")
     @classmethod
@@ -382,7 +382,7 @@ class TumorSizeBase(BaseDocumentModel):
     """Base class for a tumor size measurement."""
     kind: str = Field(..., description="Discriminator for tumor size type")
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
 
 class TumorSizeClinic(TumorSizeBase):
@@ -456,7 +456,7 @@ class PrimaryTumor(BaseDocumentModel):
         description="Tumor size measurements"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("cancerdiagnosisdate", mode="before")
     @classmethod
@@ -491,7 +491,7 @@ class GeneralCondition(BaseDocumentModel):
         ..., description="Date of measurement"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("measuredate_first", mode="before")
     @classmethod
@@ -516,7 +516,7 @@ class Surgery(BaseDocumentModel):
 
     surgerydate: date = Field(..., description="Date of surgery")
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("surgerydate", mode="before")
     @classmethod
@@ -543,7 +543,7 @@ class CancerMedication(BaseDocumentModel):
         ..., description="First administration date"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("moleculedate_first", mode="before")
     @classmethod
@@ -570,7 +570,7 @@ class Radiotherapy(BaseDocumentModel):
         ..., description="First radiotherapy date"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("radiotherapydate_first", mode="before")
     @classmethod
@@ -595,7 +595,7 @@ class Progression(BaseDocumentModel):
         ..., description="Date of progression"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("progressiondate", mode="before")
     @classmethod
@@ -616,7 +616,7 @@ class Imaging(BaseDocumentModel):
         ..., description="Date of imaging"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("analysisdate", mode="before")
     @classmethod
@@ -651,7 +651,7 @@ class BiologicalSpecimen(BaseDocumentModel):
         ..., description="Specimen collection date"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("specimencollectdateday", mode="before")
     @classmethod
@@ -688,15 +688,17 @@ class Biomarker(BaseDocumentModel):
         ..., description="Biomarker name"
     )
 
+    biomarkermutationstatus: Literal["Mutated", "Wild type", "Variant", "Amplified", "Deleted", "Fused", "Other"] = Field(..., description="Mutation status or value")
+
     biomarkervaluetxt: str = Field(
-        ..., description="Biomarker value with unit"
+        ..., description="Biomarker value with unit (if mentioned in text, otherwise same as biomarkermutationstatus)"
     )
 
     biomarkerresultdate: date = Field(
         ..., description="Date of biomarker result"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("biomarkerresultdate", mode="before")
     @classmethod
@@ -723,7 +725,7 @@ class Metastasis(BaseDocumentModel):
         ..., description="Date of metastasis discovery"
     )
 
-    contextsentence: str = Field(..., description="Sentence supporting this information")
+    contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
     @field_validator("metastasisdiscoverydate", mode="before")
     @classmethod
@@ -776,26 +778,25 @@ class Document(BaseDocumentModel):
 
     personal_medical_history_comorbidities_and_adverse: List[
         PersonalMedicalHistory
-    ] = Field(default_factory=list)
+    ] = Field(default_factory=list, description="List of comorbidities and adverse medical history mentioned in the document, along with their date if available")
 
-    primary_tumor: List[PrimaryTumor] = Field(default_factory=list)
+    primary_tumor: List[PrimaryTumor] = Field(default_factory=list, description="Description of the primary tumor(s) of the patient, including diagnosis date, topography and morphology codes, and tumor size measurements")
 
     general_condition_and_physical_examination: List[
         GeneralCondition
-    ] = Field(default_factory=list)
+    ] = Field(default_factory=list, description="List of general condition and physical examination findings mentioned in the document")
 
-    surgery: List[Surgery] = Field(default_factory=list)
+    surgery: List[Surgery] = Field(default_factory=list, description="List of surgical procedures mentioned in the document")
 
-    cancer_medication: List[CancerMedication] = Field(default_factory=list)
+    cancer_medication: List[CancerMedication] = Field(default_factory=list, description="List of cancer medications mentioned in the document")
+    radiotherapy: List[Radiotherapy] = Field(default_factory=list, description="List of radiotherapy treatments mentioned in the document")
 
-    radiotherapy: List[Radiotherapy] = Field(default_factory=list)
+    progression: List[Progression] = Field(default_factory=list, description="List of disease progression events mentioned in the document")
 
-    progression: List[Progression] = Field(default_factory=list)
+    imaging_and_nuclear_medecine: List[Imaging] = Field(default_factory=list, description="List of imaging exams mentioned in the document")
 
-    imaging_and_nuclear_medecine: List[Imaging] = Field(default_factory=list)
+    biological_specimen: List[BiologicalSpecimen] = Field(default_factory=list, description="List of biological specimens mentioned in the document, and where they were collected from")
 
-    biological_specimen: List[BiologicalSpecimen] = Field(default_factory=list)
+    biomarkers_and_tumor_markers: List[Biomarker] = Field(default_factory=list, description="List of biomarkers and tumor markers mentioned in the document")
 
-    biomarkers_and_tumor_markers: List[Biomarker] = Field(default_factory=list)
-
-    tumor_events: List[TumorEvent] = Field(default_factory=list)
+    tumor_events: List[TumorEvent] = Field(default_factory=list, description="List of tumor-related clinical events mentioned in the document")

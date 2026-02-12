@@ -9,7 +9,7 @@ CRITICAL OUTPUT RULES:
    - If the note gives only a month/year (e.g., "January 2022") or relative time (e.g., "last month"), set the date field to the first day that could match the mention.
 4) contextsentence:
    - This is a sentence from the text from where the information was extracted.
-   - Must be an exact quote copied from the note (one sentence).
+   - Must be an exact quote copied from the note (one sentence, or a short snippet of relevant text).
    - Do not paraphrase. Do not invent.
 5) Do not infer or hallucinate. Do not invent.
 6) One object per real-world event:
