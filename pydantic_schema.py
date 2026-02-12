@@ -268,19 +268,19 @@ else:
 _ENUMS = {}
 # Explicit PascalCase names for the enums we want to expose
 _NAME_MAP = {
-    "relatedpathologycode": "RelatedPathologyCode",
-    "topographycode": "TopographyCode",
-    "morphologycode": "MorphologyCode",
+    #"relatedpathologycode": "RelatedPathologyCode",
+    #"topographycode": "TopographyCode",
+    #"morphologycode": "MorphologyCode",
     "measuretype": "MeasureType",
-    "surgerytype": "SurgeryType",
-    "moleculecode": "MoleculeCode",
+    #"surgerytype": "SurgeryType",
+    #"moleculecode": "MoleculeCode",
     "radiotherapytype": "RadiotherapyType",
     "imagingmodality": "ImagingModality",
     "specimentype": "SpecimenType",
     "specimennature": "SpecimenNature",
-    "specimentopographycode": "SpecimenTopographyCode",
+    #"specimentopographycode": "SpecimenTopographyCode",
     "biomarkername": "BiomarkerName",
-    "metastasistopocode": "MetastasisTopocode",
+    #"metastasistopocode": "MetastasisTopocode",
     "tumeventtype": "TumeventType",
 }
 
