@@ -414,15 +414,11 @@ class PersonalMedicalHistory(BaseDocumentModel):
 
 class TumorSizeBase(BaseDocumentModel):
     """Base class for a tumor size measurement."""
-    kind: str = Field(..., description="Discriminator for tumor size type")
-
     contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
 
 class TumorSizeClinic(TumorSizeBase):
     """Clinical tumor size."""
-    kind: Literal["clinic"] = Field("clinic", description="Clinical measurement")
-
     tumorsize_clinic: str = Field(..., description="Clinical tumor size value")
     tumorsizedate_clinic: DateRange = Field(
         ..., description="Date range of clinical measurement"
@@ -436,8 +432,6 @@ class TumorSizeClinic(TumorSizeBase):
 
 class TumorSizePatho(TumorSizeBase):
     """Pathological tumor size."""
-    kind: Literal["patho"] = Field("patho", description="Pathological measurement")
-
     tumorsize_patho: str = Field(..., description="Pathological tumor size value")
     tumorsizedate_patho: DateRange = Field(
         ..., description="Date range of pathological measurement"
@@ -451,8 +445,6 @@ class TumorSizePatho(TumorSizeBase):
 
 class TumorSizeImaging(TumorSizeBase):
     """Imaging-based tumor size."""
-    kind: Literal["imaging"] = Field("imaging", description="Imaging measurement")
-
     tumorsize_imaging: str = Field(..., description="Imaging tumor size value")
     tumorsizedate_imaging: DateRange = Field(
         ..., description="Date range of imaging measurement"
@@ -466,7 +458,7 @@ class TumorSizeImaging(TumorSizeBase):
 
 TumorSize = Annotated[
     Union[TumorSizeClinic, TumorSizePatho, TumorSizeImaging],
-    Field(discriminator="kind"),
+    Field(description="Tumor size measurement, which can be clinical, pathological, or imaging-based."),
 ]
 
 
