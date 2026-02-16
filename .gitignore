@@ -12,6 +12,8 @@ data/generated/*
 data/generated/**
 data/generated/**/*
 !data/generated/.gitkeep
+fake-data/*
+fake-data/**
 
 # Backup files
 *.swp
