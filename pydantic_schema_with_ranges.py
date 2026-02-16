@@ -353,8 +353,8 @@ def _coerce_enum_value(enum_cls, v):
 # ---------------------------------------------------------------------
 class DateRange(BaseModel):
     """A range of dates representing uncertainty (start...end)."""
-    start: Optional[date] = Field(None, description="Earliest possible date")
-    end: Optional[date] = Field(None, description="Latest possible date")
+    start: date = Field(description="Earliest possible date")
+    end: date = Field(description="Latest possible date")
 
     @classmethod
     def from_value(cls, v):
