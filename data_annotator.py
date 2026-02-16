@@ -25,7 +25,7 @@ VLLM_BASE_URL = os.getenv("VLLM_BASE_URL", "http://localhost:8000/v1")
 VLLM_API_KEY = os.getenv("VLLM_API_KEY", "EMPTY")
 MODEL_NAME = os.getenv("VLLM_MODEL_NAME", "ig1/medgemma-27b-text-it-FP8-Dynamic")
 MAX_WORKERS = int(os.getenv("MAX_WORKERS", "4"))
-TEMPERATURE = float(os.getenv("TEMPERATURE", "0.2"))
+TEMPERATURE = float(os.getenv("TEMPERATURE", "0.0"))
 MAX_TOKENS = int(os.getenv("MAX_TOKENS", "4096"))
 NUM_SAMPLES = int(os.getenv("NUM_SAMPLES", "0"))  # 0 means process all files
 
@@ -77,7 +77,7 @@ def load_documents_from_directory(directory: Path, num_samples: int = 0) -> List
     json_files = list(directory.rglob("*.json"))
     total_files = len(json_files)
     print(f"Found {total_files} JSON files in {directory}")
-    
+    random.seed(42)
     # Randomly sample if num_samples > 0
     if num_samples > 0 and num_samples < total_files:
         json_files = random.sample(json_files, num_samples)
@@ -121,6 +121,7 @@ def get_document_schema() -> Dict[str, Any]:
     """
     # Get the full schema
     full_schema = Document.model_json_schema()
+    print(f'full_schema: {full_schema}')
     
     # Create a modified schema without documentid as required
     if 'properties' in full_schema and 'documentid' in full_schema['properties']:
