@@ -360,19 +360,19 @@ class DateRange(BaseModel):
     def from_value(cls, v):
         # Accepts a single date, a tuple/list of two dates, or a dict with start/end
         if v is None:
-            return None
+            return parse_eu_date("1212-12-12")
         if isinstance(v, cls):
             return v
         if isinstance(v, dict):
-            start = parse_eu_date(v.get("start"))
-            end = parse_eu_date(v.get("end"))
+            start = parse_eu_date(v.get("start")) or parse_eu_date("1212-12-12")
+            end = parse_eu_date(v.get("end")) or parse_eu_date("1212-12-12")
             return cls(start=start, end=end)
         if isinstance(v, (list, tuple)) and len(v) == 2:
-            start = parse_eu_date(v[0])
-            end = parse_eu_date(v[1])
+            start = parse_eu_date(v[0]) or parse_eu_date("1212-12-12")
+            end = parse_eu_date(v[1]) or parse_eu_date("1212-12-12")
             return cls(start=start, end=end)
         # Single date: treat as exact (start == end)
-        d = parse_eu_date(v)
+        d = parse_eu_date(v) or parse_eu_date("1212-12-12")
         return cls(start=d, end=d)
 
     def to_json_serializable(self):
@@ -716,7 +716,7 @@ class Biomarker(BaseDocumentModel):
 
     biomarkermutationstatus: Literal["Mutated", "Wild type", "Variant", "Amplified", "Deleted", "Fused", "Other"] = Field("Other", description="Mutation status or value (use \"Other\" if the biomarker is not a gene)")
 
-    biomarkernonmutationstatus: Literal["Positive", "Negative", "High", "Low", "Other"] = Field("Other", description="Non-mutation status or value (use \"Other\" if not applicable)")
+    biomarkernonmutationstatus: Literal["Positive", "Negative", "Elevated", "High", "Low", "Other"] = Field("Other", description="Non-mutation status or value (use \"Other\" if not applicable)")
 
     biomarkervaluetxt: str = Field(
         ..., description="Biomarker value with unit (if mentioned in text, otherwise same as biomarkermutationstatus)"
