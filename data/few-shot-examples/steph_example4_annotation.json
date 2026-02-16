@@ -4,13 +4,19 @@
     "personal_medical_history_comorbidities_and_adverse": [],
     "primary_tumor": [
       {
-        "cancerdiagnosisdate": "",
+        "cancerdiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2024-10-01"
+        },
         "topographycode": "Kidney",
         "morphologycode": "Unknown",
         "tumorsize": [
           {
             "tumorsize_imaging": "6",
-            "tumorsizedate_imaging": "",
+            "tumorsizedate_imaging": {
+              "start": "1212-12-12",
+              "end": "2024-10-01"
+            },
             "contextsentence": "De nombreux rehaussements à distance en arrière, en avant et surtout en dessous de la lésion principale, rendent difficile l'évaluation de l'étendue exacte, d'au moins 6 cm"
           }
         ]
@@ -20,7 +26,10 @@
     "surgery": [
       {
         "surgerytype": "Néphrectomie totale",
-        "surgerydate": "",
+        "surgerydate": {
+          "start": "1212-12-12",
+          "end": "2024-10-01"
+        },
         "contextsentence": "Antécédent de néphrectomie droite"
       }
     ],
@@ -30,22 +39,34 @@
     "imaging_and_nuclear_medecine": [
       {
         "imagingmodality": "MG, Mammography",
-        "analysisdate": "01/10/2024",
+        "analysisdate": {
+          "start": "2024-10-01",
+          "end": "2024-10-01"
+        },
         "contextsentence": "bilan sénologique complet réalisé le 01/10/2024, en raison d'une masse dans le secteur interne du sein gauche.\nÀ la mammographie"
       },
       {
         "imagingmodality": "US, Ultrasound",
-        "analysisdate": "01/10/2024",
+        "analysisdate": {
+          "start": "2024-10-01",
+          "end": "2024-10-01"
+        },
         "contextsentence": "bilan sénologique complet réalisé le 01/10/2024, en raison d'une masse dans le secteur interne du sein gauche.\n À l'échographie"
       },
       {
         "imagingmodality": "MR, Magnetic Resonance",
-        "analysisdate": "01/10/2024",
+        "analysisdate": {
+          "start": "2024-10-01",
+          "end": "2024-10-01"
+        },
         "contextsentence": "IRM MAMMAIRE"
       },
       {
         "imagingmodality": "PT, Positron emission tomography (PET)",
-        "analysisdate": "",
+        "analysisdate": {
+          "start": "1212-12-12",
+          "end": "2024-10-01"
+        },
         "contextsentence": "petscan"
       }
     ],
@@ -54,7 +75,10 @@
         "specimentype": "Biopsy",
         "specimennature": "Tumor tissue",
         "specimentopographycode": "BREAST",
-        "specimencollectdateday": "14/10/2024",
+        "specimencollectdateday": {
+          "start": "2024-10-14",
+          "end": "2024-10-14"
+        },
         "contextsentence": "À l'échographie, lésion très mal délimitée para-aréolaire interne, d'environ 25 mm, avec petit élément nodulaire à distance en interne notamment. Une microbiopsie sous échographie sera réalisée le 14/10/2024"
       }
     ],

@@ -4,34 +4,52 @@
     "personal_medical_history_comorbidities_and_adverse": [
       {
         "relatedpathologycode": "dépression",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "contexte de dépression"
       },
       {
         "relatedpathologycode": "amnésie rétrograde",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "amnésie rétrograde"
       },
       {
         "relatedpathologycode": "amaigrissement",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "amaigrissements ( 50 >  40 kg sur * )"
       },
       {
         "relatedpathologycode": "incompliance thérapeutique",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "incompliance thérapeutique"
       }
     ],
     "primary_tumor": [
       {
-        "cancerdiagnosisdate": "01/02/2023",
+        "cancerdiagnosisdate": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "topographycode": "marge anale",
         "morphologycode": "Carcinome épidermoïde",
         "tumorsize": []
       },
       {
-        "cancerdiagnosisdate": "01/02/2023",
+        "cancerdiagnosisdate": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "topographycode": "RIGHT BREAST",
         "morphologycode": "Carcinome lobulaire infiltrant, de grade 2, récept oestro et progest +",
         "tumorsize": []
@@ -42,34 +60,52 @@
     "cancer_medication": [
       {
         "moleculecode": "Mitomycine",
-        "moleculedate_first": "",
+        "moleculedate_first": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "contextsentence": "Radio-chimiothérapie à base de Mitomycine 5-FU en cours"
       },
       {
         "moleculecode": "Fluorouracil,combinations",
-        "moleculedate_first": "",
+        "moleculedate_first": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "contextsentence": "Radio-chimiothérapie à base de Mitomycine 5-FU en cours"
       },
       {
         "moleculecode": "Letrozole",
-        "moleculedate_first": "",
+        "moleculedate_first": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "contextsentence": "Hormonothérapie néo-adjuvante à base de FEMARA 2.5mg 1x/J en cours"
       }
     ],
     "radiotherapy": [
       {
         "radiotherapytype": "Radiotherapy without stereotaxy (conventional radiotherapy)",
-        "radiotherapydate_first": "",
+        "radiotherapydate_first": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "contextsentence": "Radio-chimiothérapie à base de Mitomycine 5-FU en cours"
       }
     ],
     "progression": [
       {
-        "progressiondate": "",
+        "progressiondate": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "contextsentence": "extension loco-régionale"
       },
       {
-        "progressiondate": "",
+        "progressiondate": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "contextsentence": "adénopathie inguinale G"
       }
     ],
@@ -81,7 +117,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "nég",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "contextsentence": "HER2 nég, Ki67 15-20%"
       },
       {
@@ -89,7 +128,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Low",
         "biomarkervaluetxt": "15-20%",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2023-02-01",
+          "end": "2023-02-01"
+        },
         "contextsentence": "HER2 nég, Ki67 15-20%"
       }
     ],

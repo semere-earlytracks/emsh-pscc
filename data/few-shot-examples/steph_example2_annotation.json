@@ -4,49 +4,76 @@
     "personal_medical_history_comorbidities_and_adverse": [
       {
         "relatedpathologycode": "Iron deficiency anaemia",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "anémie multi-factorielle avec réponse médullaire insuffisance, supplémentation en fer et acide folique"
       },
       {
         "relatedpathologycode": "Folate deficiency anaemia",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "anémie multi-factorielle avec réponse médullaire insuffisance, supplémentation en fer et acide folique"
       },
       {
         "relatedpathologycode": "Alcoholic liver disease",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "Cirrhose child A5 éthylique"
       },
       {
         "relatedpathologycode": "Other chronic obstructive pulmonary disease",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "BPCO de stade III"
       },
       {
         "relatedpathologycode": "Chronic ischaemic heart disease",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "Cardiomyopathie ischémique"
       },
       {
         "relatedpathologycode": "Other disorders of arteries and arterioles",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "Artérite des membres inférieurs"
       },
       {
         "relatedpathologycode": "Other venous embolism and thrombosis",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-02-01"
+        },
         "contextsentence": "le patient présente une thrombose de la veine jugulaire"
       }
     ],
     "primary_tumor": [
       {
-        "cancerdiagnosisdate": "26/11/2022",
+        "cancerdiagnosisdate": {
+          "start": "2022-11-26",
+          "end": "2022-11-26"
+        },
         "topographycode": "Pharynx, NOS",
         "morphologycode": "Squamous cell carcinoma, metastatic, NOS",
         "tumorsize": [
           {
             "tumorsize_imaging": "15",
-            "tumorsizedate_imaging": "11/11/2022",
+            "tumorsizedate_imaging": {
+              "start": "2022-11-11",
+              "end": "2022-11-11"
+            },
             "contextsentence": "La lésion envahit la base de langue au niveau médian avec une plage triangulaire mesuré à 15 x 15 mm dans le plan sagittal"
           }
         ]
@@ -57,26 +84,38 @@
     "cancer_medication": [
       {
         "moleculecode": "Pembrolizumab",
-        "moleculedate_first": "",
+        "moleculedate_first": {
+          "start": "2022-11-26",
+          "end": "2022-11-26"
+        },
         "contextsentence": "Nous avions initié une première ligne de traitement systémique par immunothérapie de type Pembrolizumab"
       }
     ],
     "radiotherapy": [],
     "progression": [
       {
-        "progressiondate": "04/04/2023",
+        "progressiondate": {
+          "start": "2023-04-04",
+          "end": "2023-04-04"
+        },
         "contextsentence": "Le 04/04/2023, nous expliquons au patient que, malheureusement, nous sommes face à une progression fulgurante de la maladie"
       }
     ],
     "imaging_and_nuclear_medecine": [
       {
         "imagingmodality": "MR, Magnetic Resonance",
-        "analysisdate": "11/11/2022",
+        "analysisdate": {
+          "start": "2022-11-11",
+          "end": "2022-11-11"
+        },
         "contextsentence": "11/11/22 IRM cervicale"
       },
       {
         "imagingmodality": "PT, Positron emission tomography (PET)",
-        "analysisdate": "23/11/2022",
+        "analysisdate": {
+          "start": "2022-11-23",
+          "end": "2022-11-23"
+        },
         "contextsentence": "PET-scanner réalisé le 23/11/2022"
       }
     ],
@@ -85,7 +124,10 @@
         "specimentype": "Biopsy",
         "specimennature": "Tumor tissue",
         "specimentopographycode": "Cervix",
-        "specimencollectdateday": "26/11/2022",
+        "specimencollectdateday": {
+          "start": "2022-11-26",
+          "end": "2022-11-26"
+        },
         "contextsentence": "cervicotomie droite réalisée le 26/11/2022 par des chirurgiens généraux confirmant la lésion néoplasique sur les biopsies réalisées"
       }
     ],
@@ -93,32 +135,50 @@
     "tumor_events": [
       {
         "tumeventtype": "Metastasis",
-        "tumeventdiagnosisdate": "23/11/2022",
+        "tumeventdiagnosisdate": {
+          "start": "2022-11-23",
+          "end": "2022-11-23"
+        },
         "metastasis": [
           {
             "metastasistopocode": "LYMPH NODES",
-            "metastasisdiscoverydate": "23/11/2022",
+            "metastasisdiscoverydate": {
+              "start": "2022-11-23",
+              "end": "2022-11-23"
+            },
             "contextsentence": "carcinome épidermoïde oropharyngée et hypopharyngée droit métastatique au niveau ganglionnaires, hépatique et osseux (sur base du PET-scanner réalisé le 23/11/2022)"
           },
           {
             "metastasistopocode": "Liver",
-            "metastasisdiscoverydate": "23/11/2022",
+            "metastasisdiscoverydate": {
+              "start": "2022-11-23",
+              "end": "2022-11-23"
+            },
             "contextsentence": "carcinome épidermoïde oropharyngée et hypopharyngée droit métastatique au niveau ganglionnaires, hépatique et osseux (sur base du PET-scanner réalisé le 23/11/2022)"
           },
           {
             "metastasistopocode": "BONES, JOINTS AND ARTICULAR CARTILAGE OF LIMBS",
-            "metastasisdiscoverydate": "23/11/2022",
+            "metastasisdiscoverydate": {
+              "start": "2022-11-23",
+              "end": "2022-11-23"
+            },
             "contextsentence": "carcinome épidermoïde oropharyngée et hypopharyngée droit métastatique au niveau ganglionnaires, hépatique et osseux (sur base du PET-scanner réalisé le 23/11/2022)"
           }
         ]
       },
       {
         "tumeventtype": "Metastasis",
-        "tumeventdiagnosisdate": "04/04/2023",
+        "tumeventdiagnosisdate": {
+          "start": "2023-04-04",
+          "end": "2023-04-04"
+        },
         "metastasis": [
           {
             "metastasistopocode": "Lung, NOS",
-            "metastasisdiscoverydate": "04/04/2023",
+            "metastasisdiscoverydate": {
+              "start": "2023-04-04",
+              "end": "2023-04-04"
+            },
             "contextsentence": "Le 04/04/2023, nous expliquons au patient que, malheureusement, nous sommes face à une progression fulgurante de la maladie, aussi bien au niveau local qu'à distance avec l'apparition de métastases pulmonaire"
           }
         ]

@@ -4,74 +4,116 @@
     "personal_medical_history_comorbidities_and_adverse": [
       {
         "relatedpathologycode": "Syndrome de Cushing paranéoplasique",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Syndrome de Cushing paranéoplasique, sécrétion ectopique d'ACTH"
       },
       {
         "relatedpathologycode": "Rétention hydrosodée",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Rétention hydrosodée avec prise pondérale"
       },
       {
         "relatedpathologycode": "prise pondérale",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Rétention hydrosodée avec prise pondérale"
       },
       {
         "relatedpathologycode": "hirsutisme",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Rétention hydrosodée avec prise pondérale, hirsutisme, faciès cunshingoïde, déséquilibre glycémique, mycose œsophagienne"
       },
       {
         "relatedpathologycode": "déséquilibre glycémique",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Rétention hydrosodée avec prise pondérale, hirsutisme, faciès cunshingoïde, déséquilibre glycémique, mycose œsophagienne"
       },
       {
         "relatedpathologycode": "œsophagite mycotique",
-        "relateddiagnosisdate": "19/07/????",
+        "relateddiagnosisdate": {
+          "start": "2025-07-19",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Œsophagite mycotique, traitement par diflucan initié le 19/07"
       },
       {
         "relatedpathologycode": "Diverticulite recto-sigmoïdienne avec perforation",
-        "relateddiagnosisdate": "17/07/????",
+        "relateddiagnosisdate": {
+          "start": "2025-07-17",
+          "end": "2025-07-17"
+        },
         "contextsentence": "Diverticulite avec perforation diverticulaire couverte, au niveau recto-sigmoïdien"
       },
       {
         "relatedpathologycode": "choc septique avec septicémie sur péritonite",
-        "relateddiagnosisdate": "27/07/????",
+        "relateddiagnosisdate": {
+          "start": "2025-07-27",
+          "end": "2025-07-27"
+        },
         "contextsentence": "choc septique avec septicémie à Morganella Morganii sur péritonite"
       },
       {
         "relatedpathologycode": "Insuffisance respiratoire aiguë de type I",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Insuffisance respiratoire aiguë de type I"
       },
       {
         "relatedpathologycode": "emphysème",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "dans un contexte de rétention hydrosodée et emphysème"
       },
       {
         "relatedpathologycode": "Diabète",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Diabète dans le contexte de 1"
       },
       {
         "relatedpathologycode": "Souffle systolique",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Souffle systolique 3/6"
       }
     ],
     "primary_tumor": [
       {
-        "cancerdiagnosisdate": "",
+        "cancerdiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2025-07-19"
+        },
         "topographycode": "LUNG",
         "morphologycode": "carcinome à petites cellules",
         "tumorsize": []
       },
       {
-        "cancerdiagnosisdate": "01/01/2018",
+        "cancerdiagnosisdate": {
+          "start": "2018-01-01",
+          "end": "2018-12-31"
+        },
         "topographycode": "BREAST",
         "morphologycode": "adénocarcinome infiltrant de type non spécifique de grade SBRII",
         "tumorsize": []
@@ -81,39 +123,57 @@
     "surgery": [
       {
         "surgerytype": "Quadrantectomie du sein droit",
-        "surgerydate": "",
+        "surgerydate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "quadrantectomie du sein droit"
       }
     ],
     "cancer_medication": [
       {
         "moleculecode": "Letrozole",
-        "moleculedate_first": "",
+        "moleculedate_first": {
+          "start": "2022-05-01",
+          "end": "2022-05-01"
+        },
         "contextsentence": "hormonothérapie Fémara. 05/22 : intolérance articulaire, shift vers Nolvadex"
       },
       {
         "moleculecode": "Tamoxifen",
-        "moleculedate_first": "01/05/2022",
+        "moleculedate_first": {
+          "start": "2022-05-01",
+          "end": "2022-05-01"
+        },
         "contextsentence": "hormonothérapie Fémara. 05/22 : intolérance articulaire, shift vers Nolvadex"
       }
     ],
     "radiotherapy": [
       {
         "radiotherapytype": "Radiotherapy without stereotaxy (conventional radiotherapy)",
-        "radiotherapydate_first": "",
+        "radiotherapydate_first": {
+          "start": "2018-01-01",
+          "end": "2018-01-01"
+        },
         "contextsentence": "quadrantectomie du sein droit, radiothérapie, et hormonothérapie"
       }
     ],
     "progression": [
       {
-        "progressiondate": "",
+        "progressiondate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "pT2 N0 M0"
       }
     ],
     "imaging_and_nuclear_medecine": [
       {
         "imagingmodality": "MR, Magnetic Resonance",
-        "analysisdate": "",
+        "analysisdate": {
+          "start": "2025-07-19",
+          "end": "2025-07-19"
+        },
         "contextsentence": "IRM cérébrale sans particularité"
       }
     ],
@@ -122,7 +182,10 @@
         "specimentype": "Biopsy",
         "specimennature": "Tumor tissue",
         "specimentopographycode": "LIVER",
-        "specimencollectdateday": "20/07",
+        "specimencollectdateday": {
+          "start": "2025-07-20",
+          "end": "2025-07-20"
+        },
         "contextsentence": "Biopsie hépatique réalisée le 20/07 plaidant pour une infiltration métastatique par un carcinome à petites cellules d'origine pulmonaire"
       }
     ],
@@ -132,7 +195,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Alcalose hypokaliémique, lymphopénie"
       },
       {
@@ -140,7 +206,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Alcalose hypokaliémique, lymphopénie"
       },
       {
@@ -148,7 +217,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "élevée",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Cortisolémie élevée. ACTH élevé également"
       },
       {
@@ -156,7 +228,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "élevé",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Cortisolémie élevée. ACTH élevé également"
       },
       {
@@ -164,7 +239,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "5068 µg/24h",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Cortisolurie de 24h élevée, à 5068 µg/24h"
       },
       {
@@ -172,7 +250,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "8 µg/M",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
@@ -180,7 +261,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "15.3 normal",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
@@ -188,7 +272,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "111.50 µg/L",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
@@ -196,7 +283,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "8/8",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
@@ -204,7 +294,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "8/8",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
@@ -212,7 +305,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "++",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2025-07-19"
+        },
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
@@ -220,7 +316,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "négative",
-        "biomarkerresultdate": "01/01/2018",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2018-12-31"
+        },
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018), HbA1C à 7.3%"
       },
       {
@@ -228,7 +327,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "7.3%",
-        "biomarkerresultdate": "",
+        "biomarkerresultdate": {
+          "start": "2018-01-01",
+          "end": "2018-12-31"
+        },
         "contextsentence": "HbA1C à 7.3%"
       }
     ],
@@ -264,12 +366,15 @@
           },
           {
             "metastasistopocode": "LIVER",
-            "metastasisdiscoverydate": "20/07/",
+            "metastasisdiscoverydate": {
+              "start": "2025-07-20",
+              "end": "2025-07-20"
+            },
             "contextsentence": "Biopsie hépatique réalisée le 20/07 plaidant pour une infiltration métastatique par un carcinome à petites cellules d'origine pulmonaire"
           }
         ]
       }
     ]
   },
-  "text": "1. Syndrome de Cushing paranéoplasique, sécrétion ectopique d'ACTH liée à un carcinome à petites cellules pulmonaire: \n- Cliniquement : Rétention hydrosodée avec prise pondérale, hirsutisme, faciès cunshingoïde, déséquilibre glycémique, mycose œsophagienne.   \n- Biologiquement : Alcalose hypokaliémique, lymphopénie. \n- Cortisolémie élevée. ACTH élevé également. \n- Cortisolurie de 24h élevée, à 5068 µg/24h.   \n\n2. Apparition de lésions métastatiques hépatiques, surrénaliennes bilatérales, adénomégalies médiastinales et hilaire droite, fracture costale droite suspecte. Patiente connue pour un adénocarcinome mammaire en rémission après quadrantectomie du sein droit, radiothérapie, et hormonothérapie. \n- Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L. \n- Biopsie hépatique réalisée le 20/07 plaidant pour une infiltration métastatique par un carcinome à petites cellules d'origine pulmonaire.  \n- IRM cérébrale sans particularité. \n\n3. Diverticulite avec perforation diverticulaire couverte, au niveau recto-sigmoïdien. \n- Couverture antibiotique empirique par Augmentin initiée le 17/07, relayée par Tazocin le 26/07 en raison d'une dégradation clinique et biologique.  \n- Pas d'indication opératoire. \n- Le 27/07, choc septique avec septicémie à Morganella Morganii sur péritonite, justifiant un transfert rapide de la patiente à l'unité de soins intensifs.\n\n4. Œsophagite mycotique, traitement par diflucan initié le 19/07, à poursuivre pour 10 jours.  \n\n5. Adénocarcinome mammaire infiltrant de type non spécifique de grade SBRII pT2 N0 M0. ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018).   \n-  Traitement par quadrantectomie sein droit, radiothérapie adjuvante et hormonothérapie Fémara. 05/22 : intolérance articulaire, shift vers Nolvadex.\n\n6. Insuffisance respiratoire aiguë de type I, dans un contexte de rétention hydrosodée et emphysème. Oxygénothérapie 2L. Pas d'embolie pulmonaire au CT.  \n\n7. Diabète dans le contexte de 1.  \n- HbA1C à 7.3%.  \n- Instauration d'une insulinothérapie. \n\n8. Souffle systolique 3/6, pas de valvulopathie à l’ETT.\n\n"
+  "text": "1. Syndrome de Cushing paranéoplasique, sécrétion ectopique d'ACTH liée à un carcinome à petites cellules pulmonaire: \n- Cliniquement : Rétention hydrosodée avec prise pondérale, hirsutisme, faciès cunshingoïde, déséquilibre glycémique, mycose œsophagienne.   \n- Biologiquement : Alcalose hypokaliémique, lymphopénie. \n- Cortisolémie élevée. ACTH élevé également. \n- Cortisolurie de 24h élevée, à 5068 µg/24h.   \n\n2. Apparition de lésions métastatiques hépatiques, surrénaliennes bilatérales, adénomégalies médiastinales et hilaire droite, fracture costale droite suspecte. Patiente connue pour un adénocarcinome mammaire en rémission après quadrantectomie du sein droit, radiothérapie, et hormonothérapie. \n- Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L. \n- Biopsie hépatique réalisée le 20/07 plaidant pour une infiltration métastatique par un carcinome à petites cellules d'origine pulmonaire.  \n- IRM cérébrale sans particularité. \n\n3. Diverticulite avec perforation diverticulaire couverte, au niveau recto-sigmoïdien. \n- Couverture antibiotique empirique par Augmentin initiée le 17/07, relayée par Tazocin le 26/07 en raison d'une dégradation clinique et biologique.  \n- Pas d'indication opératoire. \n- Le 27/07, choc septique avec septicémie à Morganella Morganii sur péritonite, justifiant un transfert rapide de la patiente à l'unité de soins intensifs.\n\n4. Œsophagite mycotique, traitement par diflucan initié le 19/07, à poursuivre pour 10 jours.  \n\n5. Adénocarcinome mammaire infiltrant de type non spécifique de grade SBRII pT2 N0 M0. ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018).   \n-  Traitement par quadrantectomie sein droit, radiothérapie adjuvante et hormonothérapie Fémara. 05/22 : intolérance articulaire, shift vers Nolvadex.\n\n6. Insuffisance respiratoire aiguë de type I, dans un contexte de rétention hydrosodée et emphysème. Oxygénothérapie 2L. Pas d'embolie pulmonaire au CT.  \n\n7. Diabète dans le contexte de 1.  \n- HbA1C à 7.3%.  \n- Instauration d'une insulinothérapie. \n\n8. Souffle systolique 3/6, pas de valvulopathie à l’ETT.\n\nDate of the document: 2025-??-??\n\n"
 }

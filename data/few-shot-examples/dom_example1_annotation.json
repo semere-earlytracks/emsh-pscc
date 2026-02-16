@@ -4,18 +4,27 @@
     "personal_medical_history_comorbidities_and_adverse": [
       {
         "relatedpathologycode": "hernie inguinale bilatérale",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2022-01-01"
+        },
         "contextsentence": "HI bilat"
       },
       {
         "relatedpathologycode": "appendicectomie",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2022-01-01"
+        },
         "contextsentence": "APP"
       }
     ],
     "primary_tumor": [
       {
-        "cancerdiagnosisdate": "30/07/2019",
+        "cancerdiagnosisdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "topographycode": "LUNG, NOS",
         "morphologycode": "poorly differentiated adenocarcinoma",
         "tumorsize": []
@@ -25,21 +34,30 @@
     "surgery": [
       {
         "surgerytype": "résection de plusieurs polypes",
-        "surgerydate": "01/01/2022",
+        "surgerydate": {
+          "start": "2022-01-01",
+          "end": "2022-01-31"
+        },
         "contextsentence": "résection de plusieurs polypes dont deux \npolypes en dysplasie de haut grade: caecum et colon gauche. Résection complète"
       }
     ],
     "cancer_medication": [
       {
         "moleculecode": "Pembrolizumab",
-        "moleculedate_first": "21/08/2019",
+        "moleculedate_first": {
+          "start": "2019-08-21",
+          "end": "2019-08-21"
+        },
         "contextsentence": " traitement de première ligne par immunothérapie Keytruda. Traitement\n initié le 21 août 2019."
       }
     ],
     "radiotherapy": [],
     "progression": [
       {
-        "progressiondate": "30/07/2019",
+        "progressiondate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Stade clinique T1b N3 M1b"
       }
     ],
@@ -51,7 +69,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "+",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Immunohistochimie : TTF1 +. EGFr +. PDL-1 : >90%"
       },
       {
@@ -59,7 +80,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "+",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Immunohistochimie : TTF1 +. EGFr +. PDL-1 : >90%"
       },
       {
@@ -67,7 +91,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": ">90%",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Immunohistochimie : TTF1 +. EGFr +. PDL-1 : >90%"
       },
       {
@@ -75,7 +102,10 @@
         "biomarkermutationstatus": "Wild type",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "négatif",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "ALK et ROS-1 négatif"
       },
       {
@@ -83,7 +113,10 @@
         "biomarkermutationstatus": "Wild type",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "négatif",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "ALK et ROS-1 négatif"
       },
       {
@@ -91,7 +124,10 @@
         "biomarkermutationstatus": "Wild type",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
@@ -99,7 +135,10 @@
         "biomarkermutationstatus": "Wild type",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
@@ -107,7 +146,10 @@
         "biomarkermutationstatus": "Wild type",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
@@ -115,7 +157,10 @@
         "biomarkermutationstatus": "Wild type",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
@@ -123,7 +168,10 @@
         "biomarkermutationstatus": "Wild type",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
@@ -131,33 +179,51 @@
         "biomarkermutationstatus": "Wild type",
         "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
-        "biomarkerresultdate": "30/07/2019",
+        "biomarkerresultdate": {
+          "start": "2019-07-30",
+          "end": "2019-07-30"
+        },
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ;\nNRAS ; KRAS ; ERBB2 et MET 14."
       }
     ],
     "tumor_events": [
       {
         "tumeventtype": "Metastasis",
-        "tumeventdiagnosisdate": "30/07/2019",
+        "tumeventdiagnosisdate": {
+          "start": "2010-08-23",
+          "end": "2010-08-23"
+        },
         "metastasis": [
           {
             "metastasistopocode": "pulmonaires",
-            "metastasisdiscoverydate": "23/08/2010",
+            "metastasisdiscoverydate": {
+              "start": "2010-08-23",
+              "end": "2010-08-23"
+            },
             "contextsentence": "probables micrométastases pulmonaires bilatéralement"
           },
           {
             "metastasistopocode": "médiastinales",
-            "metastasisdiscoverydate": "23/08/2010",
+            "metastasisdiscoverydate": {
+              "start": "2010-08-23",
+              "end": "2010-08-23"
+            },
             "contextsentence": "ainsi que des adénopathies médiastinales, sus-claviculaires droites et cervicales droites"
           },
           {
             "metastasistopocode": "sus-claviculaires droites",
-            "metastasisdiscoverydate": "23/08/2010",
+            "metastasisdiscoverydate": {
+              "start": "2010-08-23",
+              "end": "2010-08-23"
+            },
             "contextsentence": "ainsi que des adénopathies médiastinales, sus-claviculaires droites et cervicales droites"
           },
           {
             "metastasistopocode": "cervicales droites",
-            "metastasisdiscoverydate": "23/08/2010",
+            "metastasisdiscoverydate": {
+              "start": "2010-08-23",
+              "end": "2010-08-23"
+            },
             "contextsentence": "ainsi que des adénopathies médiastinales, sus-claviculaires droites et cervicales droites"
           }
         ]

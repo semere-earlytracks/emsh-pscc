@@ -4,89 +4,112 @@
     "personal_medical_history_comorbidities_and_adverse": [
       {
         "relatedpathologycode": "Visual impairment including blindness",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "Cécité à droite"
       },
       {
         "relatedpathologycode": "Retinal detachments and breaks",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "décollement rétinien"
       },
       {
         "relatedpathologycode": "Diaphragmatic hernia",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "Volumineuse hernie hiatale"
       },
       {
         "relatedpathologycode": "Chronic ischaemic heart disease",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "Myocardiopathie ischémique"
       },
       {
         "relatedpathologycode": "Other chronic obstructive pulmonary disease",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "BPCO Gold III"
       },
       {
         "relatedpathologycode": "Other anxiety disorders",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "Troubles anxio-dépressifs"
       },
       {
         "relatedpathologycode": "Respiratory failure, not elsewhere classified",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "Insuffisance respiratoire de type I"
       },
       {
         "relatedpathologycode": "Other disorders of arteries and arterioles",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "Sténose préocclusive de l'artère iliaque externe gauche"
       },
       {
         "relatedpathologycode": "Gastritis and duodenitis",
-        "relateddiagnosisdate": "",
+        "relateddiagnosisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "Cardite et antrite érythémateuse à la gastroscopie"
       }
     ],
     "primary_tumor": [
       {
-        "cancerdiagnosisdate": "30/08/2023",
+        "cancerdiagnosisdate": {
+          "start": "2023-08-30",
+          "end": "2023-08-30"
+        },
         "topographycode": "Lung, NOS",
         "morphologycode": "Adenocarcinoma, NOS",
-        "tumorsize": [
-          {
-            "tumorsize_clinic": "",
-            "tumorsizedate_clinic": "",
-            "contextsentence": ""
-          },
-          {
-            "tumorsize_patho": "",
-            "tumorsizedate_patho": "",
-            "contextsentence": ""
-          },
-          {
-            "tumorsize_imaging": "",
-            "tumorsizedate_imaging": "",
-            "contextsentence": ""
-          }
-        ]
+        "tumorsize": []
       }
     ],
     "general_condition_and_physical_examination": [],
     "surgery": [
       {
         "surgerytype": "Résection de l'intestin grêle",
-        "surgerydate": "01/10/2021",
+        "surgerydate": {
+          "start": "2021-10-01",
+          "end": "2021-10-01"
+        },
         "contextsentence": "résection iléocolique en octobre 2021"
       },
       {
         "surgerytype": "Colectomie",
-        "surgerydate": "01/10/2021",
+        "surgerydate": {
+          "start": "2021-10-01",
+          "end": "2021-10-01"
+        },
         "contextsentence": "résection iléocolique en octobre 2021"
       },
       {
         "surgerytype": "Actes thérapeutiques sur l'appendice vermiforme [appendice]",
-        "surgerydate": "",
+        "surgerydate": {
+          "start": "1212-12-12",
+          "end": "2022-01-31"
+        },
         "contextsentence": "Appendicectomie"
       }
     ],
@@ -96,13 +119,11 @@
     "imaging_and_nuclear_medecine": [
       {
         "imagingmodality": "PT, Positron emission tomography (PET)",
-        "analysisdate": "",
+        "analysisdate": {
+          "start": "1212-12-12",
+          "end": "2023-08-30"
+        },
         "contextsentence": "PET CT reprogrammé ici à sa demande"
-      },
-      {
-        "imagingmodality": "",
-        "analysisdate": "",
-        "contextsentence": ""
       }
     ],
     "biological_specimen": [
@@ -110,7 +131,10 @@
         "specimentype": "Liquid",
         "specimennature": "Tumor tissue",
         "specimentopographycode": "Pleura, NOS",
-        "specimencollectdateday": "01/07/2023",
+        "specimencollectdateday": {
+          "start": "2023-07-01",
+          "end": "2023-07-01"
+        },
         "contextsentence": "Hospitalisation du 30/08 au 19/09/2023 Adénocarcinome pulmonaire découvert il y a un mois suite à une ponction pleurale, révélant un exsudat avec présence de cellules néoplasiques"
       }
     ],
@@ -120,7 +144,10 @@
         "biomarkermutationstatus": "Other",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "60%",
-        "biomarkerresultdate": "30/08/2023",
+        "biomarkerresultdate": {
+          "start": "2023-08-30",
+          "end": "2023-08-30"
+        },
         "contextsentence": "PDL1 60%"
       },
       {
@@ -128,18 +155,27 @@
         "biomarkermutationstatus": "Mutated",
         "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "Mutation G12c",
-        "biomarkerresultdate": "30/08/2023",
+        "biomarkerresultdate": {
+          "start": "2023-08-30",
+          "end": "2023-08-30"
+        },
         "contextsentence": "Mutation G12c KRAS."
       }
     ],
     "tumor_events": [
       {
         "tumeventtype": "Metastasis",
-        "tumeventdiagnosisdate": "01/07/2023",
+        "tumeventdiagnosisdate": {
+          "start": "2023-07-01",
+          "end": "2023-07-01"
+        },
         "metastasis": [
           {
             "metastasistopocode": "Pleura, NOS",
-            "metastasisdiscoverydate": "01/07/2023",
+            "metastasisdiscoverydate": {
+              "start": "2023-07-01",
+              "end": "2023-07-01"
+            },
             "contextsentence": "Epanchement pleural malin en 07/2023 ayant nécessité un drainage gauche (percutané) du 20 au 28/07/2023 à Marie-Curie. CMO Marie-Curie 30/08/2023: ADC probablement pulmonaire TxNxM1b"
           }
         ]
