@@ -1,0 +1,111 @@
+{
+  "document": {
+    "documentid": "PSCC_Data_Challenge_Patient2_DocDom",
+    "personal_medical_history_comorbidities_and_adverse": [
+      {
+        "relatedpathologycode": "dépression",
+        "relateddiagnosisdate": "",
+        "contextsentence": "contexte de dépression"
+      },
+      {
+        "relatedpathologycode": "amnésie rétrograde",
+        "relateddiagnosisdate": "",
+        "contextsentence": "amnésie rétrograde"
+      },
+      {
+        "relatedpathologycode": "amaigrissement",
+        "relateddiagnosisdate": "",
+        "contextsentence": "amaigrissements ( 50 >  40 kg sur * )"
+      },
+      {
+        "relatedpathologycode": "incompliance thérapeutique",
+        "relateddiagnosisdate": "",
+        "contextsentence": "incompliance thérapeutique"
+      }
+    ],
+    "primary_tumor": [
+      {
+        "cancerdiagnosisdate": "01/02/2023",
+        "topographycode": "marge anale",
+        "morphologycode": "Carcinome épidermoïde",
+        "tumorsize": []
+      },
+      {
+        "cancerdiagnosisdate": "01/02/2023",
+        "topographycode": "RIGHT BREAST",
+        "morphologycode": "Carcinome lobulaire infiltrant, de grade 2, récept oestro et progest +",
+        "tumorsize": [
+          {
+            "tumorsize_clinic": "",
+            "tumorsizedate_clinic": "",
+            "contextsentence": ""
+          },
+          {
+            "tumorsize_patho": "",
+            "tumorsizedate_patho": "",
+            "contextsentence": ""
+          },
+          {
+            "tumorsize_imaging": "",
+            "tumorsizedate_imaging": "",
+            "contextsentence": ""
+          }
+        ]
+      }
+    ],
+    "general_condition_and_physical_examination": [],
+    "surgery": [],
+    "cancer_medication": [
+      {
+        "moleculecode": "Mitomycine",
+        "moleculedate_first": "",
+        "contextsentence": "Radio-chimiothérapie à base de Mitomycine 5-FU en cours"
+      },
+      {
+        "moleculecode": "Fluorouracil,combinations",
+        "moleculedate_first": "",
+        "contextsentence": "Radio-chimiothérapie à base de Mitomycine 5-FU en cours"
+      },
+      {
+        "moleculecode": "Letrozole",
+        "moleculedate_first": "",
+        "contextsentence": "Hormonothérapie néo-adjuvante à base de FEMARA 2.5mg 1x/J en cours"
+      }
+    ],
+    "radiotherapy": [
+      {
+        "radiotherapytype": "Radiotherapy without stereotaxy (conventional radiotherapy)",
+        "radiotherapydate_first": "",
+        "contextsentence": "Radio-chimiothérapie à base de Mitomycine 5-FU en cours"
+      }
+    ],
+    "progression": [
+      {
+        "progressiondate": "",
+        "contextsentence": "extension loco-régionale"
+      },
+      {
+        "progressiondate": "",
+        "contextsentence": "adénopathie inguinale G"
+      }
+    ],
+    "imaging_and_nuclear_medecine": [],
+    "biological_specimen": [],
+    "biomarkers_and_tumor_markers": [
+      {
+        "biomarkername": "HER2",
+        "biomarkervaluetxt": "nég",
+        "biomarkerresultdate": "",
+        "contextsentence": "HER2 nég, Ki67 15-20%"
+      },
+      {
+        "biomarkername": "Ki67",
+        "biomarkervaluetxt": "15-20%",
+        "biomarkerresultdate": "",
+        "contextsentence": "HER2 nég, Ki67 15-20%"
+      }
+    ],
+    "tumor_events": []
+  },
+  "text": "amenée à la demande du mari pour incontinence fécale cette nuit \n\nanamnèse \namnésie rétrograde, \nn' a plus la sensation de défécation / miction , \nprotection continue , \namaigrissements ( 50 >  40 kg sur * ) \nmiction plus fréquente \npas de fièvre \n\n\ncontexte: \nSELON DOSSIER \nSuivie par Dr Sinapi depuis Février 2023 pour :\n* Carcinome épidermoïde de la marge anale avec extension loco-régionale et\nadénopathie inguinale G.\nRadio-chimiothérapie à base de Mitomycine 5-FU en cours.\n* Carcinome lobulaire mammaire infiltrant D, de grade 2, récept oestro et progest +,\nHER2 nég, Ki67 15-20%.\nHormonothérapie néo-adjuvante à base de FEMARA 2.5mg 1x/J en cours.\nMastectomie avec ganglion sentinelle +/- chimiothérapie post-op reste à réaliser après la\nradio-chimiothérapie citée précédemment\n\nIncompliance thérapeutique (ne se rend pas à ses RDV de radiothérapie) dans un\ncontexte de dépression.\n\nhospitalisation le  29/03/23 pour  radiothérapie ( vu incompliance )\n\norientation thérapeutique  : thérapie maximale \n\nENTRETIEN TELEPHONIQUE AVEC LE MARI \n* la pt n'a plus de suivi onco depuis   07/23  ( refus de consultation par elle même ) \n* elle a fait   les 28 séances de radiothérapie , mais pas d'amélioration, ne plus de consultation radiothérapeute \n* humeur très variable , parfois ne veut pas descendre pour manger \n* ici : depuis  3  jours : miction dans le lit , changement de protection 3x / jour  , ce matin : débordement selles et urines du lange, le mari se sent dépassé  , ne saurait pas se permettre une infi, pas d'enfants/ amis\n\n"
+}

@@ -1,0 +1,129 @@
+{
+  "document": {
+    "documentid": "PSCC_Data_Challenge_Patient1_Doc1",
+    "personal_medical_history_comorbidities_and_adverse": [
+      {
+        "relatedpathologycode": "Iron deficiency anaemia",
+        "relateddiagnosisdate": "",
+        "contextsentence": "anémie multi-factorielle avec réponse médullaire insuffisance, supplémentation en fer et acide folique"
+      },
+      {
+        "relatedpathologycode": "Folate deficiency anaemia",
+        "relateddiagnosisdate": "",
+        "contextsentence": "anémie multi-factorielle avec réponse médullaire insuffisance, supplémentation en fer et acide folique"
+      },
+      {
+        "relatedpathologycode": "Alcoholic liver disease",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Cirrhose child A5 éthylique"
+      },
+      {
+        "relatedpathologycode": "Other chronic obstructive pulmonary disease",
+        "relateddiagnosisdate": "",
+        "contextsentence": "BPCO de stade III"
+      },
+      {
+        "relatedpathologycode": "Chronic ischaemic heart disease",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Cardiomyopathie ischémique"
+      },
+      {
+        "relatedpathologycode": "Other disorders of arteries and arterioles",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Artérite des membres inférieurs"
+      },
+      {
+        "relatedpathologycode": "Other venous embolism and thrombosis",
+        "relateddiagnosisdate": "",
+        "contextsentence": "le patient présente une thrombose de la veine jugulaire"
+      }
+    ],
+    "primary_tumor": [
+      {
+        "cancerdiagnosisdate": "26/11/2022",
+        "topographycode": "Pharynx, NOS",
+        "morphologycode": "Squamous cell carcinoma, metastatic, NOS",
+        "tumorsize": [
+          {
+            "tumorsize_imaging": "15",
+            "tumorsizedate_imaging": "11/11/2022",
+            "contextsentence": "La lésion envahit la base de langue au niveau médian avec une plage triangulaire mesuré à 15 x 15 mm dans le plan sagittal"
+          }
+        ]
+      }
+    ],
+    "general_condition_and_physical_examination": [],
+    "surgery": [],
+    "cancer_medication": [
+      {
+        "moleculecode": "Pembrolizumab",
+        "moleculedate_first": "",
+        "contextsentence": "Nous avions initié une première ligne de traitement systémique par immunothérapie de type Pembrolizumab"
+      }
+    ],
+    "radiotherapy": [],
+    "progression": [
+      {
+        "progressiondate": "04/04/2023",
+        "contextsentence": "Le 04/04/2023, nous expliquons au patient que, malheureusement, nous sommes face à une progression fulgurante de la maladie"
+      }
+    ],
+    "imaging_and_nuclear_medecine": [
+      {
+        "imagingmodality": "MR, Magnetic Resonance",
+        "analysisdate": "11/11/2022",
+        "contextsentence": "11/11/22 IRM cervicale"
+      },
+      {
+        "imagingmodality": "PT, Positron emission tomography (PET)",
+        "analysisdate": "23/11/2022",
+        "contextsentence": "PET-scanner réalisé le 23/11/2022"
+      }
+    ],
+    "biological_specimen": [
+      {
+        "specimentype": "Biopsy",
+        "specimennature": "Tumor tissue",
+        "specimentopographycode": "",
+        "specimencollectdateday": "26/11/2022",
+        "contextsentence": "cervicotomie droite réalisée le 26/11/2022 par des chirurgiens généraux confirmant la lésion néoplasique sur les biopsies réalisées"
+      }
+    ],
+    "biomarkers_and_tumor_markers": [],
+    "tumor_events": [
+      {
+        "tumeventtype": "Metastasis",
+        "tumeventdiagnosisdate": "23/11/2022",
+        "metastasis": [
+          {
+            "metastasistopocode": "LYMPH NODES",
+            "metastasisdiscoverydate": "23/11/2022",
+            "contextsentence": "carcinome épidermoïde oropharyngée et hypopharyngée droit métastatique au niveau ganglionnaires, hépatique et osseux (sur base du PET-scanner réalisé le 23/11/2022)"
+          },
+          {
+            "metastasistopocode": "Liver",
+            "metastasisdiscoverydate": "23/11/2022",
+            "contextsentence": "carcinome épidermoïde oropharyngée et hypopharyngée droit métastatique au niveau ganglionnaires, hépatique et osseux (sur base du PET-scanner réalisé le 23/11/2022)"
+          },
+          {
+            "metastasistopocode": "BONES, JOINTS AND ARTICULAR CARTILAGE OF LIMBS",
+            "metastasisdiscoverydate": "23/11/2022",
+            "contextsentence": "carcinome épidermoïde oropharyngée et hypopharyngée droit métastatique au niveau ganglionnaires, hépatique et osseux (sur base du PET-scanner réalisé le 23/11/2022)"
+          }
+        ]
+      },
+      {
+        "tumeventtype": "Metastasis",
+        "tumeventdiagnosisdate": "04/04/2023",
+        "metastasis": [
+          {
+            "metastasistopocode": "Lung, NOS",
+            "metastasisdiscoverydate": "04/04/2023",
+            "contextsentence": "Le 04/04/2023, nous expliquons au patient que, malheureusement, nous sommes face à une progression fulgurante de la maladie, aussi bien au niveau local qu'à distance avec l'apparition de métastases pulmonaire"
+          }
+        ]
+      }
+    ]
+  },
+  "text": "(1567) Homme, 67ans, diagnostiqué d'un carcinome épidermoïde oropharyngée et hypopharyngée droit métastatique au niveau ganglionnaires, hépatique et osseux (sur base du PET-scanner réalisé le 23/11/2022) stadifié cT4a N3b M1, P16-, CPS >1.\n\n11/11/22 IRM cervicale:\nPrésence d'un épaississement tissulaire infiltrant entreprenant les deux vallécules et prédominant à droite, la face linguale de l'épiglotte, descendant au niveau de la paroi pharyngée postérolatérale droite avec atteinte de l'ensemble du sinus piriforme droit. Doute quant à un envahissement traversant la ligne médiane au niveau de la région supracricoïdienne qui est rehaussante également.\nLa lésion semble franchir le plan des constricteurs au niveau de la paroi pharyngée latérale droite avec envahissement de l'espace parapharyngé.\nLa lésion envahit la base de langue au niveau médian avec une plage triangulaire mesuré à 15 x 15 mm dans le plan sagittal (cf. images clés) : probable envahissement des fibres inférieures du génioglosse\nPas d'évidence d'envahissement de l'espace prévertébral.\nPas d'envahissement des muscles styloglosse ou hyoglosse.\nIntégrité du cartilage thyroïdien et du cartilage cricoïdien.\nPas d'envahissement du larynx glottique et supraglottique.\nPas d'envahissement des processus ptérygoïdes ou des muscles ptérygoïdiens ou de l'espace carotidien\n\nIl a bénéficié à l'Hôpital Notre-Dame de Grâces de Gosselies d'une cervicotomie droite réalisée le 26/11/2022 par des chirurgiens généraux confirmant la lésion néoplasique sur les biopsies réalisées et mettant en évidence de nombreuses effractions capsulaires.\n\nLe dossier du patient a été discuté en concertation multidisciplinaire d'oncologie médicale ce 03/12/2022 et au vu de l'état général du patient, du CPS>1, il a été décidé d'opter pour un traitement à base d'immunothérapie.\n\nNous expliquons ce jour les modalités du traitement au patient à savoir une cure de Pembrolizumab (Keytruda) 200mg toutes les 3 semaines avec réalisation d'une prise de sang pré-traitement.\nUn premier bilan sera réalisé après 4 cures d'immunothérapie.\n\nLes effets indésirables observés avec cette immunothérapie sont non systématiques, intensité inconstante et variable en fonction des personnes. Cette liste n'est pas exhaustive. \n\nLe patient consent au traitement. \n\nEn outre, le patient présente de multiples pathologies que nous suivrons de manière collégiale:\n- Anémie normochrome macrocytaire aregenerative de grade 4 (PBM Dr Verstreate: anémie multi-factorielle avec réponse médullaire insuffisance, supplémentation en fer et acide folique).\n- Insuffisance rénale chronique de stade 3b selon KDIGO suivi par le Dr Cecere et sous EPO 80µg/semaine.\n- Cirrhose child A5 éthylique sur greffon pour un hépatocarcinome en 2016 suivi Pr Dahlqvist, sous Tacrolimus.\n- BPCO de stade III selon GOLD.\n- Cardiomyopathie ischémique.\n- Artérite des membres inférieurs. \n\nEnfin, étant donné la fragilité du patient, nous proposons un suivi à J10 de ses traitements, probablement sur Gosselies pour plus de facilité afin de réaliser une prise de sang et évaluer la tolérance au traitement +/- le besoin en transfusion.\nLe patient sera transfusé de 2U de GR ce 09/12 avant initiation de son traitement. \n\nDe plus, il sera vu par les équipes de diététique et du service sociale pour une prise en charge globale. \n\n(1762) Le patient, 67ans, est suivi dans le cadre d'un carcinome épidermoïde oropharyngée et hypopharyngée droit métastatique au niveau ganglionnaires, hépatique et osseux (sur base du PET-scanner) stadifié cT4a N3b M1, P16-, CPS >1.\n\nNous avions initié une première ligne de traitement systémique par immunothérapie de type Pembrolizumab.\nNous discutons ce jour des résultats de son premier bilan iconographique après 4 cures de traitements.\n\nLe 04/04/2023, nous expliquons au patient que, malheureusement, nous sommes face à une progression fulgurante de la maladie, aussi bien au niveau local qu'à distance avec l'apparition de métastases pulmonaires, et face à un échappement thérapeutique.\nLe patient prend la nouvelle difficilement.\n\nAu vu de l'état général du patient, de ses multiples co-morbidités, une nouvelle ligne de traitement nous semble déraisonnable.\nNous abordons ce jour un arrêt thérapeutique et un passage en soins palliatifs.\nNous lui expliquons également les cas de figure possible d'évolution de la maladie de part l’extériorisation de sa tumeur, la proximité avec les vaisseaux du cou et le risque de saignement, ainsi que le risque de thrombose.\n\nRappelons, que le patient présente une thrombose de la veine jugulaire que nous n'anticoagulons pas au vu du risque hémorragique déjà bien présent.\n\nNous proposons au patient une hospitalisation de courte durée afin d'adpater son antalgie ce qu'il refuse catégoriquement.\n\nUn contact sera pris avec son médecin traitant afin de mettre en place une structure palliative au domicile afin que le patient soit le plus confortable possible. \nEnfin, nous adaptons ce jour son traitement antalgique.  \n"
+}

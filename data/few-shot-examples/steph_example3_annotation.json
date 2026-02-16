@@ -1,0 +1,146 @@
+{
+  "document": {
+    "documentid": "PSCC_Data_Challenge_Patient1_Doc1",
+    "personal_medical_history_comorbidities_and_adverse": [
+      {
+        "relatedpathologycode": "Visual impairment including blindness",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Cécité à droite"
+      },
+      {
+        "relatedpathologycode": "Retinal detachments and breaks",
+        "relateddiagnosisdate": "",
+        "contextsentence": "décollement rétinien"
+      },
+      {
+        "relatedpathologycode": "Diaphragmatic hernia",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Volumineuse hernie hiatale"
+      },
+      {
+        "relatedpathologycode": "Chronic ischaemic heart disease",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Myocardiopathie ischémique"
+      },
+      {
+        "relatedpathologycode": "Other chronic obstructive pulmonary disease",
+        "relateddiagnosisdate": "",
+        "contextsentence": "BPCO Gold III"
+      },
+      {
+        "relatedpathologycode": "Other anxiety disorders",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Troubles anxio-dépressifs"
+      },
+      {
+        "relatedpathologycode": "Respiratory failure, not elsewhere classified",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Insuffisance respiratoire de type I"
+      },
+      {
+        "relatedpathologycode": "Other disorders of arteries and arterioles",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Sténose préocclusive de l'artère iliaque externe gauche"
+      },
+      {
+        "relatedpathologycode": "Gastritis and duodenitis",
+        "relateddiagnosisdate": "",
+        "contextsentence": "Cardite et antrite érythémateuse à la gastroscopie"
+      }
+    ],
+    "primary_tumor": [
+      {
+        "cancerdiagnosisdate": "30/08/2023",
+        "topographycode": "Lung, NOS",
+        "morphologycode": "Adenocarcinoma, NOS",
+        "tumorsize": [
+          {
+            "tumorsize_clinic": "",
+            "tumorsizedate_clinic": "",
+            "contextsentence": ""
+          },
+          {
+            "tumorsize_patho": "",
+            "tumorsizedate_patho": "",
+            "contextsentence": ""
+          },
+          {
+            "tumorsize_imaging": "",
+            "tumorsizedate_imaging": "",
+            "contextsentence": ""
+          }
+        ]
+      }
+    ],
+    "general_condition_and_physical_examination": [],
+    "surgery": [
+      {
+        "surgerytype": "Résection de l'intestin grêle",
+        "surgerydate": "01/10/2021",
+        "contextsentence": "résection iléocolique en octobre 2021"
+      },
+      {
+        "surgerytype": "Colectomie",
+        "surgerydate": "01/10/2021",
+        "contextsentence": "résection iléocolique en octobre 2021"
+      },
+      {
+        "surgerytype": "Actes thérapeutiques sur l'appendice vermiforme [appendice]",
+        "surgerydate": "",
+        "contextsentence": "Appendicectomie"
+      }
+    ],
+    "cancer_medication": [],
+    "radiotherapy": [],
+    "progression": [],
+    "imaging_and_nuclear_medecine": [
+      {
+        "imagingmodality": "PT, Positron emission tomography (PET)",
+        "analysisdate": "",
+        "contextsentence": "PET CT reprogrammé ici à sa demande"
+      },
+      {
+        "imagingmodality": "",
+        "analysisdate": "",
+        "contextsentence": ""
+      }
+    ],
+    "biological_specimen": [
+      {
+        "specimentype": "Liquid",
+        "specimennature": "Tumor tissue",
+        "specimentopographycode": "Pleura, NOS",
+        "specimencollectdateday": "01/07/2023",
+        "contextsentence": "Hospitalisation du 30/08 au 19/09/2023 Adénocarcinome pulmonaire découvert il y a un mois suite à une ponction pleurale, révélant un exsudat avec présence de cellules néoplasiques"
+      }
+    ],
+    "biomarkers_and_tumor_markers": [
+      {
+        "biomarkername": "PD-L1",
+        "biomarkervaluetxt": "60%",
+        "biomarkerresultdate": "30/08/2023",
+        "contextsentence": "PDL1 60%"
+      },
+      {
+        "biomarkername": "KRAS",
+        "biomarkervaluetxt": "Mutation G12c",
+        "biomarkerresultdate": "30/08/2023",
+        "contextsentence": "Mutation G12c KRAS."
+      }
+    ],
+    "tumor_events": [
+      {
+        "tumeventtype": "Metastasis",
+        "tumeventdiagnosisdate": "01/07/2023",
+        "metastasis": [
+          {
+            "metastasistopocode": "Pleura, NOS",
+            "metastasisdiscoverydate": "01/07/2023",
+            "contextsentence": "Epanchement pleural malin en 07/2023 ayant nécessité un drainage gauche (percutané) du 20 au 28/07/2023 à Marie-Curie. CMO Marie-Curie 30/08/2023: ADC probablement pulmonaire TxNxM1b"
+          }
+        ]
+      }
+    ]
+  },
+  "text": "(2261) \n- Cécité à droite (décollement rétinien).\n- Volumineuse hernie hiatale, suspicion d'achalasie oesophagienne.\n- Possibles troubles psychiatriques sous jacents, non investigués.\n- Myocardiopathie ischémique.\n- BPCO Gold III.\n- Atcd tuberculose en 1980, traitée?\n- Néoplasie gros intestin : résection iléocolique en octobre 2021 pour tumeur neuroendocrine de la valvule iléo-caecale pT4N2a grade1.\n- Appendicectomie.\n- Hystérectomie.\n- Troubles anxio-dépressifs\n- Bilan de toux et dyspnée depuis 3 mois ayant nécessité un passage aux urgences de Marie-Curie fin juillet 2023, mise en évidence d'un épanchement pleural malin.\n- Epanchement pleural malin en 07/2023 ayant nécessité un drainage gauche (percutané) du 20 au 28/07/2023 à Marie-Curie.\n- CMO Marie-Curie 30/08/2023: ADC probablement pulmonaire TxNxM1b. PDL1 60%. Mutation G12c KRAS. Pas de mutation EGFR ni BRAF.\n- Tabagisme.\n\nAllergies :\n- Notion d'allergie aux produits de contraste iodés: a eu un angioscan sans réaction après prémédication par Medrol 32 et Estivan.\n- Neurobion.\n\n* Hospitalisation du 30/08 au 19/09/2023.\n- Adénocarcinome pulmonaire découvert il y a un mois suite à une ponction pleurale, révélant un exsudat avec présence de cellules néoplasiques.\n- Bilan initialement débuté à Marie Curie, mais refus de la patiente de se déplacer en consultation.\n- PET CT reprogrammé ici à sa demande, montrant plusieurs petits infiltrats pulmonaire discrètement hypermétaboliques bilatéralement. Épanchement pleural gauche non hypermétabolique, possible manquement d'une lésion sous-jacente.\n- Prise en charge très compliquée en raison d'une ambivalence constante. Refuse la plupart des examens et des soins proposés.\nRefuse de la chimio ou radiothérapie. Proposition d'un traitement par immunothérapie, à réévaluer à la consultation de pneumologie prévue le 27/09.\n- Insuffisance respiratoire de type I secondaire à un volumineux épanchement pleural gauche.\n- Sténose préocclusive de l'artère iliaque externe gauche, avec cyanose du pied gauche et perte de mobilité des orteils et de la cheville a ce niveau. Prise en charge chirurgicale initialement refusée par la patiente, puis acceptée. Angioplastie avec stenting iliaque externe gauche par crossover le 07/09/2023.\n- Urétéro-hydronéphrose droite importante sans insuffisance rénale associée. Proposition de complété le bilan par un scanner, à nouveau refusé par la patiente.\n- Cardite et antrite érythémateuse à la gastroscopie. Absence d'anomalie suspecte au niveau de l'oesophage à la gastroscopie.\n- Fécalome. Refus de réalisation de lavement. Traitement par laxatifs.\n- Incontinence fécale et urinaire.\n- Portage de Pseudomonas monteilii et Stenotrophomonas maltophilia dans les expectorations."
+}

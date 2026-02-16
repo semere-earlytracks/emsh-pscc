@@ -1,1 +1,662 @@
-{"$defs": {"BiologicalSpecimen": {"additionalProperties": true, "description": "Collected biological specimen.", "properties": {"specimentype": {"description": "Type of specimen", "enum": ["Surgical specimen", "Biopsy", "Cell sample", "Liquid", "Unknown"], "title": "Specimentype", "type": "string"}, "specimennature": {"description": "Nature of specimen", "enum": ["Tumor tissue", "Healthy tissue"], "title": "Specimennature", "type": "string"}, "specimentopographycode": {"description": "Specimen topography code", "title": "Specimentopographycode", "type": "string"}, "specimencollectdateday": {"description": "Specimen collection date", "format": "date", "title": "Specimencollectdateday", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["specimentype", "specimennature", "specimentopographycode", "specimencollectdateday", "contextsentence"], "title": "BiologicalSpecimen", "type": "object"}, "Biomarker": {"additionalProperties": true, "description": "Biomarker or tumor marker measurement.", "properties": {"biomarkername": {"description": "Biomarker name", "title": "Biomarkername", "type": "string"}, "biomarkervaluetxt": {"description": "Biomarker value with unit", "title": "Biomarkervaluetxt", "type": "string"}, "biomarkerresultdate": {"description": "Date of biomarker result", "format": "date", "title": "Biomarkerresultdate", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["biomarkername", "biomarkervaluetxt", "biomarkerresultdate", "contextsentence"], "title": "Biomarker", "type": "object"}, "CancerMedication": {"additionalProperties": true, "description": "Systemic anticancer treatment.", "properties": {"moleculecode": {"description": "Drug or molecule code", "title": "Moleculecode", "type": "string"}, "moleculedate_first": {"description": "First administration date", "format": "date", "title": "Moleculedate First", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["moleculecode", "moleculedate_first", "contextsentence"], "title": "CancerMedication", "type": "object"}, "GeneralCondition": {"additionalProperties": true, "description": "Functional status or physical measurement.", "properties": {"measuretype": {"description": "Type of measurement", "enum": ["Height in cms", "Weight", "PS OMS", "PS Karnofsky"], "title": "Measuretype", "type": "string"}, "measurevalue": {"description": "Measured value", "title": "Measurevalue", "type": "string"}, "measuredate_first": {"description": "Date of measurement", "format": "date", "title": "Measuredate First", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["measuretype", "measurevalue", "measuredate_first", "contextsentence"], "title": "GeneralCondition", "type": "object"}, "Imaging": {"additionalProperties": true, "description": "Imaging or nuclear medicine exam.", "properties": {"imagingmodality": {"description": "Imaging modality", "title": "Imagingmodality", "type": "string"}, "analysisdate": {"description": "Date of imaging", "format": "date", "title": "Analysisdate", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["imagingmodality", "analysisdate", "contextsentence"], "title": "Imaging", "type": "object"}, "Metastasis": {"additionalProperties": true, "description": "Metastatic lesion.", "properties": {"metastasistopocode": {"description": "Metastasis topography code", "title": "Metastasistopocode", "type": "string"}, "metastasisdiscoverydate": {"description": "Date of metastasis discovery", "format": "date", "title": "Metastasisdiscoverydate", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["metastasistopocode", "metastasisdiscoverydate", "contextsentence"], "title": "Metastasis", "type": "object"}, "PersonalMedicalHistory": {"additionalProperties": true, "description": "Comorbidity or adverse medical history item.", "properties": {"relatedpathologycode": {"description": "Pathology or condition code", "title": "Relatedpathologycode", "type": "string"}, "relateddiagnosisdate": {"anyOf": [{"format": "date", "type": "string"}, {"type": "null"}], "default": null, "description": "Date of diagnosis", "title": "Relateddiagnosisdate"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["relatedpathologycode", "contextsentence"], "title": "PersonalMedicalHistory", "type": "object"}, "PrimaryTumor": {"additionalProperties": true, "description": "Primary tumor description.", "properties": {"cancerdiagnosisdate": {"description": "Date of cancer diagnosis", "format": "date", "title": "Cancerdiagnosisdate", "type": "string"}, "topographycode": {"description": "Tumor topography code", "title": "Topographycode", "type": "string"}, "morphologycode": {"description": "Tumor morphology code", "title": "Morphologycode", "type": "string"}, "tumorsize": {"description": "Tumor size measurements", "items": {"discriminator": {"mapping": {"clinic": "#/$defs/TumorSizeClinic", "imaging": "#/$defs/TumorSizeImaging", "patho": "#/$defs/TumorSizePatho"}, "propertyName": "kind"}, "oneOf": [{"$ref": "#/$defs/TumorSizeClinic"}, {"$ref": "#/$defs/TumorSizePatho"}, {"$ref": "#/$defs/TumorSizeImaging"}]}, "title": "Tumorsize", "type": "array"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["cancerdiagnosisdate", "topographycode", "morphologycode", "contextsentence"], "title": "PrimaryTumor", "type": "object"}, "Progression": {"additionalProperties": true, "description": "Disease progression event.", "properties": {"progressiondate": {"description": "Date of progression", "format": "date", "title": "Progressiondate", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["progressiondate", "contextsentence"], "title": "Progression", "type": "object"}, "Radiotherapy": {"additionalProperties": true, "description": "Radiotherapy treatment.", "properties": {"radiotherapytype": {"description": "Type of radiotherapy", "title": "Radiotherapytype", "type": "string"}, "radiotherapydate_first": {"description": "First radiotherapy date", "format": "date", "title": "Radiotherapydate First", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["radiotherapytype", "radiotherapydate_first", "contextsentence"], "title": "Radiotherapy", "type": "object"}, "Surgery": {"additionalProperties": true, "description": "Surgical procedure.", "properties": {"surgerytype": {"description": "Surgery type or code", "title": "Surgerytype", "type": "string"}, "surgerydate": {"description": "Date of surgery", "format": "date", "title": "Surgerydate", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}}, "required": ["surgerytype", "surgerydate", "contextsentence"], "title": "Surgery", "type": "object"}, "TumorEvent": {"additionalProperties": true, "description": "Tumor-related clinical event.", "properties": {"tumeventtype": {"description": "Type of tumor event", "enum": ["Local/regional relapse or Recurrence", "Metastasis", "Transformation"], "title": "Tumeventtype", "type": "string"}, "tumeventdiagnosisdate": {"description": "Date of event diagnosis", "format": "date", "title": "Tumeventdiagnosisdate", "type": "string"}, "metastasis": {"description": "Associated metastases", "items": {"$ref": "#/$defs/Metastasis"}, "title": "Metastasis", "type": "array"}}, "required": ["tumeventtype", "tumeventdiagnosisdate"], "title": "TumorEvent", "type": "object"}, "TumorSizeClinic": {"additionalProperties": true, "description": "Clinical tumor size.", "properties": {"kind": {"const": "clinic", "default": "clinic", "description": "Clinical measurement", "title": "Kind", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}, "tumorsize_clinic": {"description": "Clinical tumor size value", "title": "Tumorsize Clinic", "type": "string"}, "tumorsizedate_clinic": {"description": "Date of clinical measurement", "format": "date", "title": "Tumorsizedate Clinic", "type": "string"}}, "required": ["contextsentence", "tumorsize_clinic", "tumorsizedate_clinic"], "title": "TumorSizeClinic", "type": "object"}, "TumorSizeImaging": {"additionalProperties": true, "description": "Imaging-based tumor size.", "properties": {"kind": {"const": "imaging", "default": "imaging", "description": "Imaging measurement", "title": "Kind", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}, "tumorsize_imaging": {"description": "Imaging tumor size value", "title": "Tumorsize Imaging", "type": "string"}, "tumorsizedate_imaging": {"description": "Date of imaging measurement", "format": "date", "title": "Tumorsizedate Imaging", "type": "string"}}, "required": ["contextsentence", "tumorsize_imaging", "tumorsizedate_imaging"], "title": "TumorSizeImaging", "type": "object"}, "TumorSizePatho": {"additionalProperties": true, "description": "Pathological tumor size.", "properties": {"kind": {"const": "patho", "default": "patho", "description": "Pathological measurement", "title": "Kind", "type": "string"}, "contextsentence": {"description": "Sentence supporting this information", "title": "Contextsentence", "type": "string"}, "tumorsize_patho": {"description": "Pathological tumor size value", "title": "Tumorsize Patho", "type": "string"}, "tumorsizedate_patho": {"description": "Date of pathological measurement", "format": "date", "title": "Tumorsizedate Patho", "type": "string"}}, "required": ["contextsentence", "tumorsize_patho", "tumorsizedate_patho"], "title": "TumorSizePatho", "type": "object"}}, "additionalProperties": true, "description": "Single extracted medical document.", "properties": {"personal_medical_history_comorbidities_and_adverse": {"items": {"$ref": "#/$defs/PersonalMedicalHistory"}, "title": "Personal Medical History Comorbidities And Adverse", "type": "array"}, "primary_tumor": {"items": {"$ref": "#/$defs/PrimaryTumor"}, "title": "Primary Tumor", "type": "array"}, "general_condition_and_physical_examination": {"items": {"$ref": "#/$defs/GeneralCondition"}, "title": "General Condition And Physical Examination", "type": "array"}, "surgery": {"items": {"$ref": "#/$defs/Surgery"}, "title": "Surgery", "type": "array"}, "cancer_medication": {"items": {"$ref": "#/$defs/CancerMedication"}, "title": "Cancer Medication", "type": "array"}, "radiotherapy": {"items": {"$ref": "#/$defs/Radiotherapy"}, "title": "Radiotherapy", "type": "array"}, "progression": {"items": {"$ref": "#/$defs/Progression"}, "title": "Progression", "type": "array"}, "imaging_and_nuclear_medecine": {"items": {"$ref": "#/$defs/Imaging"}, "title": "Imaging And Nuclear Medecine", "type": "array"}, "biological_specimen": {"items": {"$ref": "#/$defs/BiologicalSpecimen"}, "title": "Biological Specimen", "type": "array"}, "biomarkers_and_tumor_markers": {"items": {"$ref": "#/$defs/Biomarker"}, "title": "Biomarkers And Tumor Markers", "type": "array"}, "tumor_events": {"items": {"$ref": "#/$defs/TumorEvent"}, "title": "Tumor Events", "type": "array"}}, "title": "Document", "type": "object"}
+{
+  "$defs": {
+    "BiologicalSpecimen": {
+      "additionalProperties": true,
+      "description": "Collected biological specimen.",
+      "properties": {
+        "specimentype": {
+          "description": "Type of specimen",
+          "enum": [
+            "Surgical specimen",
+            "Biopsy",
+            "Cell sample",
+            "Liquid",
+            "Unknown"
+          ],
+          "title": "Specimentype",
+          "type": "string"
+        },
+        "specimennature": {
+          "description": "Nature of specimen",
+          "enum": [
+            "Tumor tissue",
+            "Healthy tissue"
+          ],
+          "title": "Specimennature",
+          "type": "string"
+        },
+        "specimentopographycode": {
+          "description": "Specimen topography code",
+          "title": "Specimentopographycode",
+          "type": "string"
+        },
+        "specimencollectdateday": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of specimen collection"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "specimentype",
+        "specimennature",
+        "specimentopographycode",
+        "specimencollectdateday",
+        "contextsentence"
+      ],
+      "title": "BiologicalSpecimen",
+      "type": "object"
+    },
+    "Biomarker": {
+      "additionalProperties": true,
+      "description": "Biomarker or tumor marker measurement.",
+      "properties": {
+        "biomarkername": {
+          "description": "Biomarker name",
+          "title": "Biomarkername",
+          "type": "string"
+        },
+        "biomarkermutationstatus": {
+          "description": "Mutation status or value",
+          "enum": [
+            "Mutated",
+            "Wild type",
+            "Variant",
+            "Amplified",
+            "Deleted",
+            "Fused",
+            "Other"
+          ],
+          "title": "Biomarkermutationstatus",
+          "type": "string"
+        },
+        "biomarkervaluetxt": {
+          "description": "Biomarker value with unit (if mentioned in text, otherwise same as biomarkermutationstatus)",
+          "title": "Biomarkervaluetxt",
+          "type": "string"
+        },
+        "biomarkerresultdate": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of biomarker result"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "biomarkername",
+        "biomarkermutationstatus",
+        "biomarkervaluetxt",
+        "biomarkerresultdate",
+        "contextsentence"
+      ],
+      "title": "Biomarker",
+      "type": "object"
+    },
+    "CancerMedication": {
+      "additionalProperties": true,
+      "description": "Systemic anticancer treatment.",
+      "properties": {
+        "moleculecode": {
+          "description": "Drug or molecule code",
+          "title": "Moleculecode",
+          "type": "string"
+        },
+        "moleculedate_first": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of first administration"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "moleculecode",
+        "moleculedate_first",
+        "contextsentence"
+      ],
+      "title": "CancerMedication",
+      "type": "object"
+    },
+    "DateRange": {
+      "description": "A range of dates representing uncertainty (start...end).",
+      "properties": {
+        "start": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Earliest possible date",
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Latest possible date",
+          "title": "End"
+        }
+      },
+      "title": "DateRange",
+      "type": "object"
+    },
+    "GeneralCondition": {
+      "additionalProperties": true,
+      "description": "Functional status or physical measurement.",
+      "properties": {
+        "measuretype": {
+          "description": "Type of measurement",
+          "enum": [
+            "Height in cms",
+            "Weight",
+            "PS OMS",
+            "PS Karnofsky"
+          ],
+          "title": "Measuretype",
+          "type": "string"
+        },
+        "measurevalue": {
+          "description": "Measured value",
+          "title": "Measurevalue",
+          "type": "string"
+        },
+        "measuredate_first": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of measurement"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "measuretype",
+        "measurevalue",
+        "measuredate_first",
+        "contextsentence"
+      ],
+      "title": "GeneralCondition",
+      "type": "object"
+    },
+    "Imaging": {
+      "additionalProperties": true,
+      "description": "Imaging or nuclear medicine exam.",
+      "properties": {
+        "imagingmodality": {
+          "description": "Imaging modality",
+          "title": "Imagingmodality",
+          "type": "string"
+        },
+        "analysisdate": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of imaging"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "imagingmodality",
+        "analysisdate",
+        "contextsentence"
+      ],
+      "title": "Imaging",
+      "type": "object"
+    },
+    "Metastasis": {
+      "additionalProperties": true,
+      "description": "Metastatic lesion.",
+      "properties": {
+        "metastasistopocode": {
+          "description": "Metastasis topography code",
+          "title": "Metastasistopocode",
+          "type": "string"
+        },
+        "metastasisdiscoverydate": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of metastasis discovery"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "metastasistopocode",
+        "metastasisdiscoverydate",
+        "contextsentence"
+      ],
+      "title": "Metastasis",
+      "type": "object"
+    },
+    "PersonalMedicalHistory": {
+      "additionalProperties": true,
+      "description": "Comorbidity or adverse medical history item.",
+      "properties": {
+        "relatedpathologycode": {
+          "description": "Pathology or condition code related to the patient's medical history (not a body part)",
+          "title": "Relatedpathologycode",
+          "type": "string"
+        },
+        "relateddiagnosisdate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DateRange"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Date range of diagnosis/onset of the historical condition (if mentioned in text, otherwise null)"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "relatedpathologycode",
+        "contextsentence"
+      ],
+      "title": "PersonalMedicalHistory",
+      "type": "object"
+    },
+    "PrimaryTumor": {
+      "additionalProperties": true,
+      "description": "Primary tumor description.",
+      "properties": {
+        "topographycode": {
+          "description": "Which part of the body the tumor is located in, using a standardized code",
+          "title": "Topographycode",
+          "type": "string"
+        },
+        "morphologycode": {
+          "description": "Which medical morphology code best describes the tumor type",
+          "title": "Morphologycode",
+          "type": "string"
+        },
+        "cancerdiagnosisdate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DateRange"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Date range of cancer diagnosis"
+        },
+        "tumorsize": {
+          "description": "Tumor size measurements",
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "clinic": "#/$defs/TumorSizeClinic",
+                "imaging": "#/$defs/TumorSizeImaging",
+                "patho": "#/$defs/TumorSizePatho"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/TumorSizeClinic"
+              },
+              {
+                "$ref": "#/$defs/TumorSizePatho"
+              },
+              {
+                "$ref": "#/$defs/TumorSizeImaging"
+              }
+            ]
+          },
+          "title": "Tumorsize",
+          "type": "array"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "topographycode",
+        "morphologycode",
+        "cancerdiagnosisdate",
+        "contextsentence"
+      ],
+      "title": "PrimaryTumor",
+      "type": "object"
+    },
+    "Progression": {
+      "additionalProperties": true,
+      "description": "Disease progression event.",
+      "properties": {
+        "progressiondate": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of progression"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "progressiondate",
+        "contextsentence"
+      ],
+      "title": "Progression",
+      "type": "object"
+    },
+    "Radiotherapy": {
+      "additionalProperties": true,
+      "description": "Radiotherapy treatment.",
+      "properties": {
+        "radiotherapytype": {
+          "description": "Type of radiotherapy",
+          "title": "Radiotherapytype",
+          "type": "string"
+        },
+        "radiotherapydate_first": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of first radiotherapy"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "radiotherapytype",
+        "radiotherapydate_first",
+        "contextsentence"
+      ],
+      "title": "Radiotherapy",
+      "type": "object"
+    },
+    "Surgery": {
+      "additionalProperties": true,
+      "description": "Surgical procedure.",
+      "properties": {
+        "surgerytype": {
+          "description": "Surgery type or code",
+          "title": "Surgerytype",
+          "type": "string"
+        },
+        "surgerydate": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of surgery"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "surgerytype",
+        "surgerydate",
+        "contextsentence"
+      ],
+      "title": "Surgery",
+      "type": "object"
+    },
+    "TumorEvent": {
+      "additionalProperties": true,
+      "description": "Tumor-related clinical event.",
+      "properties": {
+        "tumeventtype": {
+          "description": "Type of tumor event",
+          "enum": [
+            "Local/regional relapse or Recurrence",
+            "Metastasis",
+            "Transformation"
+          ],
+          "title": "Tumeventtype",
+          "type": "string"
+        },
+        "tumeventdiagnosisdate": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of event diagnosis"
+        },
+        "metastasis": {
+          "description": "Associated metastases",
+          "items": {
+            "$ref": "#/$defs/Metastasis"
+          },
+          "title": "Metastasis",
+          "type": "array"
+        }
+      },
+      "required": [
+        "tumeventtype",
+        "tumeventdiagnosisdate"
+      ],
+      "title": "TumorEvent",
+      "type": "object"
+    },
+    "TumorSizeClinic": {
+      "additionalProperties": true,
+      "description": "Clinical tumor size.",
+      "properties": {
+        "kind": {
+          "const": "clinic",
+          "default": "clinic",
+          "description": "Clinical measurement",
+          "title": "Kind",
+          "type": "string"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        },
+        "tumorsize_clinic": {
+          "description": "Clinical tumor size value",
+          "title": "Tumorsize Clinic",
+          "type": "string"
+        },
+        "tumorsizedate_clinic": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of clinical measurement"
+        }
+      },
+      "required": [
+        "contextsentence",
+        "tumorsize_clinic",
+        "tumorsizedate_clinic"
+      ],
+      "title": "TumorSizeClinic",
+      "type": "object"
+    },
+    "TumorSizeImaging": {
+      "additionalProperties": true,
+      "description": "Imaging-based tumor size.",
+      "properties": {
+        "kind": {
+          "const": "imaging",
+          "default": "imaging",
+          "description": "Imaging measurement",
+          "title": "Kind",
+          "type": "string"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        },
+        "tumorsize_imaging": {
+          "description": "Imaging tumor size value",
+          "title": "Tumorsize Imaging",
+          "type": "string"
+        },
+        "tumorsizedate_imaging": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of imaging measurement"
+        }
+      },
+      "required": [
+        "contextsentence",
+        "tumorsize_imaging",
+        "tumorsizedate_imaging"
+      ],
+      "title": "TumorSizeImaging",
+      "type": "object"
+    },
+    "TumorSizePatho": {
+      "additionalProperties": true,
+      "description": "Pathological tumor size.",
+      "properties": {
+        "kind": {
+          "const": "patho",
+          "default": "patho",
+          "description": "Pathological measurement",
+          "title": "Kind",
+          "type": "string"
+        },
+        "contextsentence": {
+          "description": "Sentence from the input text supporting this information",
+          "title": "Contextsentence",
+          "type": "string"
+        },
+        "tumorsize_patho": {
+          "description": "Pathological tumor size value",
+          "title": "Tumorsize Patho",
+          "type": "string"
+        },
+        "tumorsizedate_patho": {
+          "$ref": "#/$defs/DateRange",
+          "description": "Date range of pathological measurement"
+        }
+      },
+      "required": [
+        "contextsentence",
+        "tumorsize_patho",
+        "tumorsizedate_patho"
+      ],
+      "title": "TumorSizePatho",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "description": "Single extracted medical document.",
+  "properties": {
+    "personal_medical_history_comorbidities_and_adverse": {
+      "description": "List of comorbidities and adverse medical history mentioned in the document, along with their date if available",
+      "items": {
+        "$ref": "#/$defs/PersonalMedicalHistory"
+      },
+      "title": "Personal Medical History Comorbidities And Adverse",
+      "type": "array"
+    },
+    "primary_tumor": {
+      "description": "Description of the primary tumor(s) of the patient, including diagnosis date, topography and morphology codes, and tumor size measurements (if mentioned in the document). If the patient is followed for a tumor, this is likely the primary tumor, even if not explicitly stated as such in the text.",
+      "items": {
+        "$ref": "#/$defs/PrimaryTumor"
+      },
+      "title": "Primary Tumor",
+      "type": "array"
+    },
+    "general_condition_and_physical_examination": {
+      "description": "List of general condition and physical examination findings mentioned in the document",
+      "items": {
+        "$ref": "#/$defs/GeneralCondition"
+      },
+      "title": "General Condition And Physical Examination",
+      "type": "array"
+    },
+    "surgery": {
+      "description": "List of surgical procedures mentioned in the document",
+      "items": {
+        "$ref": "#/$defs/Surgery"
+      },
+      "title": "Surgery",
+      "type": "array"
+    },
+    "cancer_medication": {
+      "description": "List of cancer medications mentioned in the document",
+      "items": {
+        "$ref": "#/$defs/CancerMedication"
+      },
+      "title": "Cancer Medication",
+      "type": "array"
+    },
+    "radiotherapy": {
+      "description": "List of radiotherapy treatments mentioned in the document",
+      "items": {
+        "$ref": "#/$defs/Radiotherapy"
+      },
+      "title": "Radiotherapy",
+      "type": "array"
+    },
+    "progression": {
+      "description": "List of disease progression events mentioned in the document",
+      "items": {
+        "$ref": "#/$defs/Progression"
+      },
+      "title": "Progression",
+      "type": "array"
+    },
+    "imaging_and_nuclear_medecine": {
+      "description": "List of imaging exams mentioned in the document",
+      "items": {
+        "$ref": "#/$defs/Imaging"
+      },
+      "title": "Imaging And Nuclear Medecine",
+      "type": "array"
+    },
+    "biological_specimen": {
+      "description": "List of biological specimens mentioned in the document, and where they were collected from",
+      "items": {
+        "$ref": "#/$defs/BiologicalSpecimen"
+      },
+      "title": "Biological Specimen",
+      "type": "array"
+    },
+    "biomarkers_and_tumor_markers": {
+      "description": "List of biomarkers and tumor markers mentioned in the document",
+      "items": {
+        "$ref": "#/$defs/Biomarker"
+      },
+      "title": "Biomarkers And Tumor Markers",
+      "type": "array"
+    },
+    "tumor_events": {
+      "description": "List of tumor-related clinical events mentioned in the document",
+      "items": {
+        "$ref": "#/$defs/TumorEvent"
+      },
+      "title": "Tumor Events",
+      "type": "array"
+    }
+  },
+  "title": "Document",
+  "type": "object"
+}

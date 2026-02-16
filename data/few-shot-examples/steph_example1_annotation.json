@@ -1,0 +1,270 @@
+{
+  "document": {
+    "documentid": "PSCC_Data_Challenge_Patient1_Doc1",
+    "personal_medical_history_comorbidities_and_adverse": [
+      {
+        "relatedpathologycode": "Acquired haemolytic anaemia",
+        "relateddiagnosisdate": "03/05/2021",
+        "contextsentence": "anémie grade III sous Xeloda possiblement liée à un certain degré d'hémolyse et/ou à une toxicité hématologique et/ou à l'envahissement métastatique médullaire"
+      },
+      {
+        "relatedpathologycode": "Other aplastic anaemias",
+        "relateddiagnosisdate": "03/05/2021",
+        "contextsentence": "anémie grade III sous Xeloda possiblement liée à un certain degré d'hémolyse et/ou à une toxicité hématologique et/ou à l'envahissement métastatique médullaire"
+      },
+      {
+        "relatedpathologycode": "Unspecified diabetes mellitus",
+        "relateddiagnosisdate": "15/06/2021",
+        "contextsentence": "apparition d'un diabète traité par interruption transitoire de GDC-007 et mise en place d'un traitement oral anti-diabétique"
+      },
+      {
+        "relatedpathologycode": "Other polyneuropathies",
+        "relateddiagnosisdate": "03/10/2021",
+        "contextsentence": "Apparition d'une polyneuropathie bilatérale sensitivo-motrice des membres inférieurs"
+      }
+    ],
+    "primary_tumor": [
+      {
+        "cancerdiagnosisdate": "04/03/2018",
+        "topographycode": "C50, BREAST",
+        "morphologycode": "85003, Infiltrating duct carcinoma, NOS",
+        "tumorsize": [
+          {
+            "tumorsize_clinic": "",
+            "tumorsizedate_clinic": "",
+            "contextsentence": ""
+          },
+          {
+            "tumorsize_patho": "8",
+            "tumorsizedate_patho": "17/09/2018",
+            "contextsentence": "Au niveau de la mammectomie, persistance d'un carcinome mammaire infiltrant réalisant une très vaste tumeur de 8 x 4 x 1,4 cm présente dans les quatre quadrants"
+          },
+          {
+            "tumorsize_imaging": "",
+            "tumorsizedate_imaging": "",
+            "contextsentence": ""
+          }
+        ]
+      }
+    ],
+    "general_condition_and_physical_examination": [
+      {
+        "measuretype": "PS OMS",
+        "measurevalue": "",
+        "measuredate_first": "",
+        "contextsentence": ""
+      },
+      {
+        "measuretype": "PS Karnofsky",
+        "measurevalue": "",
+        "measuredate_first": "",
+        "contextsentence": ""
+      },
+      {
+        "measuretype": "Height in cms",
+        "measurevalue": "172",
+        "measuredate_first": "12/12/2021",
+        "contextsentence": "Elle pèse actuellement 54Kg pour 1m72"
+      },
+      {
+        "measuretype": "Weight",
+        "measurevalue": "54",
+        "measuredate_first": "12/12/2021",
+        "contextsentence": "Elle pèse actuellement 54Kg pour 1m72"
+      }
+    ],
+    "surgery": [
+      {
+        "surgerytype": "Mastectomie totale élargie",
+        "surgerydate": "17/09/2018",
+        "contextsentence": "Mammectomie emportant souvent le muscle pectoral"
+      },
+      {
+        "surgerytype": "Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques des membres",
+        "surgerydate": "17/09/2018",
+        "contextsentence": "résection ganglionnaire axillaire gauche"
+      }
+    ],
+    "cancer_medication": [
+      {
+        "moleculecode": "Fluorouracil,combinations",
+        "moleculedate_first": "",
+        "contextsentence": "Au terme de 6 cures de chimiothérapie de type FEC 100"
+      },
+      {
+        "moleculecode": "Epirubicin",
+        "moleculedate_first": "",
+        "contextsentence": "Au terme de 6 cures de chimiothérapie de type FEC 100"
+      },
+      {
+        "moleculecode": "Cyclophosphamide",
+        "moleculedate_first": "",
+        "contextsentence": "Au terme de 6 cures de chimiothérapie de type FEC 100"
+      },
+      {
+        "moleculecode": "Letrozole",
+        "moleculedate_first": "",
+        "contextsentence": "Instauration d'une hormonothérapie par Fémara + Palbociclib"
+      },
+      {
+        "moleculecode": "Palbociclib",
+        "moleculedate_first": "",
+        "contextsentence": "Instauration d'une hormonothérapie par Fémara + Palbociclib"
+      },
+      {
+        "moleculecode": "Exemestane",
+        "moleculedate_first": "04/09/2019",
+        "contextsentence": "Modification de l'hormonothérapie au bénéfice d'un traitement par Aromasin-Afinitor"
+      },
+      {
+        "moleculecode": "Everolimus",
+        "moleculedate_first": "04/09/2019",
+        "contextsentence": "Modification de l'hormonothérapie au bénéfice d'un traitement par Aromasin-Afinitor"
+      },
+      {
+        "moleculecode": "Fulvestrant",
+        "moleculedate_first": "27/05/2020",
+        "contextsentence": "Patiente randomisée dans le bras conventionnelle (Faslodex)"
+      },
+      {
+        "moleculecode": "Capecitabine",
+        "moleculedate_first": "13/01/2021",
+        "contextsentence": "Instauration d'une chimiothérapie par Xeloda"
+      },
+      {
+        "moleculecode": "Tamoxifen",
+        "moleculedate_first": "10/11/21",
+        "contextsentence": "décision d'hormonothérapie par Tamoxifène"
+      }
+    ],
+    "radiotherapy": [
+      {
+        "radiotherapytype": "Radiotherapy without stereotaxy (conventional radiotherapy)",
+        "radiotherapydate_first": "",
+        "contextsentence": "Radiothérapie"
+      }
+    ],
+    "progression": [
+      {
+        "progressiondate": "27/05/2020",
+        "contextsentence": "maladie évolutive"
+      },
+      {
+        "progressiondate": "13/01/2021",
+        "contextsentence": "maladie évolutive"
+      },
+      {
+        "progressiondate": "03/05/2021",
+        "contextsentence": "Bilan montre une progression du cancer"
+      },
+      {
+        "progressiondate": "12/12/2021",
+        "contextsentence": "maladie évolutive"
+      }
+    ],
+    "imaging_and_nuclear_medecine": [
+      {
+        "imagingmodality": "MR, Magnetic Resonance",
+        "analysisdate": "",
+        "contextsentence": "IRM thoracique montrant une extension des lésions aux muscles pectoraux et à la paroi droite avec possible envahissement intercostal"
+      }
+    ],
+    "biological_specimen": [
+      {
+        "specimentype": "Biopsy",
+        "specimennature": "Tumor tissue",
+        "specimentopographycode": "BREAST",
+        "specimencollectdateday": "",
+        "contextsentence": "Histologiquement, la biopsie montre une lésion correspondant à un carcinome canalaire infiltrant de grade SBR III"
+      },
+      {
+        "specimentype": "Cell sample",
+        "specimennature": "Tumor tissue",
+        "specimentopographycode": "Lymph nodes of axilla or arm",
+        "specimencollectdateday": "04/09/2019",
+        "contextsentence": "mise en évidence d'un petit centimétrique cytologiquement positif en axillaire droit"
+      }
+    ],
+    "biomarkers_and_tumor_markers": [
+      {
+        "biomarkername": "Other",
+        "biomarkervaluetxt": "100%",
+        "biomarkerresultdate": "",
+        "contextsentence": "Présence de récepteurs aux oestrogènes (100% des cellules grade III)"
+      },
+      {
+        "biomarkername": "Other",
+        "biomarkervaluetxt": "100%",
+        "biomarkerresultdate": "",
+        "contextsentence": "Présence de récepteurs aux oestrogènes (100% des cellules grade III) et de récepteurs à la progestérone (100% des cellules grade III)"
+      },
+      {
+        "biomarkername": "Ki67",
+        "biomarkervaluetxt": "50%",
+        "biomarkerresultdate": "",
+        "contextsentence": "Ki 67: 50%"
+      },
+      {
+        "biomarkername": "PIK3CA",
+        "biomarkervaluetxt": "H1047R 40.5%",
+        "biomarkerresultdate": "",
+        "contextsentence": "Double mutation PIK3CA H1047R (40.5%)"
+      },
+      {
+        "biomarkername": "PIK3CA",
+        "biomarkervaluetxt": "E542V 41.2%",
+        "biomarkerresultdate": "",
+        "contextsentence": "Double mutation PIK3CA H1047R (40.5%) et E542V (41.2%)"
+      },
+      {
+        "biomarkername": "ESR1",
+        "biomarkervaluetxt": "Y537S 20.1%",
+        "biomarkerresultdate": "",
+        "contextsentence": "mutation ESR1 Y537S (20.1%)"
+      },
+      {
+        "biomarkername": "Other",
+        "biomarkervaluetxt": "S258* 35%",
+        "biomarkerresultdate": "",
+        "contextsentence": "double mutation MAPK S258* (35%) "
+      },
+      {
+        "biomarkername": "Other",
+        "biomarkervaluetxt": "I1464fs*26 33.9%",
+        "biomarkerresultdate": "",
+        "contextsentence": "double mutation MAPK S258* (35%) et I1464fs*26 (33.9%)"
+      },
+      {
+        "biomarkername": "Other",
+        "biomarkervaluetxt": "",
+        "biomarkerresultdate": "",
+        "contextsentence": "RAD21 amplification"
+      }
+    ],
+    "tumor_events": [
+      {
+        "tumeventtype": "Metastasis",
+        "tumeventdiagnosisdate": "",
+        "metastasis": [
+          {
+            "metastasistopocode": "BONES, JOINTS AND ARTICULAR CARTILAGE OF OTHER AND UNSPECIFIED SITES",
+            "metastasisdiscoverydate": "",
+            "contextsentence": "Mise en évidence d'un envahissement métastatique osseux (grill costal, rachis dorso-lombaire, bassin en sacro-iliaque et aile iliaque)"
+          }
+        ]
+      },
+      {
+        "tumeventtype": "Metastasis",
+        "tumeventdiagnosisdate": "",
+        "metastasis": [
+          {
+            "metastasistopocode": "Pelvic bones, sacrum, coccyx and associated joints",
+            "metastasisdiscoverydate": "",
+            "contextsentence": "Mise en évidence d'un envahissement métastatique osseux (grill costal, rachis dorso-lombaire, bassin en sacro-iliaque et aile iliaque)"
+          }
+        ]
+      }
+    ]
+  },
+  "text": "(1259) Patiente née le 01/02/1970\n\n- 04/03/2018: mise en évidence d'une volumineuse tumeur nécrotique du sein droit envahissant l'ensemble de la glande mammaire, fixée aux tissus profonds.\nMise en évidence d'adénopathies axillaires bilatérales.\nHistologiquement, la biopsie montre une lésion correspondant à un carcinome canalaire infiltrant de grade SBR III. Présence de récepteurs aux oestrogènes (100% des cellules grade III) et de récepteurs à la progestérone (100% des cellules grade III), SBR II grade I. Ki 67: 50%.\nIRM thoracique montrant une extension des lésions aux muscles pectoraux et à la paroi droite avec possible envahissement intercostal. Suspicion de métastases hépatiques au niveau du segment II. Mise en évidence d'un envahissement métastatique osseux (grill costal, rachis dorso-lombaire, bassin en sacro-iliaque et aile iliaque).\nDécision d'une chimiothérapie FEC100. Trois cures avant réévaluation. \n\n- Au terme de 6 cures de chimiothérapie de type FEC 100 : nette amélioration au niveau local avec persistance d'une vaste lésion ulcérée avec atteinte du muscle pectoral mais ne semblant plus infiltrer les espaces intercostaux. Persistance d'une adénopathie axillaire droite de 8 mm et gauche de 21 mm de grand axe. Statu quo des lésions métastatiques connues.\nDécision de chirurgie de propreté avec instauration d'un traitement en un second temps par Fémara + Palbociclib.\n\n- 17/09/2018: chirurgie de propreté et résection ganglionnaire axillaire gauche.\nAu niveau de la mammectomie, persistance d'un carcinome mammaire infiltrant réalisant une très vaste tumeur de 8 x 4 x 1,4 cm présente dans les quatre quadrants et ulcérée largement. Exérèse complète mais tumeur s'approchant focalement à 1 mm du plan profond sans le toucher. Mammectomie emportant souvent le muscle pectoral qui est touché par la tumeur mais sans infiltration évidente.\nA noter dans une recoupe profonde au niveau du deuxième espace intercostal, la présence d'une infiltration tumorale touchant focalement le plan profond qui est coagulé. Infiltration d'un ganglion axillaire droit et de deux ganglions axillaires gauches. Stade pyT4c N1a M1. RCBIII.\nRadiothérapie.\nInstauration d'une hormonothérapie par Fémara + Palbociclib.\n\n– 04/09/2019 : mise en évidence d'un petit centimétrique cytologiquement positif en axillaire droit. Modification de l'hormonothérapie au bénéfice d'un traitement par Aromasin-Afinitor.\n\n- 02/03/2020 : diarrhée compliquée d'hypokaliémie sévère attribuée à l'Afinitor. Par ailleurs, maladie stable. Décision de poursuite de l'Exemestane en monothérapie.\n\n– 27/05/2020 : maladie évolutive. Proposition d'inclusion dans l'étude Emerald comparant un traitement par Elacestrant versus une hormonothérapie conventionnelle (Faslodex)\nPatiente randomisée dans le bras conventionnelle (Faslodex)\n\n– 13/01/2021 : maladie évolutive. Instauration d'une chimiothérapie par Xeloda\n\n- Inclusion dans l'étude GENEO. Double mutation PIK3CA H1047R (40.5%) et E542V (41.2%), mutation ESR1 Y537S (20.1%); double mutation MAPK S258* (35%) et I1464fs*26 (33.9%), RAD21 amplification\n\n– 03/05/2021 : anémie grade III sous Xeloda possiblement liée à un certain degré d'hémolyse et/ou à une toxicité hématologique et/ou à l'envahissement métastatique médullaire. Radiothérapie antalgique au niveau du iliaque gauche. Bilan montre une progression du cancer.\nInclusion dans l'étude Tapistry compte tenu de la double mutation PIK3CA en vue d'un traitement par GDC-0077 (PI3K inhibiteur). Traitement initié le 15 juin 2021.\n\n- 15/06/2021: Début de GDC-007, apparition d'un diabète traité par interruption transitoire de GDC-007 et mise en place d'un traitement oral anti-diabétique (metformine, sulfamidé hypoglycémiante et empagliflozine).\n\n- 08/09/2021: GDC-007 réduite à 6 mg/j à cause d'une hyperglycémie de grade 3 récidivante malgrée 3 antidiabétiques oraux.\n\n- 03/10/2021: Apparition d'une polyneuropathie bilatérale sensitivo-motrice des membres inférieurs avec atteinte sensitive s'étendant jusqu'au niveau de T6. Atteinte sévère avec incapacité de se mettre debout (atteinte motrice proximale des membres inférieurs est prédominante). Le GDC-007 pourrait être responsable de cette neuropathie (seule ou avec autres facteurs comme la nitrofurantoine). Arrêt définitif du GDC-007 me 06/10/2021. Amélioration lente et partielle de neuropathie sensitive à la date du 02/11/2021.\n\n– 10/11/21 : patiente vue dans le but de débuter une chimiothérapie à base de Myocet Endoxan. Dégradation de la FEVG.\nDevant l’impossibilité de prescrire une molécule ayant une toxicité neurologique périphérique complémentaire décision d'hormonothérapie par Tamoxifène.\n\n– 12/12/2021 : maladie évolutive. La patiente a perdu 9Kg au cours du dernier mois. Elle pèse actuellement 54Kg pour 1m72. Contenu du problème moteur de la patiente et de la neurotoxicité de la plupart de nos chimiothérapie active en cancer du sein, il est proposé en réunion disciplinaire de débuter une chimiothérapie de type CMF (cyclophosphamide methotrexate cinq thoracique par voie intraveineuse jour 1 jour huit selon des cycles de 21 à 28 jours\n"
+}

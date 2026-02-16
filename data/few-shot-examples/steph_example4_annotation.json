@@ -1,0 +1,65 @@
+{
+  "document": {
+    "documentid": "PSCC_Data_Challenge_Patient1_Doc1",
+    "personal_medical_history_comorbidities_and_adverse": [],
+    "primary_tumor": [
+      {
+        "cancerdiagnosisdate": "",
+        "topographycode": "",
+        "morphologycode": "",
+        "tumorsize": [
+          {
+            "tumorsize_imaging": "6",
+            "tumorsizedate_imaging": "",
+            "contextsentence": "De nombreux rehaussements à distance en arrière, en avant et surtout en dessous de la lésion principale, rendent difficile l'évaluation de l'étendue exacte, d'au moins 6 cm"
+          }
+        ]
+      }
+    ],
+    "general_condition_and_physical_examination": [],
+    "surgery": [
+      {
+        "surgerytype": "Néphrectomie totale",
+        "surgerydate": "",
+        "contextsentence": "Antécédent de néphrectomie droite"
+      }
+    ],
+    "cancer_medication": [],
+    "radiotherapy": [],
+    "progression": [],
+    "imaging_and_nuclear_medecine": [
+      {
+        "imagingmodality": "MG, Mammography",
+        "analysisdate": "01/10/2024",
+        "contextsentence": "bilan sénologique complet réalisé le 01/10/2024, en raison d'une masse dans le secteur interne du sein gauche.\nÀ la mammographie"
+      },
+      {
+        "imagingmodality": "US, Ultrasound",
+        "analysisdate": "01/10/2024",
+        "contextsentence": "bilan sénologique complet réalisé le 01/10/2024, en raison d'une masse dans le secteur interne du sein gauche.\n À l'échographie"
+      },
+      {
+        "imagingmodality": "MR, Magnetic Resonance",
+        "analysisdate": "01/10/2024",
+        "contextsentence": "IRM MAMMAIRE"
+      },
+      {
+        "imagingmodality": "PT, Positron emission tomography (PET)",
+        "analysisdate": "",
+        "contextsentence": "petscan"
+      }
+    ],
+    "biological_specimen": [
+      {
+        "specimentype": "Biopsy",
+        "specimennature": "",
+        "specimentopographycode": "BREAST",
+        "specimencollectdateday": "14/10/2024",
+        "contextsentence": "À l'échographie, lésion très mal délimitée para-aréolaire interne, d'environ 25 mm, avec petit élément nodulaire à distance en interne notamment. Une microbiopsie sous échographie sera réalisée le 14/10/2024"
+      }
+    ],
+    "biomarkers_and_tumor_markers": [],
+    "tumor_events": []
+  },
+  "text": "(734)\nIRM MAMMAIRE :\nMotif : mise au point complémentaire chez une patiente de 71 ans, suite au bilan sénologique complet réalisé le 01/10/2024, en raison d'une masse dans le secteur interne du sein gauche.\nÀ la mammographie : asymétrie de densité, avec une plage de 27 x 19 mm rétro-aréolaire interne, parsemée de nombreuses microcalcifications, d'aspect polymorphe, d'autres microcalcifications à distance conférant à la lésion un grand axe de l'ordre de 6 cm.\nÀ l'échographie, lésion très mal délimitée para-aréolaire interne, d'environ 25 mm, avec petit élément nodulaire à distance en interne notamment.\nUne microbiopsie sous échographie sera réalisée le 14/10/2024.\nTechnique : examen réalisé en coupes axiales, en pondération T2 volumique et pondération T1\nhaute résolution.\nRéalisation de séquences dynamiques en pondération T1, 3D, sans et avec injection de\nGadolinium - analyse d'éventuels points d'hypercaptation après soustraction.\nRéalisation d'une séquence T1 haute résolution FAT SAT post-Gadolinium.\nRésultat :\nÀ droite : absence de rehaussement focal suspect.\nÀ gauche : lésion rétro-aréolaire aréolaire interne relativement profonde, de 17 x 26 mm, avec prise de contraste à distance notamment : \nPlus crânialement et plus interne de 6 mm, soustraction/68.\nPlus postérieure et externe, de 4 et 8 mm, soustraction images 72, plus superficiellement et en regard du pôle inférieur nodule, de 8 mm, soustraction images 82 et sous le pôle inférieur de la lésion plusieurs nodules voisins, mesurés entre 6 et 12 mm, étendus sur 24 mm.\nTout à fait caudalement, plusieurs nodules rehaussant, mesurés entre 6 et 8 mms étendus sur 37 mm.\nLes rehaussements les plus inférieurs sont à direction mamelonnaire, sans signe d'envahissement du mamelon.\nL'extension antéro-postérieure de rehaussement est d'au moins 6 cm comme décrit à la mammographie, l'axe sagittal d'environ 22 mm. Pas d'adénomégalie.\nConclusion :\nPrise de contraste étendue à hauteur du sein gauche, dont la lésion principale est située en rétroaréolaire interne, sans envahissement du plan profond. De nombreux rehaussements à distance en arrière, en avant et surtout en dessous de la lésion principale, rendent difficile l'évaluation de l'étendue exacte, d'au moins 6 cm. Prise de contraste nodulaire inférieure apparaissent globalement alignée vers le mamelon, sans signe d'envahissement de celui-ci.\n\n BILAN S ÉNOLOGIQUE :\nMotif de l'examen :\nMise au point chez une patiente de 71 ans d'une masse dans le secteur interne du sein gauche, remarquée il y a environ deux mois.\nAntécédents personnels de néoplasie du rein, de la thyroïde et de l'intestin. \nStatus chronique G1 P1. Pas de traitement hormonal à visée substitutive. Pas d'antécédent familial de néoplasie mammaire ou ovarienne.\n Mammographie bilatérale (4 clichés/tomosynthèse de face) :\nPas de comparaison à d'anciens documents.\nÀ droite :\nSein en involution lipomateuse avancée, sans élément à caractère suspect.\nÀ gauche :\nAsymétrie de densité, avec une plage de 27 x 19 mm rétro-aréolaire interne, parsemée de nombreuses microcalcifications, d'aspect polymorphe. On note également de nombreuses microcalcifications à distance essentiellement en avant et plus centralement, de même un prolongement plus dense est observé vers le mamelon en incidence axillaire, conférant à la lésion un grand axe d'environ 6 cm?\nÉchographie mammaire gauche :\nConfirmation d'une lésion suspecte, très mal délimitée, para-aréolaire interne, d'environ 25 mm de grand axe, avec deux petits éléments hypoéchogènes, aspécifiques, situés légèrement plus bas, le plus interne de 5 mm et le second plus central d'environ 6,7 mm. Pas d'adénomégalie axillaire.\nConclusion :\nLésion clinique, radiographique et échographique suspecte para-aréolaire interne, étendue sur approximativement 6 cm. Une mise au point complémentaire par IRM a été recommandée à la patiente, afin d'apprécier en particulier la proximité de l'anomalie par rapport au placard mamelonnaire, ainsi qu'une microbiopsie sous échographie, avec éventuellement des prélèvements en éventail et en rétroaréolaire.\n\n(749)\npetscan:– Intense foyer hypermétabolique mammaire gauche avec petit foyer hypermétabolique\npériphérique (SUVmax 9,82)\n– Pas de ganglion hypermétabolique au niveau axillaire gauche\n– Multiples micronodules et nodules pulmonaires bilatéraux dont certains sont hypermétaboliques : au niveau du lobe supérieur gauche (5mm, SUVmax 2,76) et lobe supérieur droit (5mm SUVmax 1.2)\n– Foyer hypermétabolique au niveau de la partie latérale gauche de la selle turcique (SUVmax 5,95)\n– Nodule hypermétabolique enchâssé au sein des muscles de la loge postérieure de la cuisse droite (13mm, SUVmax 3), centré sur le trajet du nerf sciatique droit\n– Antécédent de néphrectomie droite\n– Antécédent de chirurgie rectosigmoïdienne\nConclusion :\n1) Plusieurs foyers hypermétaboliques suspects intramammaires gauches. Pas d'évidence d'extension ganglionnaire.\n2) À distance, mise en évidence de multiples nodules pulmonaires dont certains sont hypermétaboliques: hautement suspects de lésions secondaires dans le contexte.\n3) Foyer hypermétabolique au niveau de la partie latérale gauche de la selle turcique : Cfr IRM cérébrale.\n4) Nodule peu métabolique centré sur le trajet du nerf sciatique droit : neurofibrome ? A compléter par IRM."
+}
