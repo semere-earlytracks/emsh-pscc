@@ -5,8 +5,8 @@
     "primary_tumor": [
       {
         "cancerdiagnosisdate": "",
-        "topographycode": "",
-        "morphologycode": "",
+        "topographycode": "Kidney",
+        "morphologycode": "Unknown",
         "tumorsize": [
           {
             "tumorsize_imaging": "6",
@@ -52,7 +52,7 @@
     "biological_specimen": [
       {
         "specimentype": "Biopsy",
-        "specimennature": "",
+        "specimennature": "Tumor tissue",
         "specimentopographycode": "BREAST",
         "specimencollectdateday": "14/10/2024",
         "contextsentence": "À l'échographie, lésion très mal délimitée para-aréolaire interne, d'environ 25 mm, avec petit élément nodulaire à distance en interne notamment. Une microbiopsie sous échographie sera réalisée le 14/10/2024"

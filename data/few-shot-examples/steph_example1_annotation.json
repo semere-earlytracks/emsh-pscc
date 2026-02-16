@@ -30,36 +30,14 @@
         "morphologycode": "85003, Infiltrating duct carcinoma, NOS",
         "tumorsize": [
           {
-            "tumorsize_clinic": "",
-            "tumorsizedate_clinic": "",
-            "contextsentence": ""
-          },
-          {
             "tumorsize_patho": "8",
             "tumorsizedate_patho": "17/09/2018",
             "contextsentence": "Au niveau de la mammectomie, persistance d'un carcinome mammaire infiltrant réalisant une très vaste tumeur de 8 x 4 x 1,4 cm présente dans les quatre quadrants"
-          },
-          {
-            "tumorsize_imaging": "",
-            "tumorsizedate_imaging": "",
-            "contextsentence": ""
           }
         ]
       }
     ],
     "general_condition_and_physical_examination": [
-      {
-        "measuretype": "PS OMS",
-        "measurevalue": "",
-        "measuredate_first": "",
-        "contextsentence": ""
-      },
-      {
-        "measuretype": "PS Karnofsky",
-        "measurevalue": "",
-        "measuredate_first": "",
-        "contextsentence": ""
-      },
       {
         "measuretype": "Height in cms",
         "measurevalue": "172",
@@ -188,55 +166,73 @@
     "biomarkers_and_tumor_markers": [
       {
         "biomarkername": "Other",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "100%",
         "biomarkerresultdate": "",
         "contextsentence": "Présence de récepteurs aux oestrogènes (100% des cellules grade III)"
       },
       {
         "biomarkername": "Other",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "100%",
         "biomarkerresultdate": "",
         "contextsentence": "Présence de récepteurs aux oestrogènes (100% des cellules grade III) et de récepteurs à la progestérone (100% des cellules grade III)"
       },
       {
         "biomarkername": "Ki67",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "50%",
         "biomarkerresultdate": "",
         "contextsentence": "Ki 67: 50%"
       },
       {
         "biomarkername": "PIK3CA",
+        "biomarkermutationstatus": "Mutated",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "H1047R 40.5%",
         "biomarkerresultdate": "",
         "contextsentence": "Double mutation PIK3CA H1047R (40.5%)"
       },
       {
         "biomarkername": "PIK3CA",
+        "biomarkermutationstatus": "Mutated",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "E542V 41.2%",
         "biomarkerresultdate": "",
         "contextsentence": "Double mutation PIK3CA H1047R (40.5%) et E542V (41.2%)"
       },
       {
         "biomarkername": "ESR1",
+        "biomarkermutationstatus": "Mutated",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "Y537S 20.1%",
         "biomarkerresultdate": "",
         "contextsentence": "mutation ESR1 Y537S (20.1%)"
       },
       {
         "biomarkername": "Other",
+        "biomarkermutationstatus": "Mutated",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "S258* 35%",
         "biomarkerresultdate": "",
         "contextsentence": "double mutation MAPK S258* (35%) "
       },
       {
         "biomarkername": "Other",
+        "biomarkermutationstatus": "Mutated",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "I1464fs*26 33.9%",
         "biomarkerresultdate": "",
         "contextsentence": "double mutation MAPK S258* (35%) et I1464fs*26 (33.9%)"
       },
       {
         "biomarkername": "Other",
-        "biomarkervaluetxt": "",
+        "biomarkermutationstatus": "Amplified",
+        "biomarkernonmutationstatus": "Positive",
+        "biomarkervaluetxt": "amplified",
         "biomarkerresultdate": "",
         "contextsentence": "RAD21 amplification"
       }

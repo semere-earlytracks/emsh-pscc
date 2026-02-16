@@ -80,7 +80,7 @@
     "general_condition_and_physical_examination": [],
     "surgery": [
       {
-        "surgerytype": "",
+        "surgerytype": "Quadrantectomie du sein droit",
         "surgerydate": "",
         "contextsentence": "quadrantectomie du sein droit"
       }
@@ -129,78 +129,104 @@
     "biomarkers_and_tumor_markers": [
       {
         "biomarkername": "Alcalose hypokaliémique",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "",
         "biomarkerresultdate": "",
         "contextsentence": "Alcalose hypokaliémique, lymphopénie"
       },
       {
         "biomarkername": "lymphopénie",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "",
         "biomarkerresultdate": "",
         "contextsentence": "Alcalose hypokaliémique, lymphopénie"
       },
       {
         "biomarkername": "Cortisolémie",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "élevée",
         "biomarkerresultdate": "",
         "contextsentence": "Cortisolémie élevée. ACTH élevé également"
       },
       {
         "biomarkername": "ACTH",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "élevé",
         "biomarkerresultdate": "",
         "contextsentence": "Cortisolémie élevée. ACTH élevé également"
       },
       {
         "biomarkername": "Cortisolurie de 24h",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "5068 µg/24h",
         "biomarkerresultdate": "",
         "contextsentence": "Cortisolurie de 24h élevée, à 5068 µg/24h"
       },
       {
         "biomarkername": "CEA",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "8 µg/M",
         "biomarkerresultdate": "",
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
         "biomarkername": "CA",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "15.3 normal",
         "biomarkerresultdate": "",
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
         "biomarkername": "NSE",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "111.50 µg/L",
         "biomarkerresultdate": "",
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
         "biomarkername": "ER",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "8/8",
         "biomarkerresultdate": "",
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
         "biomarkername": "PR",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "8/8",
         "biomarkerresultdate": "",
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
         "biomarkername": "HER2",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "++",
         "biomarkerresultdate": "",
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018)"
       },
       {
         "biomarkername": "FISH",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "négative",
         "biomarkerresultdate": "01/01/2018",
         "contextsentence": "Marqueurs tumoraux : CEA 8 µg/M, CA 15.3 normal, NSE 111.50 µg/L, ER 8/8.PR : 8/8. HER2 : ++ mais FISH négative (2018), HbA1C à 7.3%"
       },
       {
         "biomarkername": "HbA1c",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Elevated",
         "biomarkervaluetxt": "7.3%",
         "biomarkerresultdate": "",
         "contextsentence": "HbA1C à 7.3%"

@@ -34,23 +34,7 @@
         "cancerdiagnosisdate": "01/02/2023",
         "topographycode": "RIGHT BREAST",
         "morphologycode": "Carcinome lobulaire infiltrant, de grade 2, récept oestro et progest +",
-        "tumorsize": [
-          {
-            "tumorsize_clinic": "",
-            "tumorsizedate_clinic": "",
-            "contextsentence": ""
-          },
-          {
-            "tumorsize_patho": "",
-            "tumorsizedate_patho": "",
-            "contextsentence": ""
-          },
-          {
-            "tumorsize_imaging": "",
-            "tumorsizedate_imaging": "",
-            "contextsentence": ""
-          }
-        ]
+        "tumorsize": []
       }
     ],
     "general_condition_and_physical_examination": [],
@@ -94,12 +78,16 @@
     "biomarkers_and_tumor_markers": [
       {
         "biomarkername": "HER2",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "nég",
         "biomarkerresultdate": "",
         "contextsentence": "HER2 nég, Ki67 15-20%"
       },
       {
         "biomarkername": "Ki67",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Low",
         "biomarkervaluetxt": "15-20%",
         "biomarkerresultdate": "",
         "contextsentence": "HER2 nég, Ki67 15-20%"

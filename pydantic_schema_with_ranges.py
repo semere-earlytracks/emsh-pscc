@@ -722,7 +722,9 @@ class Biomarker(BaseDocumentModel):
         ..., description="Biomarker name"
     )
 
-    biomarkermutationstatus: Literal["Mutated", "Wild type", "Variant", "Amplified", "Deleted", "Fused", "Other"] = Field(..., description="Mutation status or value")
+    biomarkermutationstatus: Literal["Mutated", "Wild type", "Variant", "Amplified", "Deleted", "Fused", "Other"] = Field("Other", description="Mutation status or value (use \"Other\" if the biomarker is not a gene)")
+
+    biomarkernonmutationstatus: Literal["Positive", "Negative", "High", "Low", "Other"] = Field("Other", description="Non-mutation status or value (use \"Other\" if not applicable)")
 
     biomarkervaluetxt: str = Field(
         ..., description="Biomarker value with unit (if mentioned in text, otherwise same as biomarkermutationstatus)"

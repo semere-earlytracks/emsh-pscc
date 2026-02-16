@@ -48,66 +48,88 @@
     "biomarkers_and_tumor_markers": [
       {
         "biomarkername": "TTF1",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "+",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Immunohistochimie : TTF1 +. EGFr +. PDL-1 : >90%"
       },
       {
         "biomarkername": "EGFr",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "+",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Immunohistochimie : TTF1 +. EGFr +. PDL-1 : >90%"
       },
       {
         "biomarkername": "PDL-1",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": ">90%",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Immunohistochimie : TTF1 +. EGFr +. PDL-1 : >90%"
       },
       {
         "biomarkername": "ALK",
+        "biomarkermutationstatus": "Wild type",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "négatif",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "ALK et ROS-1 négatif"
       },
       {
         "biomarkername": "ROS-1",
+        "biomarkermutationstatus": "Wild type",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "négatif",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "ALK et ROS-1 négatif"
       },
       {
         "biomarkername": "EGFR",
+        "biomarkermutationstatus": "Wild type",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
         "biomarkername": "BRAF",
+        "biomarkermutationstatus": "Wild type",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
         "biomarkername": "NRAS",
+        "biomarkermutationstatus": "Wild type",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
         "biomarkername": "KRAS",
+        "biomarkermutationstatus": "Wild type",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
         "biomarkername": "ERBB2",
+        "biomarkermutationstatus": "Wild type",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ; \nNRAS ; KRAS ; ERBB2 et MET 14."
       },
       {
         "biomarkername": "MET 14",
+        "biomarkermutationstatus": "Wild type",
+        "biomarkernonmutationstatus": "Negative",
         "biomarkervaluetxt": "Absence de mutation sur le gêne",
         "biomarkerresultdate": "30/07/2019",
         "contextsentence": "Biologie moléculaire : Absence de mutation sur les gênes suivant : EGFR ; BRAF ;\nNRAS ; KRAS ; ERBB2 et MET 14."

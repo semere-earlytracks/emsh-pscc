@@ -117,12 +117,16 @@
     "biomarkers_and_tumor_markers": [
       {
         "biomarkername": "PD-L1",
+        "biomarkermutationstatus": "Other",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "60%",
         "biomarkerresultdate": "30/08/2023",
         "contextsentence": "PDL1 60%"
       },
       {
         "biomarkername": "KRAS",
+        "biomarkermutationstatus": "Mutated",
+        "biomarkernonmutationstatus": "Positive",
         "biomarkervaluetxt": "Mutation G12c",
         "biomarkerresultdate": "30/08/2023",
         "contextsentence": "Mutation G12c KRAS."
