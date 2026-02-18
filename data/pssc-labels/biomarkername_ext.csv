@@ -103,3 +103,380 @@ ROS1,ROS1
 C-MET,C-MET
 PAM50,PAM50
 Other,Other
+ALK,ALK1
+ALK,Anaplastic lymphoma kinase
+ALK,Kinase ALK
+ALK,CD246
+ALK,Récepteur tyrosine kinase ALK
+POLE,DNA polymerase epsilon
+POLE,DNA polymerase ε
+POLE,Polymerase epsilon
+POLE,Pol ε
+POLE,PolE
+POLE,ADN polymérase epsilon
+FOXL2,Forkhead box L2
+FOXL2,Facteur forkhead FOXL2
+FOXL2,Facteur de transcription FOXL2
+BRAF,B-RAF
+BRAF,BRAF1
+BRAF,Proto-oncogene BRAF
+BRAF,Oncogène BRAF
+TP53,P53
+TP53,p53
+TP53,Tumor protein p53
+TP53,Protéine p53
+TP53,Gène TP53
+PTEN,MMAC1
+PTEN,TEP1
+PTEN,Phosphatase and tensin homolog
+PTEN,Phosphatase et tensine homologue
+RAD50,DNA repair protein RAD50
+RAD50,Protéine RAD50
+RAD50,MRN complex RAD50
+RAD50,Complexe MRN RAD50
+HRAS,H-Ras
+HRAS,Ha-RAS
+HRAS,HRAS1
+HRAS,Proto-oncogene HRAS
+BRCA1,Breast cancer 1
+BRCA1,BRCC1
+BRCA1,RNF53
+BRCA1,Gène BRCA1
+BRCA2,Breast cancer 2
+BRCA2,FANCD1
+BRCA2,Gène BRCA2
+EGFR,ERBB1
+EGFR,HER1
+EGFR,Epidermal growth factor receptor
+EGFR,Récepteur du facteur de croissance épidermique
+EGFR,Récepteur EGFR
+AKT1,AKT
+AKT1,Protein kinase B
+AKT1,PKB
+AKT1,PKB alpha
+AKT1,RAC-alpha serine/threonine-protein kinase
+AKT1,Kinase AKT1
+PDGFRA,PDGFR alpha
+PDGFRA,PDGFRα
+PDGFRA,Platelet-derived growth factor receptor alpha
+PDGFRA,Récepteur PDGF alpha
+PDGFRA,CD140a
+ROS1,c-ROS1
+ROS1,ROS proto-oncogene 1
+ROS1,ROS1 receptor tyrosine kinase
+ROS1,Récepteur tyrosine kinase ROS1
+CTNNB1,Beta-catenin
+CTNNB1,β-catenin
+CTNNB1,beta catenin
+CTNNB1,b-catenine
+CTNNB1,β-catenine
+CTNNB1,Catenin beta 1
+RB1,RB
+RB1,pRB
+RB1,Retinoblastoma protein
+RB1,Protéine du rétinoblastome
+IDH2,Isocitrate dehydrogenase 2
+IDH2,Isocitrate déshydrogénase 2
+IDH2,IDH 2
+KRAS,K-Ras
+KRAS,Kras
+KRAS,KRAS2
+KRAS,Proto-oncogene KRAS
+PALB2,Partner and localizer of BRCA2
+PALB2,Partenaire et localisateur de BRCA2
+PALB2,FANCN
+KIT,c-KIT
+KIT,cKIT
+KIT,CD117
+KIT,SCFR
+KIT,Stem cell factor receptor
+KIT,Récepteur KIT
+STK11,LKB1
+STK11,Serine/threonine kinase 11
+STK11,Kinase STK11
+ERBB2 (HER2),ERBB2
+ERBB2 (HER2),HER2
+ERBB2 (HER2),HER-2
+ERBB2 (HER2),HER2/neu
+ERBB2 (HER2),HER-2/neu
+ERBB2 (HER2),CD340
+ERBB2 (HER2),Récepteur HER2
+FGFR2,Fibroblast growth factor receptor 2
+FGFR2,Récepteur du facteur de croissance des fibroblastes 2
+FGFR2,Récepteur FGFR2
+FGFR2,CD332
+PIK3CA,PI3KCA
+PIK3CA,PI3K alpha
+PIK3CA,PI3Kα
+PIK3CA,p110 alpha
+PIK3CA,p110α
+PIK3CA,Phosphatidylinositol 3-kinase catalytic subunit alpha
+PIK3CA,"Phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha"
+BARD1,BRCA1-associated RING domain protein 1
+BARD1,BRCA1 associated RING domain 1
+BARD1,Protéine associée à BRCA1 BARD1
+FGFR4,Fibroblast growth factor receptor 4
+FGFR4,Récepteur FGFR4
+FGFR4,CD334
+RET (domaine tyrosine kinase),RET
+RET (domaine tyrosine kinase),c-RET
+RET (domaine tyrosine kinase),cRET
+RET (domaine tyrosine kinase),RET proto-oncogene
+RET (domaine tyrosine kinase),RET receptor tyrosine kinase
+RET (domaine tyrosine kinase),Récepteur tyrosine kinase RET
+FGFR1,Fibroblast growth factor receptor 1
+FGFR1,Récepteur FGFR1
+FGFR1,CD331
+ARID1A,BAF250A
+ARID1A,AT-rich interaction domain 1A
+ARID1A,Protéine ARID1A
+MET,c-MET
+MET,cMET
+MET,HGFR
+MET,Hepatocyte growth factor receptor
+MET,Récepteur du HGF
+MET,Récepteur MET
+IDH1,Isocitrate dehydrogenase 1
+IDH1,Isocitrate déshydrogénase 1
+IDH1,IDH 1
+PMS2,Postmeiotic segregation increased 2
+PMS2,Protéine de réparation des mésappariements PMS2
+NRAS,N-Ras
+NRAS,Nras
+NRAS,Proto-oncogene NRAS
+ATM,Ataxia-telangiectasia mutated
+ATM,Kinase ATM
+ATM,Protéine ATM
+PI3KCA,PIK3CA
+PI3KCA,PI3K alpha
+PI3KCA,PI3Kα
+PI3KCA,p110 alpha
+PI3KCA,p110α
+FANCA,Fanconi anemia group A
+FANCA,Anémie de Fanconi groupe A
+MAP2K1,MEK1
+MAP2K1,MKK1
+MAP2K1,Mitogen-activated protein kinase kinase 1
+MAP2K1,Kinase MEK1
+MLH1,MutL homolog 1
+MLH1,hMLH1
+MLH1,Protéine MLH1
+APC,Adenomatous polyposis coli
+APC,Polypose adénomateuse colique
+MSH2,MutS homolog 2
+MSH2,hMSH2
+MSH2,Protéine MSH2
+RAD51B,RAD51L1
+RAD51B,RAD51 paralog B
+MSH6,MutS homolog 6
+MSH6,GTBP
+MSH6,Protéine MSH6
+KEAP1,Kelch-like ECH-associated protein 1
+KEAP1,Protéine KEAP1
+FGFR3,Fibroblast growth factor receptor 3
+FGFR3,Récepteur FGFR3
+FGFR3,CD333
+RAD51D,RAD51L3
+RAD51D,RAD51 paralog D
+CDK12,Cyclin-dependent kinase 12
+CDK12,Kinase CDK12
+RAD51C,RAD51L2
+RAD51C,RAD51 paralog C
+BRIP1,FANCJ
+BRIP1,BACH1
+BRIP1,BRCA1 interacting protein 1
+CHEK2,CHK2
+CHEK2,Checkpoint kinase 2
+CHEK2,Kinase CHK2
+NBN,NBS1
+NBN,Nibrin
+NBN,Nijmègue breakage syndrome 1
+DICER1,Dicer
+DICER1,Endoribonuclease DICER
+DICER1,RNase III Dicer
+SMARCA4,BRG1
+SMARCA4,SWI/SNF ATPase SMARCA4
+SMARCA4,Protéine BRG1
+KMT2B,MLL2
+KMT2B,Lysine methyltransferase 2B
+KMT2B,Méthyltransférase KMT2B
+PPP2R1A,PP2A-Aalpha
+PPP2R1A,PP2A scaffold subunit A alpha
+PPP2R1A,Sous-unité A de PP2A
+AR,Androgen receptor
+AR,Récepteur aux androgènes
+AR,NR3C4
+BCORL1,BCL6 corepressor-like 1
+BCORL1,Co-répresseur BCORL1
+ESR1,ER alpha
+ESR1,ERα
+ESR1,Estrogen receptor 1
+ESR1,Récepteur aux œstrogènes alpha
+ESR1,RE alpha
+ESR2,ER beta
+ESR2,ERβ
+ESR2,Estrogen receptor 2
+ESR2,Récepteur aux œstrogènes beta
+GNAS,Gs alpha
+GNAS,Gαs
+GNAS,Protéine Gs alpha
+MYOD1,MyoD
+MYOD1,Myogenic differentiation 1
+POLD1,DNA polymerase delta
+POLD1,DNA polymerase δ
+POLD1,Pol delta
+POLD1,Pol δ
+TERT (promoteur),TERT
+TERT (promoteur),hTERT
+TERT (promoteur),Telomerase reverse transcriptase
+TERT (promoteur),Transcriptase inverse de la télomérase
+CKIT,KIT
+CKIT,c-KIT
+CKIT,CD117
+b-catenine,β-catenine
+b-catenine,Beta-catenin
+b-catenine,CTNNB1
+CKIT/DOG1,KIT/DOG1
+CKIT/DOG1,CD117/DOG1
+CKIT/DOG1,c-KIT/DOG1
+CKIT/DOG1,CD117/ANO1
+CKIT/DOG1,KIT/ANO1
+CKIT/DOG1,DOG1
+CKIT/DOG1,ANO1
+CKIT/DOG1,TMEM16A
+FOXL2/DICER,FOXL2/DICER1
+FOXL2/DICER,DICER/FOXL2
+ETV6-NTRK3,TEL-NTRK3
+ETV6-NTRK3,ETV6::NTRK3
+ETV6-NTRK3,TEL::NTRK3
+ETV6-NTRK3,ETV6-TRKC
+ETV6-NTRK3,t(12;15)
+MYB-NFIB,MYB::NFIB
+MYB-NFIB,t(6;9)
+PDGFRA/FGFR1,PDGFR alpha/FGFR1
+PDGFRA/FGFR1,PDGFRα/FGFR1
+PDGFRA/FGFR1,PDGFRA and FGFR1
+MDM2,HDM2
+MDM2,Mouse double minute 2
+MDM2,Oncogène MDM2
+N-MYC,NMYC
+N-MYC,MYCN
+N-MYC,N-Myc
+C-MYC,MYC
+C-MYC,c-Myc
+C-MYC,Proto-oncogene MYC
+BCR-ABL1,BCR/ABL1
+BCR-ABL1,BCR::ABL1
+BCR-ABL1,Philadelphia chromosome
+BCR-ABL1,Ph chromosome
+BCR-ABL1,t(9;22)
+COL1A1,Collagen type I alpha 1
+COL1A1,Collagen I alpha 1
+COL1A1,Collagène type I chaîne alpha 1
+DDIT3,CHOP
+DDIT3,GADD153
+DDIT3,DDIT3-CHOP
+EWSR2,EWSR
+EWSR2,EWS RNA-binding protein family
+SYT,SS18
+SYT,SYT-SS18
+SYT,Synovial sarcoma translocation gene
+FUS,TLS
+FUS,Fused in sarcoma
+FUS,Protéine FUS
+IGH-BCL2,BCL2-IGH
+IGH-BCL2,IGH::BCL2
+IGH-BCL2,BCL2::IGH
+IGH-BCL2,t(14;18)
+JAZF1,TIP27
+FOXO1A,FOXO1
+FOXO1A,FKHR
+FOXO1A,Forkhead box O1
+TFE3,Transcription factor E3
+TFE3,Facteur de transcription E3
+HPV,Human papillomavirus
+HPV,Papillomavirus humain
+HPV,High-risk HPV
+HPV,HR-HPV
+Merkell,Merkel
+Merkell,Merkel cell polyomavirus
+Merkell,MCPyV
+Merkell,MCV
+Merkell,Polyomavirus de Merkel
+EBER,EBER-ISH
+EBER,EBV-encoded small RNAs
+EBER,ARNs EBER du virus EBV
+PSA,Prostate-specific antigen
+PSA,Antigène spécifique de la prostate
+PSA,KLK3
+PSA,hK3
+CA125,CA-125
+CA125,Cancer antigen 125
+CA125,MUC16
+CA125,Antigène tumoral CA125
+CA153,CA15-3
+CA153,CA 15-3
+CA153,MUC1
+CA153,Antigène CA15-3
+CA199,CA19-9
+CA199,CA 19-9
+CA199,Sialyl Lewis A
+CA199,sLea
+Ki67,Ki-67
+Ki67,MKI67
+Ki67,Antigène Ki-67
+Nb mitoses,Mitotic count
+Nb mitoses,Mitotic rate
+Nb mitoses,Mitotic index
+Nb mitoses,Nombre de mitoses
+Nb mitoses,Index mitotique
+RO,ER
+RO,ER alpha
+RO,Estrogen receptor
+RO,Récepteur aux œstrogènes
+RO,Récepteurs aux œstrogènes
+RP,PR
+RP,Progesterone receptor
+RP,Récepteur à la progestérone
+RP,Récepteurs à la progestérone
+HER2,ERBB2
+HER2,HER-2
+HER2,HER2/neu
+HER2,CD340
+HER2,Récepteur HER2
+PD-L1,PDL1
+PD-L1,CD274
+PD-L1,B7-H1
+PD-L1,B7H1
+PD-L1,Ligand de PD-1
+PD-L1,Ligand 1 de la mort programmée
+AMHR2,MISR2
+AMHR2,AMH receptor II
+AMHR2,Anti-Müllerian hormone receptor type 2
+AMHR2,Récepteur de l’hormone anti-müllérienne type 2
+P53,TP53
+P53,p53
+P53,Protéine p53
+BRCA,BRCA1/BRCA2
+BRCA,BRCA1 et BRCA2
+BRCA,Gènes BRCA
+MSI,Microsatellite instability
+MSI,Instabilité des microsatellites
+MSI,MSI-H
+MSI,MSS
+MSI,dMMR
+MSI,déficience MMR
+NRAS-KRAS,RAS
+NRAS-KRAS,KRAS/NRAS
+NRAS-KRAS,Voie RAS
+ROS1,ROS1 rearrangement
+ROS1,ROS1 fusion
+ROS1,Fusion ROS1
+C-MET,MET
+C-MET,c-MET
+C-MET,HGFR
+C-MET,Récepteur MET
+PAM50,Prosigna
+PAM50,PAM50 intrinsic subtype assay
+PAM50,Signature PAM50
+PAM50,Gene expression signature PAM50
