@@ -97,7 +97,7 @@ class BatchInferencer:
         self,
         texts: List[str],
         embedding_type: str
-    ) -> List[str]:
+    ) -> Tuple[List[str], List[float]]:
         """Infer top-1 labels for a batch of texts.
         
         Args:
@@ -105,10 +105,12 @@ class BatchInferencer:
             embedding_type: Type of embedding to use
             
         Returns:
-            List of top-1 label strings
+            Tuple of (labels, scores) where:
+            - labels: List of top-1 label strings
+            - scores: List of similarity scores (0-1)
         """
         if not texts:
-            return []
+            return [], []
         
         # Load embeddings for this type
         embedding_data = self.embedding_cache.load(embedding_type)
@@ -135,12 +137,13 @@ class BatchInferencer:
             label_embeddings.t()
         )
         
-        top_indices = torch.argmax(similarities, dim=1)
+        top_scores, top_indices = torch.max(similarities, dim=1)
         
-        # Get labels
+        # Get labels and scores
         results = [labels[idx] for idx in top_indices.cpu().tolist()]
+        scores = top_scores.cpu().tolist()
         
-        return results
+        return results, scores
 
 
 def collect_field_values_from_json(data: Any, field_names: Set[str]) -> Dict[str, Set[str]]:
@@ -216,7 +219,8 @@ def create_string_to_label_mappings(
     collected_strings: Dict[str, Set[str]],
     field_to_type: Dict[str, str],
     inferencer: BatchInferencer,
-    cache_dir: Path
+    cache_dir: Path,
+    map_threshold: float = 0.85
 ):
     """Create and save string-to-label mappings for each field type.
     
@@ -225,6 +229,7 @@ def create_string_to_label_mappings(
         field_to_type: Mapping of field names to embedding types
         inferencer: BatchInferencer instance
         cache_dir: Directory to save mapping files
+        map_threshold: Minimum similarity score threshold (below this maps to "other")
     """
     cache_dir.mkdir(parents=True, exist_ok=True)
     
@@ -235,6 +240,7 @@ def create_string_to_label_mappings(
         type_to_strings[embedding_type].update(strings)
     
     print("\nCreating string-to-label mappings...")
+    print(f"Mapping threshold: {map_threshold} (below this → 'other')")
     
     # Process each embedding type
     for embedding_type, strings in type_to_strings.items():
@@ -247,10 +253,17 @@ def create_string_to_label_mappings(
         string_list = sorted(strings)
         
         # Batch process all strings
-        labels = inferencer.infer_batch(string_list, embedding_type)
+        labels, scores = inferencer.infer_batch(string_list, embedding_type)
         
-        # Create mapping
-        mapping = {string: label for string, label in zip(string_list, labels)}
+        # Create mapping, using "other" for low-confidence predictions
+        mapping = {}
+        below_threshold_count = 0
+        for string, label, score in zip(string_list, labels, scores):
+            if score < map_threshold:
+                mapping[string] = "other"
+                below_threshold_count += 1
+            else:
+                mapping[string] = label
         
         # Save to disk
         cache_path = cache_dir / f"{embedding_type}_mapping.json"
@@ -258,6 +271,7 @@ def create_string_to_label_mappings(
             json.dump(mapping, fh, indent=2, ensure_ascii=False)
         
         print(f"  Saved mapping to: {cache_path}")
+        print(f"  Below threshold: {below_threshold_count}/{len(string_list)} mapped to 'other'")
 
 
 def load_mappings(cache_dir: Path, field_to_type: Dict[str, str]) -> Tuple[Dict[str, Dict[str, str]], Dict[str, Dict[str, str]]]:
@@ -299,7 +313,8 @@ def find_and_process_new_strings(
     field_to_type: Dict[str, str],
     type_mappings: Dict[str, Dict[str, str]],
     inferencer: BatchInferencer,
-    cache_dir: Path
+    cache_dir: Path,
+    map_threshold: float = 0.85
 ) -> Dict[str, Dict[str, str]]:
     """Find strings not in existing mappings and compute their labels.
     
@@ -310,6 +325,7 @@ def find_and_process_new_strings(
         type_mappings: Existing type-to-mapping dictionaries
         inferencer: BatchInferencer instance
         cache_dir: Directory to update mapping files
+        map_threshold: Minimum similarity score threshold (below this maps to "other")
         
     Returns:
         Updated type_mappings with new strings added
@@ -347,10 +363,17 @@ def find_and_process_new_strings(
         string_list = sorted(new_strings)
         
         # Batch process new strings
-        labels = inferencer.infer_batch(string_list, embedding_type)
+        labels, scores = inferencer.infer_batch(string_list, embedding_type)
         
-        # Create new mappings
-        new_mapping = {string: label for string, label in zip(string_list, labels)}
+        # Create new mappings, using "other" for low-confidence predictions
+        new_mapping = {}
+        below_threshold_count = 0
+        for string, label, score in zip(string_list, labels, scores):
+            if score < map_threshold:
+                new_mapping[string] = "other"
+                below_threshold_count += 1
+            else:
+                new_mapping[string] = label
         
         # Merge with existing mapping
         merged_mapping = updated_type_mappings.get(embedding_type, {}).copy()
@@ -364,6 +387,7 @@ def find_and_process_new_strings(
         
         print(f"  Updated mapping saved to: {cache_path}")
         print(f"  Total mappings: {len(merged_mapping)} (added {len(new_mapping)})")
+        print(f"  Below threshold: {below_threshold_count}/{len(string_list)} new strings mapped to 'other'")
     
     return updated_type_mappings
 
@@ -483,6 +507,12 @@ def main():
         action="store_true",
         help="Skip Pass 1 (use existing mappings in cache_dir)"
     )
+    parser.add_argument(
+        "--map_threshold",
+        type=float,
+        default=0.85,
+        help="Minimum similarity score threshold (default: 0.85). Values below this are mapped to 'other'"
+    )
     args = parser.parse_args()
     
     # Setup
@@ -527,7 +557,8 @@ def main():
             collected_strings,
             FIELD_TO_EMBEDDING_TYPE,
             inferencer,
-            cache_dir
+            cache_dir,
+            map_threshold=args.map_threshold
         )
     else:
         print("Skipping Pass 1 (using existing mappings)")
@@ -546,7 +577,8 @@ def main():
         FIELD_TO_EMBEDDING_TYPE,
         type_mappings,
         inferencer,
-        cache_dir
+        cache_dir,
+        map_threshold=args.map_threshold
     )
     
     # Recreate field mappings with updated type mappings
