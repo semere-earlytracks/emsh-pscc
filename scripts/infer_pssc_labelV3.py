@@ -40,7 +40,6 @@ FIELD_TO_EMBEDDING_TYPE = {
     "morphologycode": "morphologycode_ext",
     "surgerytype": "surgerytype_ext",
     "moleculecode": "moleculescode_ext",
-    "biomarkername": "biomarkername_ext",
 }
 
 
