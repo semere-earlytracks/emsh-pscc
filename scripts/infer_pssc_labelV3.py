@@ -22,7 +22,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import List, Dict, Any, Optional, Set
+from typing import List, Dict, Any, Optional, Set, Tuple
 from collections import defaultdict
 
 import torch
@@ -260,7 +260,7 @@ def create_string_to_label_mappings(
         print(f"  Saved mapping to: {cache_path}")
 
 
-def load_mappings(cache_dir: Path, field_to_type: Dict[str, str]) -> Dict[str, Dict[str, str]]:
+def load_mappings(cache_dir: Path, field_to_type: Dict[str, str]) -> Tuple[Dict[str, Dict[str, str]], Dict[str, Dict[str, str]]]:
     """Load all string-to-label mappings from cache directory.
     
     Args:
@@ -268,7 +268,9 @@ def load_mappings(cache_dir: Path, field_to_type: Dict[str, str]) -> Dict[str, D
         field_to_type: Mapping of field names to embedding types
         
     Returns:
-        Dictionary mapping field names to their string-to-label dictionaries
+        Tuple of (field_mappings, type_mappings) where:
+        - field_mappings: Dictionary mapping field names to their string-to-label dictionaries
+        - type_mappings: Dictionary mapping embedding types to their string-to-label dictionaries
     """
     # Get unique embedding types
     embedding_types = set(field_to_type.values())
@@ -288,7 +290,82 @@ def load_mappings(cache_dir: Path, field_to_type: Dict[str, str]) -> Dict[str, D
     for field_name, embedding_type in field_to_type.items():
         field_mappings[field_name] = type_mappings[embedding_type]
     
-    return field_mappings
+    return field_mappings, type_mappings
+
+
+def find_and_process_new_strings(
+    input_dir: Path,
+    field_names: Set[str],
+    field_to_type: Dict[str, str],
+    type_mappings: Dict[str, Dict[str, str]],
+    inferencer: BatchInferencer,
+    cache_dir: Path
+) -> Dict[str, Dict[str, str]]:
+    """Find strings not in existing mappings and compute their labels.
+    
+    Args:
+        input_dir: Directory containing JSON files
+        field_names: Set of field names to collect
+        field_to_type: Mapping of field names to embedding types
+        type_mappings: Existing type-to-mapping dictionaries
+        inferencer: BatchInferencer instance
+        cache_dir: Directory to update mapping files
+        
+    Returns:
+        Updated type_mappings with new strings added
+    """
+    # Collect all strings from JSON files
+    print("\nChecking for new strings not in cached mappings...")
+    collected_strings = collect_all_strings_pass1(input_dir, field_names)
+    
+    # Group by embedding type and find new strings
+    type_to_new_strings = defaultdict(set)
+    for field_name, strings in collected_strings.items():
+        embedding_type = field_to_type[field_name]
+        existing_mapping = type_mappings.get(embedding_type, {})
+        
+        # Find strings not in existing mapping
+        new_strings = strings - set(existing_mapping.keys())
+        if new_strings:
+            type_to_new_strings[embedding_type].update(new_strings)
+    
+    # Process new strings if any
+    if not type_to_new_strings:
+        print("No new strings found. All values are already in cache.")
+        return type_mappings
+    
+    print("\nFound new strings to process:")
+    for embedding_type, strings in type_to_new_strings.items():
+        print(f"  {embedding_type}: {len(strings)} new strings")
+    
+    # Process each embedding type with new strings
+    updated_type_mappings = type_mappings.copy()
+    for embedding_type, new_strings in type_to_new_strings.items():
+        print(f"\nProcessing new strings for {embedding_type}...")
+        
+        # Convert to sorted list
+        string_list = sorted(new_strings)
+        
+        # Batch process new strings
+        labels = inferencer.infer_batch(string_list, embedding_type)
+        
+        # Create new mappings
+        new_mapping = {string: label for string, label in zip(string_list, labels)}
+        
+        # Merge with existing mapping
+        merged_mapping = updated_type_mappings.get(embedding_type, {}).copy()
+        merged_mapping.update(new_mapping)
+        updated_type_mappings[embedding_type] = merged_mapping
+        
+        # Save updated mapping to disk
+        cache_path = cache_dir / f"{embedding_type}_mapping.json"
+        with cache_path.open("w", encoding="utf-8") as fh:
+            json.dump(merged_mapping, fh, indent=2, ensure_ascii=False)
+        
+        print(f"  Updated mapping saved to: {cache_path}")
+        print(f"  Total mappings: {len(merged_mapping)} (added {len(new_mapping)})")
+    
+    return updated_type_mappings
 
 
 def replace_values_in_json(
@@ -427,6 +504,15 @@ def main():
     
     field_names = set(FIELD_TO_EMBEDDING_TYPE.keys())
     
+    # Initialize components for inference (used in both passes)
+    embedding_cache = EmbeddingCache(labels_dir, device=device)
+    inferencer = BatchInferencer(
+        args.model,
+        embedding_cache,
+        device=device,
+        batch_size=args.batch_size
+    )
+    
     # Pass 1: Collect and map strings
     if not args.skip_pass1:
         collected_strings = collect_all_strings_pass1(input_dir, field_names)
@@ -435,15 +521,6 @@ def main():
         print("\nCollected strings by field:")
         for field_name in sorted(collected_strings.keys()):
             print(f"  {field_name}: {len(collected_strings[field_name])} unique values")
-        
-        # Initialize components for inference
-        embedding_cache = EmbeddingCache(labels_dir, device=device)
-        inferencer = BatchInferencer(
-            args.model,
-            embedding_cache,
-            device=device,
-            batch_size=args.batch_size
-        )
         
         # Create and save mappings
         create_string_to_label_mappings(
@@ -455,18 +532,33 @@ def main():
     else:
         print("Skipping Pass 1 (using existing mappings)")
     
-    # Pass 2: Load mappings and process files
-    field_mappings = load_mappings(cache_dir, FIELD_TO_EMBEDDING_TYPE)
+    # Pass 2: Load mappings and check for new strings
+    field_mappings, type_mappings = load_mappings(cache_dir, FIELD_TO_EMBEDDING_TYPE)
     
     print(f"\nLoaded mappings from: {cache_dir}")
     for field_name in sorted(field_mappings.keys()):
         print(f"  {field_name}: {len(field_mappings[field_name])} mappings")
     
+    # Check for new strings not in mappings and process them
+    updated_type_mappings = find_and_process_new_strings(
+        input_dir,
+        field_names,
+        FIELD_TO_EMBEDDING_TYPE,
+        type_mappings,
+        inferencer,
+        cache_dir
+    )
+    
+    # Recreate field mappings with updated type mappings
+    updated_field_mappings = {}
+    for field_name, embedding_type in FIELD_TO_EMBEDDING_TYPE.items():
+        updated_field_mappings[field_name] = updated_type_mappings[embedding_type]
+    
     process_all_files_pass2(
         input_dir,
         output_dir,
         field_names,
-        field_mappings
+        updated_field_mappings
     )
     
     print(f"\nDone! Processed files written to {output_dir}")
