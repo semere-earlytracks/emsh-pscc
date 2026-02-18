@@ -1,0 +1,416 @@
+label,text
+"01.02.01.03, Exérèse de tissu cérébral",Exérèse de tissu cérébral
+"01.02.02.01, Exérèse de tissu du cervelet et du tronc cérébral",Exérèse de tissu du cervelet et du tronc cérébral
+"01.02.04.04, Fermeture de fistule de liquide cérébrospinal [LCS] et de méningocèle crâniens",Fermeture de fistule de liquide cérébrospinal [LCS] et de méningocèle crâniens
+"01.02.04.05, Exérèse et fermeture de méningoencéphalocèle",Exérèse et fermeture de méningoencéphalocèle
+"01.02.05, Exérèse de tumeur intracrânienne extraencéphalique",Exérèse de tumeur intracrânienne extraencéphalique
+"01.02.06, Exérèse de lésion des ventricules encéphaliques",Exérèse de lésion des ventricules encéphaliques
+"01.03.01.03, Exérèse de tissu de la moelle épinière et des racines nerveuses",Exérèse de tissu de la moelle épinière et des racines nerveuses
+"01.03.01.05, Correction des malformations congénitales de la moelle épinière",Correction des malformations congénitales de la moelle épinière
+"01.03.02.05, Autres actes thérapeutiques sur les méninges et le liquide cérébrospinal [LCS] rachidiens",Autres actes thérapeutiques sur les méninges et le liquide cérébrospinal [LCS] rachidiens
+"01.03.03, Exérèse de tumeur extraspinale [extramédullaire] du canal vertébral",Exérèse de tumeur extraspinale [extramédullaire] du canal vertébral
+"01.05.01.03, Actes thérapeutiques sur le nerf facial [VII]",Actes thérapeutiques sur le nerf facial [VII]
+"01.05.01.07, Autres actes thérapeutiques sur les nerfs crâniens",Autres actes thérapeutiques sur les nerfs crâniens
+"01.05.02.02, Exérèse de tumeur nerveuse du cou",Exérèse de tumeur nerveuse du cou
+"01.05.03.04, Autres actes thérapeutiques sur le plexus brachial",Autres actes thérapeutiques sur le plexus brachial
+"01.05.06.05, Autres actes thérapeutiques sur le plexus lombosacral et les nerfs du membre inférieur",Autres actes thérapeutiques sur le plexus lombosacral et les nerfs du membre inférieur
+"01.05.07.06, Exérèse de tumeur de nerf spinal",Exérèse de tumeur de nerf spinal
+"01.06.02, Bloc anesthésique continu du système nerveux autonome",Bloc anesthésique continu du système nerveux autonome
+"01.06.04, Sympathectomie",Sympathectomie
+"02.02.03, Exérèse de lésion du sourcil et de la paupière",Exérèse de lésion du sourcil et de la paupière
+"02.02.04, Résection de paupière",Résection de paupière
+"02.02.09, Autres plasties du sourcil et de la paupière",Autres plasties du sourcil et de la paupière
+"02.03.05, Exérèse de l'appareil lacrymal",Exérèse de l'appareil lacrymal
+"02.04.01.04, Exérèse de lésion de la conjonctive",Exérèse de lésion de la conjonctive
+"02.04.02.04, Exérèse de lésion de la cornée",Exérèse de lésion de la cornée
+"02.04.02.06, Correction de troubles réfractifs",Correction de troubles réfractifs
+"02.04.03.04, Extraction, ablation, résection, exérèse du segment antérieur de l'oeil","Extraction, ablation, résection, exérèse du segment antérieur de l'oeil"
+"02.04.05.02, Photocoagulation, cryoapplication et autres destructions du segment postérieur de l'oeil","Photocoagulation, cryoapplication et autres destructions du segment postérieur de l'oeil"
+"02.04.05.04, Exérèse de lésion de la choroïde",Exérèse de lésion de la choroïde
+"02.04.05.05, Vitrectomie",Vitrectomie
+"02.04.05.08, Actes thérapeutiques sur la sclère",Actes thérapeutiques sur la sclère
+"02.04.07, Prélèvement de tissu au niveau du bulbe oculaire",Prélèvement de tissu au niveau du bulbe oculaire
+"02.05.02.04, Exérèse de lésion de l'orbite",Exérèse de lésion de l'orbite
+"02.05.02.07, Autres actes thérapeutiques sur l'orbite et son contenu",Autres actes thérapeutiques sur l'orbite et son contenu
+"03.02.01, Incision et extraction de l'oreille externe",Incision et extraction de l'oreille externe
+"03.02.02, Exérèse de lésion du méat acoustique externe",Exérèse de lésion du méat acoustique externe
+"03.02.04, Exérèse de l'oreille externe",Exérèse de l'oreille externe
+"03.03.01.03, Exérèse de tympanosclérose",Exérèse de tympanosclérose
+"03.03.02.02, Exérèse de cholestéatome de l'oreille moyenne",Exérèse de cholestéatome de l'oreille moyenne
+"03.03.02.03, Autres exérèses de lésion de l'oreille moyenne",Autres exérèses de lésion de l'oreille moyenne
+"03.03.02.06, Autres actes thérapeutiques sur l'oreille moyenne",Autres actes thérapeutiques sur l'oreille moyenne
+"03.04.01, Actes thérapeutiques sur le labyrinthe et le vestibule",Actes thérapeutiques sur le labyrinthe et le vestibule
+"04.01.01.03, Autres explorations électrophysiologiques cardiaques",Autres explorations électrophysiologiques cardiaques
+"04.01.02.01, Mesure des pressions et débits du coeur et des vaisseaux supracardiaques",Mesure des pressions et débits du coeur et des vaisseaux supracardiaques
+"04.01.02.03, Mesure des pressions intravasculaires périphériques par voie vasculaire",Mesure des pressions intravasculaires périphériques par voie vasculaire
+"04.01.02.04, Surveillance continue des pressions et débits intravasculaires",Surveillance continue des pressions et débits intravasculaires
+"04.01.09, Ponction, biopsie et prélèvement de l'appareil circulatoire","Ponction, biopsie et prélèvement de l'appareil circulatoire"
+"04.01.11, Autres actes diagnostiques sur l'appareil circulatoire",Autres actes diagnostiques sur l'appareil circulatoire
+"04.02.01.01, Dilatation de la voie d'éjection du coeur",Dilatation de la voie d'éjection du coeur
+"04.02.01.02, Ablation de corps étranger et de néoformation intracardiaques ou intravasculaires",Ablation de corps étranger et de néoformation intracardiaques ou intravasculaires
+"04.02.01.03, Résection des parois du coeur",Résection des parois du coeur
+"04.02.01.05, Autres actes thérapeutiques sur les parois du coeur",Autres actes thérapeutiques sur les parois du coeur
+"04.02.02.01, Dilatation des orifices du coeur",Dilatation des orifices du coeur
+"04.02.02.07, Autres actes sur les orifices du coeur",Autres actes sur les orifices du coeur
+"04.02.03.01, Pose d'électrode et de sonde de stimulation cardiaque",Pose d'électrode et de sonde de stimulation cardiaque
+"04.02.03.02, Implantation de stimulateur cardiaque",Implantation de stimulateur cardiaque
+"04.02.03.03, Implantation de défibrillateur cardiaque",Implantation de défibrillateur cardiaque
+"04.02.03.04, Repositionnement de sonde et de générateur de stimulation ou de défibrillation cardiaque",Repositionnement de sonde et de générateur de stimulation ou de défibrillation cardiaque
+"04.02.03.05, Ablation d'électrode et de sonde de stimulation ou de défibrillation cardiaque",Ablation d'électrode et de sonde de stimulation ou de défibrillation cardiaque
+"04.02.03.06, Pose de sonde supplémentaire de stimulation ou de défibrillation cardiaque",Pose de sonde supplémentaire de stimulation ou de défibrillation cardiaque
+"04.02.03.07, Implantation, ablation et changement de générateur de stimulation ou de défibrillation cardiaque, ablation de stimulateur cardiaque","Implantation, ablation et changement de générateur de stimulation ou de défibrillation cardiaque, ablation de stimulateur cardiaque"
+"04.02.03.09, Interruption de voie cardionectrice",Interruption de voie cardionectrice
+"04.02.03.10, Destruction et exérèse de foyer arythmogène",Destruction et exérèse de foyer arythmogène
+"04.02.03.11, Stimulation et défibrillation cardiaques",Stimulation et défibrillation cardiaques
+"04.02.04.01, Dilatation intraluminale des vaisseaux coronaires",Dilatation intraluminale des vaisseaux coronaires
+"04.02.04.03, Autres actes thérapeutiques sur les artères coronaires",Autres actes thérapeutiques sur les artères coronaires
+"04.02.05, Actes thérapeutiques sur le péricarde",Actes thérapeutiques sur le péricarde
+"04.02.06.01, Prélèvement du coeur",Prélèvement du coeur
+"04.02.06.03, Exérèse de greffon cardiaque",Exérèse de greffon cardiaque
+"04.03.01.02, Dilatation intraluminale et pose de prothèse de l'aorte thoracique",Dilatation intraluminale et pose de prothèse de l'aorte thoracique
+"04.03.01.03, Désobstruction de l'aorte thoracique",Désobstruction de l'aorte thoracique
+"04.03.01.06, Résection-anastomose de l'aorte thoracique",Résection-anastomose de l'aorte thoracique
+"04.03.02.01, Dilatation intraluminale de l'artère pulmonaire",Dilatation intraluminale de l'artère pulmonaire
+"04.03.02.02, Désobstruction de l'artère pulmonaire",Désobstruction de l'artère pulmonaire
+"04.03.02.03, Autres actes thérapeutiques sur l'artère pulmonaire",Autres actes thérapeutiques sur l'artère pulmonaire
+"04.03.03.02, Dilatation intraluminale et pose de prothèse du tronc artériel brachiocéphalique",Dilatation intraluminale et pose de prothèse du tronc artériel brachiocéphalique
+"04.03.03.03, Désobstruction du tronc artériel brachiocéphalique",Désobstruction du tronc artériel brachiocéphalique
+"04.03.04.02, Dilatation intraluminale de l'artère carotide commune",Dilatation intraluminale de l'artère carotide commune
+"04.03.04.03, Désobstruction de l'artère carotide commune",Désobstruction de l'artère carotide commune
+"04.03.04.06, Résection-anastomose de l'artère carotide commune",Résection-anastomose de l'artère carotide commune
+"04.03.05.01, Dilatation intraluminale de la bifurcation carotidienne",Dilatation intraluminale de la bifurcation carotidienne
+"04.03.05.02, Thromboendartériectomie de la bifurcation carotidienne",Thromboendartériectomie de la bifurcation carotidienne
+"04.03.05.03, Autres actes sur la bifurcation carotidienne",Autres actes sur la bifurcation carotidienne
+"04.03.06.02, Dilatation intraluminale de l'artère carotide extracrânienne",Dilatation intraluminale de l'artère carotide extracrânienne
+"04.03.06.04, Résection de l'artère carotide interne",Résection de l'artère carotide interne
+"04.03.06.05, Occlusion de l'artère carotide extracrânienne",Occlusion de l'artère carotide extracrânienne
+"04.03.06.06, Autres actes thérapeutiques sur l'artère carotide extracrânienne",Autres actes thérapeutiques sur l'artère carotide extracrânienne
+"04.03.07.02, Dilatation intraluminale des artères vertébrale et basilaire",Dilatation intraluminale des artères vertébrale et basilaire
+"04.03.07.05, Autres actes thérapeutiques sur l'artère vertébrale",Autres actes thérapeutiques sur l'artère vertébrale
+"04.03.08.01, Inversion du flux d'un anévrisme artériel intracrânien",Inversion du flux d'un anévrisme artériel intracrânien
+"04.03.08.02, Dilatation intraluminale d'artère intracrânienne",Dilatation intraluminale d'artère intracrânienne
+"04.03.08.03, Désobstruction d'artère intracrânienne",Désobstruction d'artère intracrânienne
+"04.03.08.04, Embolisation distale de l'artère carotide interne",Embolisation distale de l'artère carotide interne
+"04.03.08.05, Occlusion et exclusion d'anévrisme artériel intracrânien",Occlusion et exclusion d'anévrisme artériel intracrânien
+"04.03.09.02, Dilatation intraluminale et pose de prothèse d'artère du membre supérieur",Dilatation intraluminale et pose de prothèse d'artère du membre supérieur
+"04.03.09.03, Désobstruction d'artère du membre supérieur",Désobstruction d'artère du membre supérieur
+"04.03.09.05, Résection-anastomose d'artère du membre supérieur",Résection-anastomose d'artère du membre supérieur
+"04.03.09.07, Occlusion d'artère du membre supérieur",Occlusion d'artère du membre supérieur
+"04.03.09.08, Chimiothérapie anticancéreuse intraartérielle au membre supérieur",Chimiothérapie anticancéreuse intraartérielle au membre supérieur
+"04.03.10, Autres actes thérapeutiques sur les troncs supraaortiques",Autres actes thérapeutiques sur les troncs supraaortiques
+"04.03.11.02, Dilatation intraluminale de l'aorte abdominale et des artères iliaque commune et iliaque externe",Dilatation intraluminale de l'aorte abdominale et des artères iliaque commune et iliaque externe
+"04.03.11.03, Désobstruction de l'aorte abdominale et des artères iliaque commune et iliaque externe",Désobstruction de l'aorte abdominale et des artères iliaque commune et iliaque externe
+"04.03.11.06, Résection-anastomose et remplacement de l'aorte abdominale et de l'artère iliaque commune",Résection-anastomose et remplacement de l'aorte abdominale et de l'artère iliaque commune
+"04.03.11.08, Pose d'endoprothèse dans l'aorte abdominale et l'artère iliaque commune",Pose d'endoprothèse dans l'aorte abdominale et l'artère iliaque commune
+"04.03.11.10, Autres actes thérapeutiques sur l'aorte abdominale et les artères iliaque commune et iliaque externe",Autres actes thérapeutiques sur l'aorte abdominale et les artères iliaque commune et iliaque externe
+"04.03.12.02, Dilatation intraluminale des artères digestives",Dilatation intraluminale des artères digestives
+"04.03.12.03, Désobstruction des artères digestives",Désobstruction des artères digestives
+"04.03.12.05, Pose d'endoprothèse couverte dans les artères digestives",Pose d'endoprothèse couverte dans les artères digestives
+"04.03.12.06, Occlusion des artères digestives",Occlusion des artères digestives
+"04.03.12.07, Chimiothérapie anticancéreuse intraartérielle hépatique",Chimiothérapie anticancéreuse intraartérielle hépatique
+"04.03.12.08, Autres actes thérapeutiques sur les artères digestives",Autres actes thérapeutiques sur les artères digestives
+"04.03.13.02, Dilatation intraluminale de l'artère rénale",Dilatation intraluminale de l'artère rénale
+"04.03.13.03, Désobstruction de l'artère rénale",Désobstruction de l'artère rénale
+"04.03.13.05, Occlusion de l'artère rénale",Occlusion de l'artère rénale
+"04.03.13.06, Chimiothérapie anticancéreuse intraartérielle rénale",Chimiothérapie anticancéreuse intraartérielle rénale
+"04.03.13.07, Autres actes thérapeutiques sur l'artère rénale",Autres actes thérapeutiques sur l'artère rénale
+"04.03.14.01, Dilatation intraluminale de l'artère iliaque interne",Dilatation intraluminale de l'artère iliaque interne
+"04.03.14.02, Désobstruction de l'artère iliaque interne",Désobstruction de l'artère iliaque interne
+"04.03.14.03, Occlusion de l'artère iliaque interne",Occlusion de l'artère iliaque interne
+"04.03.14.05, Autres actes thérapeutiques sur l'artère iliaque interne ou sur ses branches",Autres actes thérapeutiques sur l'artère iliaque interne ou sur ses branches
+"04.03.15.02, Dilatation intraluminale et pose de prothèse d'artère du membre inférieur",Dilatation intraluminale et pose de prothèse d'artère du membre inférieur
+"04.03.15.03, Désobstruction d'artère du membre inférieur",Désobstruction d'artère du membre inférieur
+"04.03.15.06, Occlusion d'artère du membre inférieur",Occlusion d'artère du membre inférieur
+"04.03.15.07, Chimiothérapie anticancéreuse intraartérielle au membre inférieur",Chimiothérapie anticancéreuse intraartérielle au membre inférieur
+"04.03.15.08, Autres actes thérapeutiques sur les artères du membre inférieur",Autres actes thérapeutiques sur les artères du membre inférieur
+"04.03.16.01, Dilatation intraluminale de pontage artériel des membres",Dilatation intraluminale de pontage artériel des membres
+"04.03.16.02, Désobstruction de pontage artériel des membres",Désobstruction de pontage artériel des membres
+"04.03.16.03, Autres actes thérapeutiques sur les artères",Autres actes thérapeutiques sur les artères
+"04.04.01.02, Dilatation intraluminale de veine cervicocéphalique et de veine du membre supérieur",Dilatation intraluminale de veine cervicocéphalique et de veine du membre supérieur
+"04.04.01.03, Désobstruction de veine cervicocéphalique et de veine du membre supérieur",Désobstruction de veine cervicocéphalique et de veine du membre supérieur
+"04.04.01.04, Occlusion et exérèse de veine cervicocéphalique et de veine du membre supérieur",Occlusion et exérèse de veine cervicocéphalique et de veine du membre supérieur
+"04.04.02.01, Dilatation intraluminale de la veine cave supérieure",Dilatation intraluminale de la veine cave supérieure
+"04.04.02.02, Désobstruction de la veine cave supérieure",Désobstruction de la veine cave supérieure
+"04.04.03.02, Dilatation intraluminale de veine du membre inférieur",Dilatation intraluminale de veine du membre inférieur
+"04.04.03.03, Désobstruction de veine du membre inférieur",Désobstruction de veine du membre inférieur
+"04.04.03.05, Autres restaurations de veine du membre inférieur",Autres restaurations de veine du membre inférieur
+"04.04.03.06, Exérèse des veines saphènes",Exérèse des veines saphènes
+"04.04.03.07, Autres exérèses de veine du membre inférieur",Autres exérèses de veine du membre inférieur
+"04.04.03.08, Occlusion de veine du membre inférieur",Occlusion de veine du membre inférieur
+"04.04.04.02, Dilatation intraluminale de la veine cave inférieure",Dilatation intraluminale de la veine cave inférieure
+"04.04.04.03, Désobstruction de la veine cave inférieure",Désobstruction de la veine cave inférieure
+"04.04.04.04, Résection de la veine cave inférieure",Résection de la veine cave inférieure
+"04.04.04.05, Occlusion de la veine cave inférieure",Occlusion de la veine cave inférieure
+"04.04.04.06, Ablation de filtre de la veine cave inférieure",Ablation de filtre de la veine cave inférieure
+"04.04.05.02, Résection et ligature de veine génitale",Résection et ligature de veine génitale
+"04.04.05.03, Embolisation de veine génitale",Embolisation de veine génitale
+"04.04.06.01, Dilatation intraluminale de la veine rénale",Dilatation intraluminale de la veine rénale
+"04.04.06.02, Reperméation de veine rénale",Reperméation de veine rénale
+"04.04.07.01, Hémorroïdectomie",Hémorroïdectomie
+"04.04.07.02, Autres traitements des hémorroïdes",Autres traitements des hémorroïdes
+"04.04.08.02, Dilatation intraluminale de la veine porte",Dilatation intraluminale de la veine porte
+"04.04.08.03, Désobstruction de la veine porte",Désobstruction de la veine porte
+"04.04.08.04, Dérivation portale",Dérivation portale
+"04.04.08.05, Hémostase de varices oesogastriques",Hémostase de varices oesogastriques
+"04.04.09, Accès vasculaire veineux",Accès vasculaire veineux
+"04.04.10.02, Désobstruction de veine",Désobstruction de veine
+"04.04.10.03, Exérèse de malformation veineuse",Exérèse de malformation veineuse
+"04.04.10.05, Autres actes thérapeutiques sur les veines",Autres actes thérapeutiques sur les veines
+"04.05.01, Actes thérapeutiques sur les vaisseaux du cou et les vaisseaux extracrâniens de la tête",Actes thérapeutiques sur les vaisseaux du cou et les vaisseaux extracrâniens de la tête
+"04.05.02.01, Exérèse de malformation vasculaire intracrânienne",Exérèse de malformation vasculaire intracrânienne
+"04.05.02.02, Exérèse de chémodectome tympanojugulaire",Exérèse de chémodectome tympanojugulaire
+"04.05.02.03, Embolisation et occlusion intraluminale de vaisseau intracrânien",Embolisation et occlusion intraluminale de vaisseau intracrânien
+"04.05.04.02, Embolisation de vaisseau pulmonaire",Embolisation de vaisseau pulmonaire
+"04.05.04.03, Exérèse de tumeur des vaisseaux pulmonaires",Exérèse de tumeur des vaisseaux pulmonaires
+"04.05.05, Actes thérapeutiques sur les vaisseaux de la colonne vertébrale et de son contenu",Actes thérapeutiques sur les vaisseaux de la colonne vertébrale et de son contenu
+"04.05.08.01, Pose de cathéter vasculaire pour circulation extracorporelle",Pose de cathéter vasculaire pour circulation extracorporelle
+"04.05.08.03, Dilatation intraluminale d'un accès vasculaire artérioveineux",Dilatation intraluminale d'un accès vasculaire artérioveineux
+"04.05.08.04, Désobstruction d'un accès vasculaire artérioveineux",Désobstruction d'un accès vasculaire artérioveineux
+"04.05.08.06, Exérèse d'un accès vasculaire artérioveineux",Exérèse d'un accès vasculaire artérioveineux
+"04.05.09, Autres actes thérapeutiques sur les vaisseaux",Autres actes thérapeutiques sur les vaisseaux
+"04.06.01.01, Actes thérapeutiques sur les cloisons du coeur, à l'étage atrial","Actes thérapeutiques sur les cloisons du coeur, à l'étage atrial"
+"04.06.01.02, Actes thérapeutiques sur les cloisons du coeur, à l'étage ventriculaire","Actes thérapeutiques sur les cloisons du coeur, à l'étage ventriculaire"
+"04.06.02, Correction des malformations congénitales des valves et des parois du coeur",Correction des malformations congénitales des valves et des parois du coeur
+"04.06.05, Correction des malformations congénitales de l'aorte",Correction des malformations congénitales de l'aorte
+"04.06.06, Interruption du conduit [canal] artériel",Interruption du conduit [canal] artériel
+"04.07.01, Suppléance hémodynamique non mécanique",Suppléance hémodynamique non mécanique
+"04.07.02.01, Contrepulsion diastolique intraaortique [Pose de ballon intraaortique]",Contrepulsion diastolique intraaortique [Pose de ballon intraaortique]
+"04.07.02.02, Circulation extracorporelle [CEC] pour assistance circulatoire",Circulation extracorporelle [CEC] pour assistance circulatoire
+"05.01.06.03, Prélèvement de sang",Prélèvement de sang
+"05.01.07, Exploration chirurgicale des systèmes immunitaire et hématopoïétique",Exploration chirurgicale des systèmes immunitaire et hématopoïétique
+"05.02.01.01, Actes thérapeutiques sur les tonsilles pharyngiennes [végétations adénoïdes]",Actes thérapeutiques sur les tonsilles pharyngiennes [végétations adénoïdes]
+"05.02.01.02, Actes thérapeutiques sur les tonsilles palatines [amygdales pharyngiennes]",Actes thérapeutiques sur les tonsilles palatines [amygdales pharyngiennes]
+"05.02.01.03, Actes thérapeutiques sur le thymus",Actes thérapeutiques sur le thymus
+"05.02.02.02, Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques de la tête et du cou",Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques de la tête et du cou
+"05.02.02.03, Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques du thorax",Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques du thorax
+"05.02.02.04, Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques de l'abdomen",Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques de l'abdomen
+"05.02.02.05, Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques des membres",Actes thérapeutiques sur les vaisseaux et noeuds [ganglions] lymphatiques des membres
+"05.02.02.06, Autres actes thérapeutiques sur les vaisseaux et les noeuds lymphatiques",Autres actes thérapeutiques sur les vaisseaux et les noeuds lymphatiques
+"05.03.01.02, Splénectomie",Splénectomie
+"05.03.02.01, Actes thérapeutiques sur la moelle osseuse",Actes thérapeutiques sur la moelle osseuse
+"05.03.02.02, Actes thérapeutiques sur le sang",Actes thérapeutiques sur le sang
+"06.01.07.04, Explorations fonctionnelles de la respiration",Explorations fonctionnelles de la respiration
+"06.02.01.02, Exérèse de lésion du nez",Exérèse de lésion du nez
+"06.02.02.01, Exérèse et destruction de lésion de la cavité nasale",Exérèse et destruction de lésion de la cavité nasale
+"06.02.03.02, Actes thérapeutiques sur le sinus ethmoïdal",Actes thérapeutiques sur le sinus ethmoïdal
+"06.02.03.03, Actes thérapeutiques sur le sinus sphénoïdal",Actes thérapeutiques sur le sinus sphénoïdal
+"06.02.03.04, Actes thérapeutiques sur le sinus frontal",Actes thérapeutiques sur le sinus frontal
+"06.02.04.01, Exérèse de lésion du rhinopharynx [partie nasale du pharynx] [cavum] [épipharynx] [arrière-cavité des fosses nasales]",Exérèse de lésion du rhinopharynx [partie nasale du pharynx] [cavum] [épipharynx] [arrière-cavité des fosses nasales]
+"06.02.05.01, Désobstruction et destruction de lésion du larynx",Désobstruction et destruction de lésion du larynx
+"06.02.05.02, Exérèse partielle du larynx",Exérèse partielle du larynx
+"06.02.05.03, Résection du larynx",Résection du larynx
+"06.02.06.02, Trachéotomie",Trachéotomie
+"06.02.06.07, Résection de l'arbre trachéobronchique",Résection de l'arbre trachéobronchique
+"06.03.01, Exérèse partielle non anatomique du poumon",Exérèse partielle non anatomique du poumon
+"06.03.02, Lobectomie pulmonaire",Lobectomie pulmonaire
+"06.03.03, Bilobectomie pulmonaire",Bilobectomie pulmonaire
+"06.03.04, Pneumonectomie",Pneumonectomie
+"06.03.05, Transplantation du poumon",Transplantation du poumon
+"06.03.08, Exérèse de la plèvre",Exérèse de la plèvre
+"06.03.10, Exérèse de malformation congénitale de l'appareil respiratoire",Exérèse de malformation congénitale de l'appareil respiratoire
+"06.03.12, Actes thérapeutiques sur le médiastin",Actes thérapeutiques sur le médiastin
+"06.04.01, Adaptation d'une ventilation non effractive",Adaptation d'une ventilation non effractive
+"06.04.02, Suppléance ventilatoire",Suppléance ventilatoire
+"07.02.01.02, Destruction et exérèse de lésion de lèvre",Destruction et exérèse de lésion de lèvre
+"07.02.01.04, Plastie de l'orifice buccal pour traitement palliatif de la paralysie faciale",Plastie de l'orifice buccal pour traitement palliatif de la paralysie faciale
+"07.02.02.05, Restauration des tissus durs de la dent",Restauration des tissus durs de la dent
+"07.02.02.06, Exérèse de la pulpe et du contenu canalaire de la dent",Exérèse de la pulpe et du contenu canalaire de la dent
+"07.02.02.12, Autres avulsions de dents ou racines",Autres avulsions de dents ou racines
+"07.02.05.02, Actes thérapeutiques sur le parodonte par soustraction",Actes thérapeutiques sur le parodonte par soustraction
+"07.02.06.04, Destruction et exérèse de lésion de la bouche et de l'oropharynx",Destruction et exérèse de lésion de la bouche et de l'oropharynx
+"07.02.06.05, Uvulectomie",Uvulectomie
+"07.02.06.06, Glossectomie et pelvectomie orale",Glossectomie et pelvectomie orale
+"07.02.07.05, Exérèse de glande salivaire",Exérèse de glande salivaire
+"07.02.08.05, Destruction et exérèse de lésion du pharynx",Destruction et exérèse de lésion du pharynx
+"07.02.08.06, Résection de sténose et de diverticule du pharynx",Résection de sténose et de diverticule du pharynx
+"07.02.08.07, Pharyngectomie et pharyngectomie élargie",Pharyngectomie et pharyngectomie élargie
+"07.03.01.08, Traitement du diverticule de l'oesophage",Traitement du diverticule de l'oesophage
+"07.03.01.09, Excision de tumeur de l'oesophage",Excision de tumeur de l'oesophage
+"07.03.01.10, OEsophagectomie sans thoracotomie",OEsophagectomie sans thoracotomie
+"07.03.01.11, OEsophagectomie par thoracotomie",OEsophagectomie par thoracotomie
+"07.03.01.14, Correction des malformations congénitales de l'oesophage",Correction des malformations congénitales de l'oesophage
+"07.03.02.09, Actes thérapeutiques sur l'estomac pour obésité",Actes thérapeutiques sur l'estomac pour obésité
+"07.03.02.11, Gastrectomie",Gastrectomie
+"07.03.02.12, Correction des malformations congénitales de l'estomac et du duodénum",Correction des malformations congénitales de l'estomac et du duodénum
+"07.03.02.13, Autres actes thérapeutiques sur l'estomac et le duodénum",Autres actes thérapeutiques sur l'estomac et le duodénum
+"07.03.03.02, Exérèse endoscopique de lésion de la partie haute du tube digestif",Exérèse endoscopique de lésion de la partie haute du tube digestif
+"07.03.04.02, Exérèse endoscopique de lésion de l'intestin grêle",Exérèse endoscopique de lésion de l'intestin grêle
+"07.03.04.09, Résection de l'intestin grêle",Résection de l'intestin grêle
+"07.03.04.10, Transplantation de l'intestin grêle",Transplantation de l'intestin grêle
+"07.03.04.11, Correction des malformations congénitales de l'intestin grêle",Correction des malformations congénitales de l'intestin grêle
+"07.03.05, Actes thérapeutiques sur l'appendice vermiforme [appendice]",Actes thérapeutiques sur l'appendice vermiforme [appendice]
+"07.03.06.04, Exérèse endoscopique de lésion du côlon",Exérèse endoscopique de lésion du côlon
+"07.03.06.10, Colectomie",Colectomie
+"07.03.06.12, Correction des malformations congénitales du côlon",Correction des malformations congénitales du côlon
+"07.03.07.01, Destruction et exérèse de lésion du rectum",Destruction et exérèse de lésion du rectum
+"07.03.07.05, Traitement de fistule du rectum",Traitement de fistule du rectum
+"07.03.07.06, Résection du rectum",Résection du rectum
+"07.03.07.07, Résection de prolapsus rectal et de rectocèle",Résection de prolapsus rectal et de rectocèle
+"07.03.07.08, Correction des malformations congénitales du rectum",Correction des malformations congénitales du rectum
+"07.03.08.06, Sphinctérotomie anale",Sphinctérotomie anale
+"07.03.08.07, Excision de fissure anale",Excision de fissure anale
+"07.03.08.08, Destruction et excision d'autre lésion de l'anus",Destruction et excision d'autre lésion de l'anus
+"07.04.10, Cholécystectomie",Cholécystectomie
+"07.04.11, Résection de la voie biliaire principale",Résection de la voie biliaire principale
+"07.04.13, Hépatectomie et résection hépatique",Hépatectomie et résection hépatique
+"07.04.14, Prélèvement et transplantation de foie",Prélèvement et transplantation de foie
+"07.05.07, Exérèse du pancréas",Exérèse du pancréas
+"07.05.08, Prélèvement et transplantation du pancréas",Prélèvement et transplantation du pancréas
+"07.06.08, Destruction et exérèse de lésion du péritoine",Destruction et exérèse de lésion du péritoine
+"07.06.09, Autres actes thérapeutiques sur le péritoine et les replis péritonéaux",Autres actes thérapeutiques sur le péritoine et les replis péritonéaux
+"07.07, SUPPLÉANCE NUTRITIONNELLE",SUPPLÉANCE NUTRITIONNELLE
+"08.01.05.01, Étude de la fonction rénale",Étude de la fonction rénale
+"08.01.05.02, Épreuves urodynamiques",Épreuves urodynamiques
+"08.01.05.04, Autres épreuves fonctionnelles de l'appareil urinaire et génital",Autres épreuves fonctionnelles de l'appareil urinaire et génital
+"08.01.07.03, Ponction, biopsie et prélèvement de l'appareil génital masculin","Ponction, biopsie et prélèvement de l'appareil génital masculin"
+"08.02.01.02, Résection partielle du rein",Résection partielle du rein
+"08.02.01.03, Néphrectomie totale",Néphrectomie totale
+"08.02.01.04, Néphrectomie totale élargie",Néphrectomie totale élargie
+"08.02.01.06, Prélèvement et transplantation de rein",Prélèvement et transplantation de rein
+"08.02.02.07, Ablation de calcul du rein",Ablation de calcul du rein
+"08.02.02.11, Destruction de lésion des voies urinaires supérieures",Destruction de lésion des voies urinaires supérieures
+"08.02.02.12, Exérèse de lésion de l'uretère",Exérèse de lésion de l'uretère
+"08.02.02.13, Résection-anastomose des voies urinaires supérieures",Résection-anastomose des voies urinaires supérieures
+"08.02.02.14, Urétérectomie totale",Urétérectomie totale
+"08.02.02.16, Dilatation de l'uretère",Dilatation de l'uretère
+"08.02.03.01, Pose de sonde et évacuation de la vessie",Pose de sonde et évacuation de la vessie
+"08.02.03.05, Destruction, résection et exérèse de lésion de la vessie","Destruction, résection et exérèse de lésion de la vessie"
+"08.02.03.06, Cystectomie partielle",Cystectomie partielle
+"08.02.03.07, Cystectomie totale",Cystectomie totale
+"08.02.03.11, Correction des malformations congénitales de la vessie",Correction des malformations congénitales de la vessie
+"08.02.04.08, Résection de lésion de l'urètre",Résection de lésion de l'urètre
+"08.02.04.09, Urétrectomie",Urétrectomie
+"08.02.04.14, Correction des malformations congénitales de l'urètre",Correction des malformations congénitales de l'urètre
+"08.03.01.01, Destruction de lésion de la prostate",Destruction de lésion de la prostate
+"08.03.01.03, Exérèse de la prostate et des vésicules séminales",Exérèse de la prostate et des vésicules séminales
+"08.03.01.04, Vésiculoprostatectomie",Vésiculoprostatectomie
+"08.03.02.01, Exérèse du testicule",Exérèse du testicule
+"08.03.02.02, Autres exérèses du contenu scrotal",Autres exérèses du contenu scrotal
+"08.03.02.09, Plastie de la tunique vaginale du testicule et du scrotum",Plastie de la tunique vaginale du testicule et du scrotum
+"08.03.02.11, Correction des anomalies de position du testicule",Correction des anomalies de position du testicule
+"08.03.03.01, Plastie du pénis",Plastie du pénis
+"08.03.03.03, Exérèse de lésion du pénis",Exérèse de lésion du pénis
+"08.04.01.03, Exérèse de l'ovaire",Exérèse de l'ovaire
+"08.04.01.04, Autres exérèses des annexes de l'utérus",Autres exérèses des annexes de l'utérus
+"08.04.02, Actes thérapeutiques sur le paramètre",Actes thérapeutiques sur le paramètre
+"08.04.03.01, Destruction et exérèse de lésion du corps de l'utérus",Destruction et exérèse de lésion du corps de l'utérus
+"08.04.03.03, Exérèse de lésion du col de l'utérus",Exérèse de lésion du col de l'utérus
+"08.04.03.04, Hystérectomie subtotale",Hystérectomie subtotale
+"08.04.03.05, Hystérectomie totale",Hystérectomie totale
+"08.04.03.06, Hystérectomie totale élargie aux paramètres",Hystérectomie totale élargie aux paramètres
+"08.04.04.02, Destruction et exérèse de lésion du vagin",Destruction et exérèse de lésion du vagin
+"08.04.04.05, Correction des malformations congénitales du vagin",Correction des malformations congénitales du vagin
+"08.04.05.02, Exérèse de lésion de la vulve et du périnée",Exérèse de lésion de la vulve et du périnée
+"08.04.05.03, Vulvectomie",Vulvectomie
+"08.05, ACTES THÉRAPEUTIQUES SUR LE PÉRINÉE MASCULIN ET FÉMININ",ACTES THÉRAPEUTIQUES SUR LE PÉRINÉE MASCULIN ET FÉMININ
+"08.06.01.02, Exérèse de lésion de l'espace rétropéritonéal",Exérèse de lésion de l'espace rétropéritonéal
+"08.06.02.01, Exérèse de lésion endométriosique profonde de l'espace pelvien",Exérèse de lésion endométriosique profonde de l'espace pelvien
+"08.06.02.02, Exérèse d'autre lésion de l'espace pelvien",Exérèse d'autre lésion de l'espace pelvien
+"08.06.02.03, Pelvectomie",Pelvectomie
+"08.08, ÉPURATION EXTRARÉNALE",ÉPURATION EXTRARÉNALE
+"09.01.06, Ponction, biopsie et prélèvement sur le foetus et l'utérus gravide","Ponction, biopsie et prélèvement sur le foetus et l'utérus gravide"
+"09.02, ASSISTANCE MÉDICALE À LA PROCRÉATION",ASSISTANCE MÉDICALE À LA PROCRÉATION
+"09.03.01, Actes liés à une grossesse se terminant par un avortement",Actes liés à une grossesse se terminant par un avortement
+"09.03.04.02, Actes thérapeutiques pour hémorragie du post-partum",Actes thérapeutiques pour hémorragie du post-partum
+"09.04, ACTES THÉRAPEUTIQUES CHEZ LE FOETUS",ACTES THÉRAPEUTIQUES CHEZ LE FOETUS
+"09.05, ACTES THÉRAPEUTIQUES CHEZ LE NOUVEAU-NÉ À LA NAISSANCE",ACTES THÉRAPEUTIQUES CHEZ LE NOUVEAU-NÉ À LA NAISSANCE
+"10.02.01, Actes thérapeutiques sur l'hypophyse",Actes thérapeutiques sur l'hypophyse
+"10.02.02, Actes thérapeutiques sur le corps pinéal [l'épiphyse]",Actes thérapeutiques sur le corps pinéal [l'épiphyse]
+"10.02.03.02, Exérèse de la glande thyroïde",Exérèse de la glande thyroïde
+"10.02.04.02, Parathyroïdectomie",Parathyroïdectomie
+"10.02.05, Actes thérapeutiques sur les glandes surrénales",Actes thérapeutiques sur les glandes surrénales
+"10.02.06, Actes thérapeutiques sur les tumeurs endocriniennes intraabdominales ectopiques",Actes thérapeutiques sur les tumeurs endocriniennes intraabdominales ectopiques
+"11.02.01.02, Craniectomie",Craniectomie
+"11.02.02.02, Résection osseuse de la base du crâne",Résection osseuse de la base du crâne
+"11.02.03.07, Maxillectomie",Maxillectomie
+"11.02.03.08, Autres résections osseuses de l'étage moyen de la face",Autres résections osseuses de l'étage moyen de la face
+"11.02.04.05, Résection osseuse de la mandibule",Résection osseuse de la mandibule
+"11.02.05.06, Autres actes thérapeutiques sur le squelette du crâne et de la face",Autres actes thérapeutiques sur le squelette du crâne et de la face
+"11.03.03, Résection de l'articulation temporomandibulaire",Résection de l'articulation temporomandibulaire
+"11.03.05, Actes thérapeutiques sur le disque de l'articulation temporomandibulaire",Actes thérapeutiques sur le disque de l'articulation temporomandibulaire
+"11.03.06, Résection de bloc d'ankylose temporomandibulaire",Résection de bloc d'ankylose temporomandibulaire
+"11.04, ACTES THÉRAPEUTIQUES SUR LES MUSCLES DE LA TÊTE",ACTES THÉRAPEUTIQUES SUR LES MUSCLES DE LA TÊTE
+"12.02.01.08, Correction de déformation rigide de la colonne vertébrale",Correction de déformation rigide de la colonne vertébrale
+"12.02.01.11, Laminectomie vertébrale",Laminectomie vertébrale
+"12.02.01.12, Laminarthrectomie [Laminoarthrectomie] vertébrale",Laminarthrectomie [Laminoarthrectomie] vertébrale
+"12.02.01.14, Autres décompressions médullaires cervicales",Autres décompressions médullaires cervicales
+"12.02.01.15, Exérèse de l'arc postérieur et corporectomie vertébrale",Exérèse de l'arc postérieur et corporectomie vertébrale
+"12.02.01.16, Spondylectomie [Vertébrectomie]",Spondylectomie [Vertébrectomie]
+"12.02.01.18, Autres actes thérapeutiques sur les vertèbres",Autres actes thérapeutiques sur les vertèbres
+"12.02.02.02, Exérèse de hernie discale de la colonne vertébrale par abord postérieur",Exérèse de hernie discale de la colonne vertébrale par abord postérieur
+"12.02.02.03, Exérèse de hernie discale de la colonne vertébrale par abord antérieur",Exérèse de hernie discale de la colonne vertébrale par abord antérieur
+"12.03.05, Résection osseuse du thorax",Résection osseuse du thorax
+"12.04.02.01, Exérèse partielle du diaphragme",Exérèse partielle du diaphragme
+"12.04.03.01, Exérèse de lésion de la paroi abdominale antérieure",Exérèse de lésion de la paroi abdominale antérieure
+"13.02.01.04, Excision de la scapula",Excision de la scapula
+"13.02.02.04, Excision de la clavicule",Excision de la clavicule
+"13.02.03.04, Excision de l'humérus",Excision de l'humérus
+"13.02.04.04, Excision des os de l'avant-bras",Excision des os de l'avant-bras
+"13.02.05.03, Excision des os du carpe",Excision des os du carpe
+"13.02.06.04, Excision osseuse de la main",Excision osseuse de la main
+"13.02.07.02, Excision osseuse du membre supérieur",Excision osseuse du membre supérieur
+"13.03.02.08, Résection de l'articulation scapulohumérale",Résection de l'articulation scapulohumérale
+"13.03.02.11, Synovectomie de l'articulation scapulohumérale",Synovectomie de l'articulation scapulohumérale
+"13.03.02.13, Actes thérapeutiques sur le bourrelet glénoïdal scapulohuméral",Actes thérapeutiques sur le bourrelet glénoïdal scapulohuméral
+"13.03.03.08, Résection de l'articulation du coude",Résection de l'articulation du coude
+"13.03.03.11, Synovectomie de l'articulation du coude",Synovectomie de l'articulation du coude
+"13.03.04.07, Résection de l'articulation du poignet",Résection de l'articulation du poignet
+"13.03.04.10, Synovectomie articulaire du poignet",Synovectomie articulaire du poignet
+"13.03.05.08, Synovectomie articulaire de la main",Synovectomie articulaire de la main
+"13.04.01.04, Exérèse de corps étranger des tissus mous de la ceinture scapulaire et du bras",Exérèse de corps étranger des tissus mous de la ceinture scapulaire et du bras
+"13.04.01.05, Autres actes thérapeutiques sur les muscles et tissus mous de la ceinture scapulaire et du bras",Autres actes thérapeutiques sur les muscles et tissus mous de la ceinture scapulaire et du bras
+"13.04.02.03, Libération de tendon [Ténolyse] et ténosynovectomie à l'avant-bras et à la main",Libération de tendon [Ténolyse] et ténosynovectomie à l'avant-bras et à la main
+"13.04.03.01, Actes thérapeutiques pour infection de la main",Actes thérapeutiques pour infection de la main
+"13.04.03.05, Fasciotomie et fasciectomie palmaire",Fasciotomie et fasciectomie palmaire
+"13.04.03.08, Correction des malformations congénitales de la main",Correction des malformations congénitales de la main
+"13.05.03, Amputation et désarticulation au membre supérieur",Amputation et désarticulation au membre supérieur
+"14.02.01.04, Excision de l'os coxal",Excision de l'os coxal
+"14.02.02.04, Excision du fémur",Excision du fémur
+"14.02.03, Actes thérapeutiques sur la patelle [rotule]",Actes thérapeutiques sur la patelle [rotule]
+"14.02.04.04, Excision des os de la jambe",Excision des os de la jambe
+"14.02.05.03, Exérèse osseuse du tarse",Exérèse osseuse du tarse
+"14.02.07.02, Exérèse osseuse du pied",Exérèse osseuse du pied
+"14.03.01.03, Résection d'articulation de la ceinture pelvienne [du bassin]",Résection d'articulation de la ceinture pelvienne [du bassin]
+"14.03.02.08, Résection de l'articulation coxofémorale",Résection de l'articulation coxofémorale
+"14.03.02.11, Synovectomie de l'articulation coxofémorale",Synovectomie de l'articulation coxofémorale
+"14.03.03.10, Synovectomie de l'articulation du genou",Synovectomie de l'articulation du genou
+"14.03.03.12, Méniscectomie du genou",Méniscectomie du genou
+"14.03.04.09, Résection de l'articulation de la cheville",Résection de l'articulation de la cheville
+"14.03.05.05, Synovectomie des articulations du pied",Synovectomie des articulations du pied
+"14.04.01.03, Exérèse d'ossification des tissus mous de la hanche et de la cuisse",Exérèse d'ossification des tissus mous de la hanche et de la cuisse
+"14.04.02.05, Autres actes thérapeutiques sur les tissus mous au genou",Autres actes thérapeutiques sur les tissus mous au genou
+"14.04.03.03, Libération de tendon [Ténolyse], ténosynovectomie et peignage de tendon à la jambe et au pied","Libération de tendon [Ténolyse], ténosynovectomie et peignage de tendon à la jambe et au pied"
+"14.04.03.06, Exérèse de kyste synovial et de bourse séreuse à la jambe et au pied",Exérèse de kyste synovial et de bourse séreuse à la jambe et au pied
+"14.04.03.08, Autres actes thérapeutiques sur les tissus mous au pied",Autres actes thérapeutiques sur les tissus mous au pied
+"14.04.03.09, Correction des malformations congénitales du pied",Correction des malformations congénitales du pied
+"14.05.04, Amputation et désarticulation au membre inférieur",Amputation et désarticulation au membre inférieur
+"15.02.02, Prélèvement d'os, sans précision topographique","Prélèvement d'os, sans précision topographique"
+"15.02.06, Résection osseuse, sans précision topographique","Résection osseuse, sans précision topographique"
+"15.02.08, Autres actes thérapeutiques sur les os et les articulations, sans précision topographique","Autres actes thérapeutiques sur les os et les articulations, sans précision topographique"
+"16.03.02, Excision de lésion infectieuse diffuse de la peau et des tissus mous",Excision de lésion infectieuse diffuse de la peau et des tissus mous
+"16.03.07.01, Exérèse de lésion superficielle de la peau et du tissu cellulaire souscutané",Exérèse de lésion superficielle de la peau et du tissu cellulaire souscutané
+"16.03.07.02, Exérèse de lésion profonde de la peau et des tissus mous",Exérèse de lésion profonde de la peau et des tissus mous
+"16.03.13, Dermolipectomie",Dermolipectomie
+"16.03.15, Exérèse de lésion congénitale de la peau et des tissus mous de la face et du cou",Exérèse de lésion congénitale de la peau et des tissus mous de la face et du cou
+"16.03.16, Autres actes thérapeutiques sur les téguments",Autres actes thérapeutiques sur les téguments
+"16.04.02, Actes thérapeutiques sur les ongles",Actes thérapeutiques sur les ongles
+"16.05.04.01, Excision de brûlure, en dehors de l'extrémité céphalique et des mains","Excision de brûlure, en dehors de l'extrémité céphalique et des mains"
+"16.05.04.02, Excision de brûlure de l'extrémité céphalique et des mains",Excision de brûlure de l'extrémité céphalique et des mains
+"16.06.02, Exérèse partielle de la glande mammaire",Exérèse partielle de la glande mammaire
+"16.06.03, Mastectomie totale",Mastectomie totale
+"16.06.04, Mastectomie totale élargie",Mastectomie totale élargie
+"16.06.09, Actes thérapeutiques sur le mamelon",Actes thérapeutiques sur le mamelon
+"16.06.10, Actes thérapeutiques sur la plaque aréolomamelonnaire",Actes thérapeutiques sur la plaque aréolomamelonnaire
+"17.03.04, Administration d'agent pharmacologique anticancéreux",Administration d'agent pharmacologique anticancéreux
+"18.02.01.03, Autres gestes complémentaires sur le système nerveux",Autres gestes complémentaires sur le système nerveux
+"18.02.02, Gestes complémentaires sur l'oeil et ses annexes",Gestes complémentaires sur l'oeil et ses annexes
+"18.02.04.02, Autres gestes complémentaires diagnostiques sur l'appareil circulatoire",Autres gestes complémentaires diagnostiques sur l'appareil circulatoire
+"18.02.04.03, Prélèvement peropératoire d'autogreffe vasculaire",Prélèvement peropératoire d'autogreffe vasculaire
+"18.02.04.04, Assistance circulatoire peropératoire",Assistance circulatoire peropératoire
+"18.02.04.06, Occlusion et résection peropératoires de vaisseau",Occlusion et résection peropératoires de vaisseau
+"18.02.04.07, Autres gestes complémentaires thérapeutiques sur l'appareil circulatoire",Autres gestes complémentaires thérapeutiques sur l'appareil circulatoire
+"18.02.05, Gestes complémentaires sur les systèmes immunitaire et hématopoïétique",Gestes complémentaires sur les systèmes immunitaire et hématopoïétique
+"18.02.07.04, Exploration peropératoire de la cavité abdominale",Exploration peropératoire de la cavité abdominale
+"18.02.08, Gestes complémentaires sur l'appareil urinaire et génital",Gestes complémentaires sur l'appareil urinaire et génital
+"18.02.15, Gestes complémentaires sur l'appareil ostéoarticulaire et musculaire, sans précision topographique","Gestes complémentaires sur l'appareil ostéoarticulaire et musculaire, sans précision topographique"
+"18.02.16, Gestes complémentaires sur le système tégumentaire",Gestes complémentaires sur le système tégumentaire
