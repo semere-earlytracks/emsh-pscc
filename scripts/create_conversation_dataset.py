@@ -85,7 +85,7 @@ def create_conversation_dataset(examples: List[Dict[str, Any]], system_message: 
             {"role": "user", "content": input_text},
             {"role": "assistant", "content": output_str}
         ]
-        dataset.append({"conversation": conversation})
+        dataset.append({"conversations": conversation})
     return dataset
 
 
