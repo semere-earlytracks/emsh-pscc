@@ -416,7 +416,12 @@ def replace_values_in_json(
                     # Replace with mapped label if available
                     stripped_value = value.strip()
                     if stripped_value in field_mappings[key]:
-                        obj[key] = field_mappings[key][stripped_value]
+                        mapped_label = field_mappings[key][stripped_value]
+                        # Strip code before comma (e.g., "C34.9, Lung" -> "Lung")
+                        if ',' in mapped_label:
+                            obj[key] = mapped_label.split(',', 1)[1].strip()
+                        else:
+                            obj[key] = mapped_label
                 else:
                     recurse(value)
         elif isinstance(obj, list):
