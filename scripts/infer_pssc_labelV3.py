@@ -220,7 +220,7 @@ def create_string_to_label_mappings(
     field_to_type: Dict[str, str],
     inferencer: BatchInferencer,
     cache_dir: Path,
-    map_threshold: float = 0.85
+    map_thresholds: Dict[str, float]
 ):
     """Create and save string-to-label mappings for each field type.
     
@@ -229,7 +229,7 @@ def create_string_to_label_mappings(
         field_to_type: Mapping of field names to embedding types
         inferencer: BatchInferencer instance
         cache_dir: Directory to save mapping files
-        map_threshold: Minimum similarity score threshold (below this maps to "other")
+        map_thresholds: Dictionary mapping embedding types to thresholds (below threshold maps to "other")
     """
     cache_dir.mkdir(parents=True, exist_ok=True)
     
@@ -240,14 +240,18 @@ def create_string_to_label_mappings(
         type_to_strings[embedding_type].update(strings)
     
     print("\nCreating string-to-label mappings...")
-    print(f"Mapping threshold: {map_threshold} (below this → 'other')")
+    print("Mapping thresholds by type:")
+    for emb_type in sorted(type_to_strings.keys()):
+        threshold = map_thresholds.get(emb_type, 0.85)
+        print(f"  {emb_type}: {threshold}")
     
     # Process each embedding type
     for embedding_type, strings in type_to_strings.items():
         if not strings:
             continue
         
-        print(f"\nProcessing {embedding_type}: {len(strings)} unique strings")
+        threshold = map_thresholds.get(embedding_type, 0.85)
+        print(f"\nProcessing {embedding_type}: {len(strings)} unique strings (threshold={threshold})")
         
         # Convert set to sorted list for consistency
         string_list = sorted(strings)
@@ -259,7 +263,7 @@ def create_string_to_label_mappings(
         mapping = {}
         below_threshold_count = 0
         for string, label, score in zip(string_list, labels, scores):
-            if score < map_threshold:
+            if score < threshold:
                 mapping[string] = "other"
                 below_threshold_count += 1
             else:
@@ -314,7 +318,7 @@ def find_and_process_new_strings(
     type_mappings: Dict[str, Dict[str, str]],
     inferencer: BatchInferencer,
     cache_dir: Path,
-    map_threshold: float = 0.85
+    map_thresholds: Dict[str, float]
 ) -> Dict[str, Dict[str, str]]:
     """Find strings not in existing mappings and compute their labels.
     
@@ -325,7 +329,7 @@ def find_and_process_new_strings(
         type_mappings: Existing type-to-mapping dictionaries
         inferencer: BatchInferencer instance
         cache_dir: Directory to update mapping files
-        map_threshold: Minimum similarity score threshold (below this maps to "other")
+        map_thresholds: Dictionary mapping embedding types to thresholds (below threshold maps to "other")
         
     Returns:
         Updated type_mappings with new strings added
@@ -357,7 +361,8 @@ def find_and_process_new_strings(
     # Process each embedding type with new strings
     updated_type_mappings = type_mappings.copy()
     for embedding_type, new_strings in type_to_new_strings.items():
-        print(f"\nProcessing new strings for {embedding_type}...")
+        threshold = map_thresholds.get(embedding_type, 0.85)
+        print(f"\nProcessing new strings for {embedding_type} (threshold={threshold})...")
         
         # Convert to sorted list
         string_list = sorted(new_strings)
@@ -369,7 +374,7 @@ def find_and_process_new_strings(
         new_mapping = {}
         below_threshold_count = 0
         for string, label, score in zip(string_list, labels, scores):
-            if score < map_threshold:
+            if score < threshold:
                 new_mapping[string] = "other"
                 below_threshold_count += 1
             else:
@@ -509,11 +514,39 @@ def main():
     )
     parser.add_argument(
         "--map_threshold",
-        type=float,
-        default=0.85,
-        help="Minimum similarity score threshold (default: 0.85). Values below this are mapped to 'other'"
+        type=str,
+        default=None,
+        help="JSON string or file path with thresholds per embedding type. "
+             "Example: '{\"topographycode_ext\": 0.85, \"morphologycode_ext\": 0.90}' "
+             "or path to JSON file. Default: 0.85 for all types"
     )
     args = parser.parse_args()
+    
+    # Parse map_threshold
+    map_thresholds = {}
+    if args.map_threshold:
+        # Check if it's a file path
+        threshold_path = Path(args.map_threshold)
+        if threshold_path.exists():
+            with threshold_path.open("r", encoding="utf-8") as fh:
+                map_thresholds = json.load(fh)
+        else:
+            # Try to parse as JSON string
+            try:
+                map_thresholds = json.loads(args.map_threshold)
+            except json.JSONDecodeError as e:
+                raise ValueError(
+                    f"--map_threshold must be valid JSON string or file path: {e}"
+                )
+    
+    # Ensure all keys are valid and values are floats
+    if map_thresholds:
+        for key, value in map_thresholds.items():
+            if not isinstance(value, (int, float)):
+                raise ValueError(
+                    f"Threshold for '{key}' must be a number, got {type(value).__name__}"
+                )
+            map_thresholds[key] = float(value)
     
     # Setup
     input_dir = Path(args.input_dir)
@@ -558,7 +591,7 @@ def main():
             FIELD_TO_EMBEDDING_TYPE,
             inferencer,
             cache_dir,
-            map_threshold=args.map_threshold
+            map_thresholds
         )
     else:
         print("Skipping Pass 1 (using existing mappings)")
@@ -578,7 +611,7 @@ def main():
         type_mappings,
         inferencer,
         cache_dir,
-        map_threshold=args.map_threshold
+        map_thresholds
     )
     
     # Recreate field mappings with updated type mappings
@@ -601,7 +634,7 @@ if __name__ == "__main__":
 
 
 '''
-# Full run (both passes)
+# Full run (both passes) with default threshold (0.85 for all types)
 python scripts/infer_pssc_labelV3.py \
     --model all-MiniLM-L6-v2 \
     --input_dir data/raw_annotations \
@@ -609,6 +642,20 @@ python scripts/infer_pssc_labelV3.py \
     --labels_dir data/pssc-labels \
     --cache_dir data/label_cache \
     --batch_size 128
+
+# With custom thresholds from JSON file
+python scripts/infer_pssc_labelV3.py \
+    --model all-MiniLM-L6-v2 \
+    --input_dir data/raw_annotations \
+    --output_dir data/processed_annotations \
+    --map_threshold data/threshold_config.json
+
+# With custom thresholds as JSON string
+python scripts/infer_pssc_labelV3.py \
+    --model all-MiniLM-L6-v2 \
+    --input_dir data/raw_annotations \
+    --output_dir data/processed_annotations \
+    --map_threshold '{"topographycode_ext": 0.90, "morphologycode_ext": 0.85}'
 
 # Skip Pass 1 (use existing mappings)
 python scripts/infer_pssc_labelV3.py \
