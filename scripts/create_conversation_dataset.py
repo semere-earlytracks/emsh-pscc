@@ -123,6 +123,7 @@ def main():
     
     examples = load_input_output_jsons(input_dir)
     dataset = create_conversation_dataset(examples, system_message)
+    save_dataset(dataset, output_file)
 
 
 if __name__ == "__main__":
