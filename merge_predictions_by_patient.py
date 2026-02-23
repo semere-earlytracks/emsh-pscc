@@ -303,6 +303,10 @@ def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) 
             print(f"Warning: failed to read {p}: {e}")
             continue
 
+        # If the JSON has a top-level "output" key, use its value as the document data (to handle wrapped outputs);
+        if "output" in data and isinstance(data["output"], dict):
+            data = data["output"]
+
         # Add document entry (copy of file JSON with documentid added)
         doc_entry = deepcopy(data)
         doc_entry["documentid"] = p.stem
