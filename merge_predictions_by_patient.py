@@ -289,6 +289,56 @@ def _apply_merge_to_lists(obj: Any) -> None:
             _apply_merge_to_lists(item)
 
 
+def _apply_biomarker_mapping(obj: Any) -> None:
+    """Recursively update biomarker value text using mutation/non-mutation fields.
+
+    For dicts containing `biomarkermutationstatus` (M),
+    `biomarkernonmutationstatus` (NM) and `biomarkervaluetxt` (TXT), set
+    `biomarkervaluetxt` to:
+        f"{M} / {NM} ({TXT})" if M != "Other"
+    otherwise:
+        f"{NM} ({TXT})"
+
+    If any piece is missing, it's skipped gracefully; TXT is omitted if empty.
+    The function mutates `obj` in-place.
+    """
+    if isinstance(obj, dict):
+        # If this dict looks like a biomarker entry, transform it
+        if "biomarkermutationstatus" in obj:
+            M = obj.get("biomarkermutationstatus")
+            NM = obj.get("biomarkernonmutationstatus")
+            TXT = obj.get("biomarkervaluetxt")
+            m_str = str(M).strip() if M is not None else ""
+            nm_str = str(NM).strip() if NM is not None else ""
+            txt_str = str(TXT).strip() if TXT is not None else ""
+
+            if m_str and m_str != "Other":
+                if nm_str:
+                    main = f"{m_str} / {nm_str}"
+                else:
+                    main = m_str
+            else:
+                main = nm_str
+
+            if main:
+                if txt_str:
+                    obj["biomarkervaluetxt"] = f"{main} ({txt_str})"
+                else:
+                    obj["biomarkervaluetxt"] = main
+                
+                if "biomarkermutationstatus" in obj:
+                    del obj["biomarkermutationstatus"]
+                if "biomarkernonmutationstatus" in obj:
+                    del obj["biomarkernonmutationstatus"]
+
+        # Recurse into children
+        for k, v in obj.items():
+            _apply_biomarker_mapping(v)
+    elif isinstance(obj, list):
+        for item in obj:
+            _apply_biomarker_mapping(item)
+
+
 def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) -> None:
     """Process one patient directory: append documents and build merged patient entry."""
     merged_patient: Dict[str, Any] = {"patientid": patient_dir.name}
@@ -325,6 +375,9 @@ def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) 
     # After concatenating lists, attempt to merge list entries by key+date
     # overlap and sort them by midpoint.
     _apply_merge_to_lists(merged_patient)
+
+    # Apply biomarker mapping to normalize biomarker text fields
+    _apply_biomarker_mapping(merged_patient)
 
     patients_out.append(merged_patient)
 
