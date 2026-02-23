@@ -208,6 +208,12 @@ def generate_annotation(
             messages=messages,
             temperature=TEMPERATURE,
             max_tokens=MAX_TOKENS,
+            #extra_body={
+            #    "guided_json": schema,
+            #    # optional: force backend for this request (if your server supports it)
+            #    "guided_decoding_backend": "xgrammar",
+            #},
+
             response_format={  # Force JSON output
                 "type": "json_schema", 
                 "json_schema": {"name": "DocumentSchema", "schema": schema},
