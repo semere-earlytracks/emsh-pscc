@@ -57,11 +57,17 @@ def load_input_output_jsons(input_dir: Path) -> List[Dict[str, Any]]:
             with open(json_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 # Accept both single dict or list of dicts
-                if isinstance(data, dict) and 'input' in data and 'output' in data:
+                if isinstance(data, dict) and 'input' in data and 'output' in data and data['output'] is not None:
+                    # Skip if output contains raw_output key
+                    if isinstance(data['output'], dict) and 'raw_output' in data['output']:
+                        continue
                     examples.append(data)
                 elif isinstance(data, list):
                     for item in data:
-                        if isinstance(item, dict) and 'input' in item and 'output' in item:
+                        if isinstance(item, dict) and 'input' in item and 'output' in item and item['output'] is not None:
+                            # Skip if output contains raw_output key
+                            if isinstance(item['output'], dict) and 'raw_output' in item['output']:
+                                continue
                             examples.append(item)
         except Exception as e:
             print(f"Error loading {json_file}: {e}")
@@ -75,6 +81,13 @@ def create_conversation_dataset(examples: List[Dict[str, Any]], system_message: 
     for ex in examples:
         input_text = ex['input']
         output_data = ex['output']
+        
+        # Skip if output is None or contains raw_output key
+        if output_data is None:
+            continue
+        if isinstance(output_data, dict) and 'raw_output' in output_data:
+            continue
+        
         # Convert output to JSON string if not already
         if isinstance(output_data, dict):
             output_str = json.dumps(output_data, ensure_ascii=False)
