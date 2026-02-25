@@ -339,6 +339,84 @@ def _apply_biomarker_mapping(obj: Any) -> None:
             _apply_biomarker_mapping(item)
 
 
+def _filter_metrics_and_molecules(obj: Any, parent_key: str | None = None) -> None:
+    """Recursively filter measurement lists and molecule lists at patient level.
+
+    - Measurements: for lists of dicts with `measuretype`, find the latest
+      entry per `measuretype` (by date range end if available) and remove
+      earlier entries that are exactly identical to that latest entry.
+    - Molecules: for lists related to `moleculecode`, keep at most one
+      mention of the same molecule per calendar year. The first occurrence
+      for a (molecule, year) pair is kept; later ones in the same year are
+      dropped.
+    The function mutates `obj` in-place.
+    """
+    if isinstance(obj, dict):
+        for k, v in list(obj.items()):
+            _filter_metrics_and_molecules(v, parent_key=k)
+        return
+
+    if isinstance(obj, list):
+        # Quick checks
+        if not obj:
+            return
+
+        # Detect measure lists: presence of 'measuretype' in any element
+        is_measure = any((isinstance(i, dict) and ("measuretype" in i)) for i in obj)
+        if is_measure:
+            # Single-pass streaming deduplication: remember last seen `measurevalue`
+            # per `measuretype` and skip items whose `measurevalue` equals the
+            # last seen value for that type. This keeps the most-recently
+            # encountered value up to this point (not a global latest).
+            last_seen: dict[str | None, str | None] = {}
+            new_list: list[Any] = []
+            for item in obj:
+                if isinstance(item, dict) and "measuretype" in item:
+                    mtype = item.get("measuretype")
+                    mtype_key = str(mtype).strip().lower() if mtype is not None else None
+                    mval = item.get("measurevalue") if isinstance(item, dict) else None
+                    val_str = str(mval).strip() if mval is not None else None
+
+                    if mtype_key in last_seen and last_seen[mtype_key] == val_str:
+                        # skip duplicate value for this measuretype
+                        continue
+
+                    # keep and record last seen value
+                    new_list.append(item)
+                    last_seen[mtype_key] = val_str
+                else:
+                    new_list.append(item)
+
+            obj[:] = new_list
+
+        # Detect molecule lists: parent key or element contains 'moleculecode'
+        is_molecule = any((isinstance(i, dict) and ("moleculecode" in i)) for i in obj)
+        if is_molecule:
+            seen: set[tuple[str, int | None]] = set()
+            new_list: list[Any] = []
+            for item in obj:
+                if isinstance(item, dict) and "moleculecode" in item:
+                    mol = item.get("moleculecode")
+                    mol_key = str(mol).strip().lower() if mol is not None else ""
+
+                    rng = _find_date_range(item)
+                    year = rng[1].year if rng is not None else None
+
+                    key = (mol_key, year)
+                    if key in seen:
+                        # drop duplicate mention for same drug/year
+                        continue
+                    seen.add(key)
+                    new_list.append(item)
+
+            obj[:] = new_list
+
+        # Recurse into remaining elements
+        for item in obj:
+            _filter_metrics_and_molecules(item, parent_key=None)
+
+
+
 def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) -> None:
     """Process one patient directory: append documents and build merged patient entry."""
     merged_patient: Dict[str, Any] = {"patientid": patient_dir.name}
@@ -378,6 +456,9 @@ def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) 
 
     # Apply biomarker mapping to normalize biomarker text fields
     _apply_biomarker_mapping(merged_patient)
+
+    # Apply patient-level filtering: measurements and molecule deduplication
+    _filter_metrics_and_molecules(merged_patient)
 
     patients_out.append(merged_patient)
 
