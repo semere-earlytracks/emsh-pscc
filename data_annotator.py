@@ -24,9 +24,9 @@ OUTPUT_DIR = Path("data/generated")
 VLLM_BASE_URL = os.getenv("VLLM_BASE_URL", "http://localhost:8000/v1")
 VLLM_API_KEY = os.getenv("VLLM_API_KEY", "EMPTY")
 MODEL_NAME = os.getenv("VLLM_MODEL_NAME", "ig1/medgemma-27b-text-it-FP8-Dynamic")
-MAX_WORKERS = int(os.getenv("MAX_WORKERS", "4"))
+MAX_WORKERS = int(os.getenv("MAX_WORKERS", "64"))
 TEMPERATURE = float(os.getenv("TEMPERATURE", "0.0"))
-MAX_TOKENS = int(os.getenv("MAX_TOKENS", "4096"))
+MAX_TOKENS = int(os.getenv("MAX_TOKENS", "8192"))
 NUM_SAMPLES = int(os.getenv("NUM_SAMPLES", "0"))  # 0 means process all files
 
 
@@ -372,7 +372,7 @@ def save_results(results: List[Dict[str, Any]], output_file: Path):
 
 def save_result_with_structure(result: Dict[str, Any], output_base_dir: Path, relative_path: str):
     """
-    Save a single result maintaining the directory structure with _predictions suffix.
+    Save a single result maintaining the directory structure.
     
     Args:
         result: Single annotation result
@@ -382,9 +382,8 @@ def save_result_with_structure(result: Dict[str, Any], output_base_dir: Path, re
     # Parse the relative path
     rel_path_obj = Path(relative_path)
     
-    # Add _predictions suffix to filename
-    output_filename = rel_path_obj.stem + "_predictions" + rel_path_obj.suffix
-    output_path = output_base_dir / rel_path_obj.parent / output_filename
+    # Use original filename
+    output_path = output_base_dir / rel_path_obj
     
     # Create directory structure
     output_path.parent.mkdir(parents=True, exist_ok=True)
