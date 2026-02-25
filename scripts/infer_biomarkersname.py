@@ -5,6 +5,8 @@ This script operates in two passes:
 1. Pass 1: Collect all unique strings from biomarkername fields across all JSON files,
    map them using exact string matching against biomarkername_ext.csv, and save mappings to disk.
 2. Pass 2: Read JSON files again and replace field values using the saved mappings.
+   Additionally, filters measuretype entries (Height in cms, Weight) by validating
+   measurevalue against regex-extracted values from contextsentence.
 
 Unlike the embedding-based approach, this uses exact string matching for biomarker names.
 
@@ -26,6 +28,167 @@ from typing import Dict, Any, Set, Optional
 from collections import defaultdict
 
 from tqdm import tqdm
+
+
+# Regex patterns for weight and height extraction
+WEIGHT_REGEX = re.compile(
+    r"""
+    (?ix)
+    \b
+    (?:
+        poids|pds|p\.?\s*d\.?\s*s\.?|pese|pèse|pesant|pesait
+    )?
+    \s*[:=]?\s*
+    (?P<value>
+        \d{1,3}
+        (?:[.,]\d{1,2})?
+        (?:\s*-\s*\d{1,3}(?:[.,]\d{1,2})?)?
+    )
+    \s*
+    (?P<unit>
+        kgs?|kilos?|kilogrammes?
+    )
+    \b
+    """,
+    flags=re.IGNORECASE | re.VERBOSE,
+)
+
+HEIGHT_REGEX = re.compile(
+    r"""
+    (?ix)                                   # i: ignorecase, x: verbose
+    \b
+    (?:
+        # =========================
+        # A) Contexted (safer): Taille / T: / Height ...
+        #    -> allows unitless cm like "Taille 160" or "T: 167"
+        # =========================
+        (?:
+            (?P<label>
+                taille|taill?e|height|t
+            )
+            \s*
+            (?:\(?\s*en\s*cm\s*\)?)?        # optional "(en cm)"
+            \s*[:=]?\s*
+        )
+        (?:
+            # A1) unitless cm (ONLY because we have the label)
+            (?P<cm_ctx>
+                (?:1[2-9]\d|2[0-2]\d)       # 120..229
+                (?:[.,]\d+)?                # allow 169.0
+            )
+            (?!\s*(?:kg|bpm|/|\d))          # reduce obvious non-heights
+            \b
+            |
+            # A2) explicit cm with unit
+            (?P<cm_ctx_unit>
+                (?:1[2-9]\d|2[0-2]\d)
+                (?:[.,]\d+)?
+            )
+            \s*(?:cm|cms|centim(?:e|è)tres?)\b
+            |
+            # A3) meters like 1,70 m or 1.74m or 1 74 m
+            (?:
+                (?P<m_ctx_int>[1lI])\s*
+                [.,]?\s*
+                (?P<m_ctx_dec>\d{1,2})
+                \s*(?:m|m[eè]tre|metre)s?
+                (?!\s*[2²])                 # avoid m2
+            )
+            |
+            # A4) meters like 1m61 / 1 m 61 / 1M6O / lm90
+            (?:
+                (?P<m_ctx2_int>[1lI])\s*
+                (?:m|M|m[eè]tre|metre)\s*
+                (?P<m_ctx2_cm>[0-9O]{2})
+                (?!\s*[2²])                 # avoid m2
+            )
+        )
+
+        |
+
+        # =========================
+        # B) No context label: only accept if unit is present
+        # =========================
+        (?:
+            # B1) explicit centimeters
+            (?P<cm>
+                (?:1[2-9]\d|2[0-2]\d)
+                (?:[.,]\d+)?
+            )
+            \s*(?:cm|cms|centim(?:e|è)tres?)\b
+            |
+            # B2) meters like 1,70 m / 1.74m / 1 74 m
+            (?:
+                (?P<m_int>[1lI])\s*
+                [.,]?\s*
+                (?P<m_dec>\d{1,2})
+                \s*(?:m|m[eè]tre|metre)s?
+                (?!\s*[2²])                 # avoid m2
+            )
+            |
+            # B3) meters like 1m61 / 1 m 61 / 1M6O / lm90
+            (?:
+                (?P<m2_int>[1lI])\s*
+                (?:m|M|m[eè]tre|metre)\s*
+                (?P<m2_cm>[0-9O]{2})
+                (?!\s*[2²])                 # avoid m2
+            )
+        )
+    )
+    """,
+    flags=re.IGNORECASE | re.VERBOSE,
+)
+
+
+def extract_weights(text: str):
+    """
+    Returns a list of weight values (floats) extracted from the text.
+    Keeps only plausible human weights (10..250 kg) to drop noise.
+    """
+    out = []
+    for m in WEIGHT_REGEX.finditer(text):
+        value_raw = m.group("value")
+        # Skip range values (e.g., "50-60")
+        if "-" in value_raw:
+            continue
+        # Normalize value: French comma -> dot
+        v = float(value_raw.replace(",", "."))
+        # Only keep plausible human weights
+        if 10 <= v <= 250:
+            out.append(v)
+    return out
+
+
+def extract_heights_cm(text: str):
+    """
+    Returns heights in centimeters as ints.
+    Keeps only plausible human heights (120..230 cm) to drop noise like temps, Hb, etc.
+    """
+    out = []
+    for m in HEIGHT_REGEX.finditer(text):
+        cm_val = None
+        if m.group("cm_ctx") or m.group("cm_ctx_unit"):
+            raw_num = (m.group("cm_ctx") or m.group("cm_ctx_unit")).replace(",", ".")
+            cm_val = int(round(float(raw_num)))
+        elif m.group("m_ctx_int") and m.group("m_ctx_dec"):
+            i = m.group("m_ctx_int").replace("l", "1").replace("I", "1")
+            cm_val = int(i) * 100 + int(m.group("m_ctx_dec"))
+        elif m.group("m_ctx2_int") and m.group("m_ctx2_cm"):
+            i = m.group("m_ctx2_int").replace("l", "1").replace("I", "1")
+            cm_part = m.group("m_ctx2_cm").replace("O", "0")
+            cm_val = int(i) * 100 + int(cm_part)
+        elif m.group("cm"):
+            cm_val = int(round(float(m.group("cm").replace(",", "."))))
+        elif m.group("m_int") and m.group("m_dec"):
+            i = m.group("m_int").replace("l", "1").replace("I", "1")
+            cm_val = int(i) * 100 + int(m.group("m_dec"))
+        elif m.group("m2_int") and m.group("m2_cm"):
+            i = m.group("m2_int").replace("l", "1").replace("I", "1")
+            cm_part = m.group("m2_cm").replace("O", "0")
+            cm_val = int(i) * 100 + int(cm_part)
+        if cm_val is not None and 120 <= cm_val <= 230:
+            out.append(cm_val)
+    return out
 
 
 def find_word_boundary_match(
@@ -323,6 +486,90 @@ def replace_biomarkername_values(data: Any, mapping: Dict[str, str]):
     recurse(data)
 
 
+def filter_measure_entries(data: Any):
+    """Recursively filter measuretype entries based on regex validation.
+    
+    For entries with measuretype "Height in cms" or "Weight", extracts values
+    from contextsentence using regex and validates against measurevalue.
+    Removes entries where measurevalue doesn't match extracted values (within 0.1 margin).
+    
+    Args:
+        data: JSON data (dict, list, or primitive) - modified in place
+    """
+    def should_keep_entry(entry: dict) -> bool:
+        """Check if a measurement entry should be kept based on regex validation."""
+        if not isinstance(entry, dict):
+            return True
+        
+        measuretype = entry.get("measuretype", "")
+        measurevalue = entry.get("measurevalue", "")
+        contextsentence = entry.get("contextsentence", "")
+        
+        # Only validate Height in cms and Weight
+        if measuretype not in ["Height in cms", "Weight"]:
+            return True
+        
+        if not contextsentence or not measurevalue:
+            return True  # Keep entries without context or value
+        
+        try:
+            if measuretype == "Height in cms":
+                # Extract heights from context
+                extracted_heights = extract_heights_cm(contextsentence)
+                if not extracted_heights:
+                    return False  # No heights found in context
+                
+                # Check if measurevalue matches any extracted height (with margin)
+                measure_val = float(measurevalue)
+                for height in extracted_heights:
+                    if abs(height - measure_val) <= 0.1:
+                        return True
+                return False
+            
+            elif measuretype == "Weight":
+                # Extract weights from context
+                extracted_weights = extract_weights(contextsentence)
+                if not extracted_weights:
+                    return False  # No weights found in context
+                
+                # Check if measurevalue matches any extracted weight (with margin)
+                measure_val = float(measurevalue)
+                for weight in extracted_weights:
+                    if isinstance(weight, (int, float)):
+                        if abs(weight - measure_val) <= 0.1:
+                            return True
+                return False
+        
+        except (ValueError, TypeError):
+            # If we can't parse measurevalue, keep the entry
+            return True
+        
+        return True
+    
+    def recurse(obj):
+        if isinstance(obj, dict):
+            for key, value in list(obj.items()):
+                if isinstance(value, list):
+                    # Filter list items that look like measurement entries
+                    filtered_list = []
+                    for item in value:
+                        if isinstance(item, dict) and "measuretype" in item:
+                            if should_keep_entry(item):
+                                recurse(item)
+                                filtered_list.append(item)
+                        else:
+                            recurse(item)
+                            filtered_list.append(item)
+                    obj[key] = filtered_list
+                else:
+                    recurse(value)
+        elif isinstance(obj, list):
+            for item in obj:
+                recurse(item)
+    
+    recurse(data)
+
+
 def process_all_files(
     input_dir: Path,
     output_dir: Path,
@@ -347,6 +594,9 @@ def process_all_files(
             
             # Replace values
             replace_biomarkername_values(data, mapping)
+            
+            # Filter measuretype entries based on regex validation
+            filter_measure_entries(data)
             
             # Compute output path (preserve directory structure)
             rel_path = json_path.relative_to(input_dir)
