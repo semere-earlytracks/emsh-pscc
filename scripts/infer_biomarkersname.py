@@ -8,6 +8,8 @@ This script operates in two passes:
    Additionally, filters measuretype entries (Height in cms, Weight) by validating
    measurevalue against regex-extracted values from contextsentence.
 
+Can also run with --no-biomarker-inference to skip biomarkername inference and only apply measure filtering.
+
 Unlike the embedding-based approach, this uses exact string matching for biomarker names.
 
 Usage example:
@@ -573,27 +575,29 @@ def filter_measure_entries(data: Any):
 def process_all_files(
     input_dir: Path,
     output_dir: Path,
-    mapping: Dict[str, str]
+    mapping: Optional[Dict[str, str]] = None
 ):
     """Pass 2: Process all JSON files and replace biomarkername values using mapping.
     
     Args:
         input_dir: Input directory containing JSON files
         output_dir: Output directory for processed files
-        mapping: Dictionary mapping strings to labels
+        mapping: Dictionary mapping strings to labels (optional)
     """
     json_files = sorted(input_dir.rglob("*.json"))
     
+    desc = "Processing files" if mapping is None else "Replacing biomarkername values"
     print(f"\\nPass 2: Processing {len(json_files)} JSON files...")
     
-    for json_path in tqdm(json_files, desc="Replacing biomarkername values"):
+    for json_path in tqdm(json_files, desc=desc):
         try:
             # Load JSON
             with json_path.open("r", encoding="utf-8") as fh:
                 data = json.load(fh)
             
-            # Replace values
-            replace_biomarkername_values(data, mapping)
+            # Replace values (only if mapping is provided)
+            if mapping is not None:
+                replace_biomarkername_values(data, mapping)
             
             # Filter measuretype entries based on regex validation
             filter_measure_entries(data)
@@ -646,6 +650,11 @@ def main():
         action="store_true",
         help="Use case-sensitive matching (default: case-insensitive)"
     )
+    parser.add_argument(
+        "--no-biomarker-inference",
+        action="store_true",
+        help="Skip biomarkername inference and only apply measure filtering"
+    )
     args = parser.parse_args()
     
     # Setup
@@ -656,6 +665,14 @@ def main():
     
     if not input_dir.exists():
         raise FileNotFoundError(f"Input directory not found: {input_dir}")
+    
+    # Skip biomarker inference if flag is set
+    if args.no_biomarker_inference:
+        print("Skipping biomarkername inference (--no-biomarker-inference flag set)")
+        print("Only applying measure filtering...")
+        process_all_files(input_dir, output_dir, mapping=None)
+        print(f"\nDone! Processed files written to {output_dir}")
+        return
     
     if not labels_csv.exists():
         raise FileNotFoundError(f"Labels CSV not found: {labels_csv}")
@@ -736,4 +753,10 @@ python scripts/infer_biomarkersname.py \
     --output_dir data/processed_annotations \
     --cache_dir data/label_cache \
     --skip_pass1
+
+# Skip biomarker inference (only apply measure filtering)
+python scripts/infer_biomarkersname.py \
+    --input_dir data/raw_annotations \
+    --output_dir data/processed_annotations \
+    --no-biomarker-inference
 '''
