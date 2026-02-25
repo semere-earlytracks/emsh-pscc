@@ -488,20 +488,20 @@ def main() -> None:
     print(f"Wrote merged output to {out_path}")
 
     # Also produce a version where all {"start","end"} ranges are replaced
-    # by their average date in dd/mm/YYYY format. If the averaged date is
+    # by their average date in yyyy-mm-dd ISO format. If the averaged date is
     # earlier than 01/01/1900, clamp to that date.
     def _average_date_str(start_iso: str, end_iso: str) -> str:
         try:
             s = date.fromisoformat(start_iso)
             e = date.fromisoformat(end_iso)
         except Exception:
-            return "01/01/1900"
+            return "1900-01-01"
         avg_ord = round((s.toordinal() + e.toordinal()) / 2.0)
         avg = date.fromordinal(int(avg_ord))
         min_date = date(1900, 1, 1)
         if avg < min_date:
             avg = min_date
-        return avg.strftime("%d/%m/%Y")
+        return avg.isoformat()
 
     def _convert_ranges_to_onedate(obj: Any) -> Any:
         # Returns a transformed copy of obj where any dict with 'start' and
