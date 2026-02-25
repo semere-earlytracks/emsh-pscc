@@ -31,6 +31,8 @@ FIELD_NAMES_TO_CHECK = {
     "morphologycode",
     "surgerytype",
     "moleculecode",
+    "radiotherapytype",
+    "imagingmodality",
 }
 
 
