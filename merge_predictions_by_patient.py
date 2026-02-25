@@ -368,14 +368,14 @@ def _filter_metrics_and_molecules(obj: Any, parent_key: str | None = None) -> No
             # per `measuretype` and skip items whose `measurevalue` equals the
             # last seen value for that type. This keeps the most-recently
             # encountered value up to this point (not a global latest).
-            last_seen: dict[str | None, str | None] = {}
+            last_seen: dict[str, str] = {}
             new_list: list[Any] = []
             for item in obj:
                 if isinstance(item, dict) and "measuretype" in item:
-                    mtype = item.get("measuretype")
-                    mtype_key = str(mtype).strip().lower() if mtype is not None else None
-                    mval = item.get("measurevalue") if isinstance(item, dict) else None
-                    val_str = str(mval).strip() if mval is not None else None
+                    mtype = item.get("measuretype", "")
+                    mtype_key = str(mtype).strip().lower()
+                    mval = item.get("measurevalue", "")
+                    val_str = str(mval).strip()
 
                     if mtype_key in last_seen and last_seen[mtype_key] == val_str:
                         # skip duplicate value for this measuretype
