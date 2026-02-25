@@ -3,5 +3,7 @@
   "topographycode_ext": 0.00,
   "morphologycode_ext": 0.00,
   "surgerytype_ext": 0.75,
-  "moleculescode_ext": 0.85
+  "moleculescode_ext": 0.85,
+  "imagingmodality_ext": 0.90,
+  "radiotherapytype_ext": 0.80
 }

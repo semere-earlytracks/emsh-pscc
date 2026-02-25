@@ -40,6 +40,8 @@ FIELD_TO_EMBEDDING_TYPE = {
     "morphologycode": "morphologycode_ext",
     "surgerytype": "surgerytype_ext",
     "moleculecode": "moleculescode_ext",
+    "imagingmodality": "imagingmodality_ext",
+    "radiotherapytype": "radiotherapytype_ext"
 }
 
 
