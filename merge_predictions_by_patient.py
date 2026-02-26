@@ -420,6 +420,9 @@ def _filter_metrics_and_molecules(obj: Any, parent_key: str | None = None) -> No
 def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) -> None:
     """Process one patient directory: append documents and build merged patient entry."""
     merged_patient: Dict[str, Any] = {"patientid": patient_dir.name}
+    
+    # Track starting index for documents from this patient
+    doc_start_idx = len(documents)
 
     for p in sorted(patient_dir.iterdir()):
         if not p.is_file() or p.suffix.lower() != ".json":
@@ -438,13 +441,6 @@ def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) 
         # Add document entry (copy of file JSON with documentid added)
         doc_entry = deepcopy(data)
         doc_entry["documentid"] = p.stem
-
-        # Apply biomarker mapping to normalize biomarker text fields
-        _apply_biomarker_mapping(doc_entry)
-
-        # Apply document-level filtering: measurements and molecule deduplication
-        _filter_metrics_and_molecules(doc_entry)
-
         documents.append(doc_entry)
 
         # Decide what to merge into patient:
@@ -468,6 +464,11 @@ def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) 
     _filter_metrics_and_molecules(merged_patient)
 
     patients_out.append(merged_patient)
+    
+    # Now apply document-level transformations to all documents from this patient
+    for i in range(doc_start_idx, len(documents)):
+        _apply_biomarker_mapping(documents[i])
+        _filter_metrics_and_molecules(documents[i])
 
 
 def main() -> None:
