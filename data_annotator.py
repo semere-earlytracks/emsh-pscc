@@ -18,17 +18,9 @@ from openai import OpenAI
 from pydantic_schema_with_ranges import Document
 
 
-# Configuration
+# Configuration - constants
 FEW_SHOT_DIR = Path("data/few-shot-examples")
 OUTPUT_DIR = Path("data/generated")
-VLLM_BASE_URL = os.getenv("VLLM_BASE_URL", "http://localhost:8000/v1")
-VLLM_API_KEY = os.getenv("VLLM_API_KEY", "EMPTY")
-VLLM_MODEL_NAME = os.getenv("VLLM_MODEL_NAME", "ig1/medgemma-27b-text-it-FP8-Dynamic")
-DISABLE_FEW_SHOT = os.getenv("DISABLE_FEW_SHOT", "false").lower() not in ("false", "0", "no")
-MAX_WORKERS = int(os.getenv("MAX_WORKERS", "64"))
-TEMPERATURE = float(os.getenv("TEMPERATURE", "0.0"))
-MAX_TOKENS = int(os.getenv("MAX_TOKENS", "8192"))
-NUM_SAMPLES = int(os.getenv("NUM_SAMPLES", "0"))  # 0 means process all files
 
 
 def load_few_shot_examples() -> List[Dict[str, Any]]:
@@ -179,6 +171,9 @@ def generate_annotation(
     text: str,
     history_messages: List[Dict[str, str]],
     schema: Any,
+    model_name: str,
+    temperature: float,
+    max_tokens: int,
     metadata: Dict[str, Any] = None
 ) -> Dict[str, Any]:
     """
@@ -189,6 +184,9 @@ def generate_annotation(
         text: Clinical text to annotate
         history_messages: Few-shot examples as message history
         schema: JSON schema for response formatting
+        model_name: Model name to use for generation
+        temperature: Sampling temperature
+        max_tokens: Maximum tokens per generation
         metadata: Optional metadata to include in the result
         
     Returns:
@@ -205,10 +203,10 @@ def generate_annotation(
         # Call vLLM via OpenAI-compatible API
         # Try to use JSON mode if available
         response = client.chat.completions.create(
-            model=VLLM_MODEL_NAME,
+            model=model_name,
             messages=messages,
-            temperature=TEMPERATURE,
-            max_tokens=MAX_TOKENS,
+            temperature=temperature,
+            max_tokens=max_tokens,
             #extra_body={
             #    "guided_json": schema,
             #    # optional: force backend for this request (if your server supports it)
@@ -253,7 +251,7 @@ def generate_annotation(
             "input": text,
             "output": parsed_document,
             "metadata": metadata or {},
-            "model": VLLM_MODEL_NAME,
+            "model": model_name,
             "finish_reason": response.choices[0].finish_reason,
         }
         
@@ -277,7 +275,12 @@ def process_texts_parallel(
     history_messages: List[Dict[str, str]],
     schema: Any,
     output_dir: Path,
-    max_workers: int = MAX_WORKERS
+    vllm_base_url: str,
+    vllm_api_key: str,
+    model_name: str,
+    temperature: float,
+    max_tokens: int,
+    max_workers: int = 64
 ) -> List[Dict[str, Any]]:
     """
     Process multiple texts in parallel using ThreadPoolExecutor.
@@ -288,6 +291,11 @@ def process_texts_parallel(
         history_messages: Few-shot examples as message history
         schema: JSON schema for response formatting
         output_dir: Output directory to save results
+        vllm_base_url: vLLM server URL
+        vllm_api_key: vLLM API key
+        model_name: Model name to use
+        temperature: Sampling temperature
+        max_tokens: Maximum tokens per generation
         max_workers: Maximum number of parallel workers
         
     Returns:
@@ -295,8 +303,8 @@ def process_texts_parallel(
     """
     # Initialize OpenAI client for vLLM
     client = OpenAI(
-        base_url=VLLM_BASE_URL,
-        api_key=VLLM_API_KEY,
+        base_url=vllm_base_url,
+        api_key=vllm_api_key,
     )
     
     results = []
@@ -311,6 +319,9 @@ def process_texts_parallel(
                 doc["text"],
                 history_messages,
                 schema,
+                model_name,
+                temperature,
+                max_tokens,
                 {"index": idx, "relative_path": doc["relative_path"]}
             ): (idx, doc)
             for idx, doc in enumerate(documents)
@@ -404,9 +415,26 @@ def main(input_directory: str = None, output_directory: str = None, num_samples:
         output_directory: Path to output directory for results
         num_samples: Number of files to randomly sample (None/0 = all files)
     """
+    # Read environment variables (these may be set by inference_end_to_end.py)
+    vllm_base_url = os.getenv("VLLM_BASE_URL", "http://localhost:8000/v1")
+    vllm_api_key = os.getenv("VLLM_API_KEY", "EMPTY")
+    model_name = os.getenv("VLLM_MODEL_NAME", "ig1/medgemma-27b-text-it-FP8-Dynamic")
+    disable_few_shot = os.getenv("DISABLE_FEW_SHOT", "false").lower() not in ("false", "0", "no")
+    max_workers = int(os.getenv("MAX_WORKERS", "64"))
+    temperature = float(os.getenv("TEMPERATURE", "0.0"))
+    max_tokens = int(os.getenv("MAX_TOKENS", "8192"))
+    num_samples_env = int(os.getenv("NUM_SAMPLES", "0"))  # 0 means process all files
+    
     print("=" * 60)
     print("Data Annotator - Clinical Text Extraction")
     print("=" * 60)
+    print(f"vLLM Config:")
+    print(f"  - Base URL: {vllm_base_url}")
+    print(f"  - Model: {model_name}")
+    print(f"  - Temperature: {temperature}")
+    print(f"  - Max Tokens: {max_tokens}")
+    print(f"  - Max Workers: {max_workers}")
+    print(f"  - Disable Few-Shot: {disable_few_shot}")
     
     # Get the JSON schema
     schema = get_document_schema()
@@ -420,7 +448,7 @@ def main(input_directory: str = None, output_directory: str = None, num_samples:
 
     # Load few-shot examples
     print("\n1. Loading few-shot examples...")
-    if not DISABLE_FEW_SHOT:
+    if not disable_few_shot:
         examples = load_few_shot_examples()        
         if not examples:
             print("   Error: No few-shot examples found. Exiting.")
@@ -440,7 +468,7 @@ def main(input_directory: str = None, output_directory: str = None, num_samples:
     print("\n3. Loading documents...")
     input_dir = Path(input_directory) if input_directory else Path("data/input")
     output_dir = Path(output_directory) if output_directory else Path("data/output")
-    n_samples = num_samples if num_samples is not None else NUM_SAMPLES
+    n_samples = num_samples if num_samples is not None else num_samples_env
     
     documents = load_documents_from_directory(input_dir, n_samples)
     
@@ -453,7 +481,18 @@ def main(input_directory: str = None, output_directory: str = None, num_samples:
     print(f"   Saving results to: {output_dir}")
     print(f"   Results will be saved as they are generated...\n")
     
-    results = process_texts_parallel(documents, history_messages, schema, output_dir)
+    results = process_texts_parallel(
+        documents, 
+        history_messages, 
+        schema, 
+        output_dir,
+        vllm_base_url,
+        vllm_api_key,
+        model_name,
+        temperature,
+        max_tokens,
+        max_workers
+    )
     
     print("\n" + "=" * 60)
     print(f"Processing complete!")
