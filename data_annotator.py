@@ -23,6 +23,29 @@ FEW_SHOT_DIR = Path("data/few-shot-examples")
 OUTPUT_DIR = Path("data/generated")
 
 
+def get_fallback_structure() -> Dict[str, Any]:
+    """
+    Return a safe fallback structure with empty arrays for all fields.
+    Used when vLLM call fails or produces invalid output.
+    
+    Returns:
+        Dictionary with all expected fields as empty arrays
+    """
+    return {
+        "personal_medical_history_comorbidities_and_adverse": [],
+        "primary_tumor": [],
+        "general_condition_and_physical_examination": [],
+        "surgery": [],
+        "cancer_medication": [],
+        "radiotherapy": [],
+        "progression": [],
+        "imaging_and_nuclear_medecine": [],
+        "biological_specimen": [],
+        "biomarkers_and_tumor_markers": [],
+        "tumor_events": [],
+    }
+
+
 def load_few_shot_examples() -> List[Dict[str, Any]]:
     """
     Load all few-shot examples from the few-shot-examples directory.
@@ -245,7 +268,8 @@ def generate_annotation(
             
         except json.JSONDecodeError as e:
             print(f"Warning: Failed to parse generated content as JSON: {e}")
-            parsed_document = {"raw_output": generated_content}
+            print(f"Using fallback structure instead.")
+            parsed_document = get_fallback_structure()
             validation_error = f"JSON decode error: {e}"
         
         result = {
@@ -263,11 +287,13 @@ def generate_annotation(
         
     except Exception as e:
         print(f"Error generating annotation: {e}")
+        print(f"Using fallback structure for this document.")
         return {
             "input": text,
-            "output": None,
+            "output": get_fallback_structure(),
             "error": str(e),
-            "metadata": metadata or {}
+            "metadata": metadata or {},
+            "model": model_name,
         }
 
 
