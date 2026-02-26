@@ -402,7 +402,8 @@ def find_and_process_new_strings(
 def replace_values_in_json(
     data: Any,
     field_names: Set[str],
-    field_mappings: Dict[str, Dict[str, str]]
+    field_mappings: Dict[str, Dict[str, str]],
+    keep_full_labels: bool = False
 ):
     """Recursively replace field values in JSON data using mappings.
     
@@ -410,6 +411,7 @@ def replace_values_in_json(
         data: JSON data (dict, list, or primitive) - modified in place
         field_names: Set of field names to replace
         field_mappings: Dictionary mapping field names to string-to-label mappings
+        keep_full_labels: If True, keep full labels (e.g., "C34.9, Lung"). If False, strip code (e.g., "Lung")
     """
     def recurse(obj):
         if isinstance(obj, dict):
@@ -419,8 +421,8 @@ def replace_values_in_json(
                     stripped_value = value.strip()
                     if stripped_value in field_mappings[key]:
                         mapped_label = field_mappings[key][stripped_value]
-                        # Strip code before comma (e.g., "C34.9, Lung" -> "Lung")
-                        if ',' in mapped_label:
+                        # Strip code before comma (e.g., "C34.9, Lung" -> "Lung") unless keep_full_labels is True
+                        if not keep_full_labels and ',' in mapped_label:
                             obj[key] = mapped_label.split(',', 1)[1].strip()
                         else:
                             obj[key] = mapped_label
@@ -437,7 +439,8 @@ def process_all_files_pass2(
     input_dir: Path,
     output_dir: Path,
     field_names: Set[str],
-    field_mappings: Dict[str, Dict[str, str]]
+    field_mappings: Dict[str, Dict[str, str]],
+    keep_full_labels: bool = False
 ):
     """Pass 2: Process all JSON files and replace field values using mappings.
     
@@ -446,6 +449,7 @@ def process_all_files_pass2(
         output_dir: Output directory for processed files
         field_names: Set of field names to replace
         field_mappings: Dictionary mapping field names to string-to-label mappings
+        keep_full_labels: If True, keep full labels including codes
     """
     json_files = sorted(input_dir.rglob("*.json"))
     
@@ -458,7 +462,7 @@ def process_all_files_pass2(
                 data = json.load(fh)
             
             # Replace values
-            replace_values_in_json(data, field_names, field_mappings)
+            replace_values_in_json(data, field_names, field_mappings, keep_full_labels)
             
             # Compute output path (preserve directory structure)
             rel_path = json_path.relative_to(input_dir)
@@ -526,6 +530,12 @@ def main():
         help="JSON string or file path with thresholds per embedding type. "
              "Example: '{\"topographycode_ext\": 0.85, \"morphologycode_ext\": 0.90}' "
              "or path to JSON file. Default: 0.85 for all types"
+    )
+    parser.add_argument(
+        "--strip_codes",
+        action="store_true",
+        help="Strip codes from labels (e.g., 'C34.9, Lung' -> 'Lung'). "
+             "Useful for training datasets. Default: keep full labels for inference/production."
     )
     args = parser.parse_args()
     
@@ -630,7 +640,8 @@ def main():
         input_dir,
         output_dir,
         field_names,
-        updated_field_mappings
+        updated_field_mappings,
+        keep_full_labels=not args.strip_codes
     )
     
     print(f"\nDone! Processed files written to {output_dir}")
@@ -671,4 +682,17 @@ python scripts/infer_pssc_labelV3.py \
     --output_dir data/processed_annotations \
     --cache_dir data/label_cache \
     --skip_pass1
+
+# Default: Keep full labels with codes (for inference/production)
+python scripts/infer_pssc_labelV3.py \
+    --model all-MiniLM-L6-v2 \
+    --input_dir data/raw_annotations \
+    --output_dir data/inference_annotations
+
+# Strip codes for training datasets
+python scripts/infer_pssc_labelV3.py \
+    --model all-MiniLM-L6-v2 \
+    --input_dir data/raw_annotations \
+    --output_dir data/training_annotations \
+    --strip_codes
 '''
