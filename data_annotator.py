@@ -23,7 +23,8 @@ FEW_SHOT_DIR = Path("data/few-shot-examples")
 OUTPUT_DIR = Path("data/generated")
 VLLM_BASE_URL = os.getenv("VLLM_BASE_URL", "http://localhost:8000/v1")
 VLLM_API_KEY = os.getenv("VLLM_API_KEY", "EMPTY")
-MODEL_NAME = os.getenv("VLLM_MODEL_NAME", "ig1/medgemma-27b-text-it-FP8-Dynamic")
+VLLM_MODEL_NAME = os.getenv("VLLM_MODEL_NAME", "ig1/medgemma-27b-text-it-FP8-Dynamic")
+DISABLE_FEW_SHOT = os.getenv("DISABLE_FEW_SHOT", "false").lower() not in ("false", "0", "no")
 MAX_WORKERS = int(os.getenv("MAX_WORKERS", "64"))
 TEMPERATURE = float(os.getenv("TEMPERATURE", "0.0"))
 MAX_TOKENS = int(os.getenv("MAX_TOKENS", "8192"))
@@ -204,7 +205,7 @@ def generate_annotation(
         # Call vLLM via OpenAI-compatible API
         # Try to use JSON mode if available
         response = client.chat.completions.create(
-            model=MODEL_NAME,
+            model=VLLM_MODEL_NAME,
             messages=messages,
             temperature=TEMPERATURE,
             max_tokens=MAX_TOKENS,
@@ -252,7 +253,7 @@ def generate_annotation(
             "input": text,
             "output": parsed_document,
             "metadata": metadata or {},
-            "model": MODEL_NAME,
+            "model": VLLM_MODEL_NAME,
             "finish_reason": response.choices[0].finish_reason,
         }
         
@@ -419,12 +420,16 @@ def main(input_directory: str = None, output_directory: str = None, num_samples:
 
     # Load few-shot examples
     print("\n1. Loading few-shot examples...")
-    examples = load_few_shot_examples()
-    print(f"   Loaded {len(examples)} examples")
-    
-    if not examples:
-        print("Error: No few-shot examples found. Exiting.")
-        return
+    if not DISABLE_FEW_SHOT:
+        examples = load_few_shot_examples()        
+        if not examples:
+            print("   Error: No few-shot examples found. Exiting.")
+            return
+        else:
+            print(f"   Loaded {len(examples)} examples")
+    else:
+        print("   Few-shot examples are disabled. Proceeding without them.")
+        examples = []
     
     # Prepare history messages
     print("\n2. Preparing history messages...")
