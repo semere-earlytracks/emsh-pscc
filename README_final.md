@@ -31,7 +31,13 @@ cd emsh_llm_datagen
 
 ### 2. Activate the virtual environment
 
-The codebase includes a pre-configured uv virtual environment:
+The codebase includes a pre-configured uv virtual environment.
+If a .venv folder already exists, simply activate it:
+
+```bash
+source .venv/bin/activate
+```
+Otherwise, If .venv does not exist yet, create and set up the virtual environment first:
 
 ```bash
 uv venv
