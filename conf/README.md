@@ -33,6 +33,7 @@ data_annotator:
   temperature: 0.0
   max_tokens: 8192
   disable_few_shot: false  # Set to true to disable few-shot examples
+  use_response_format: true  # Use structured output (set false for fine-tuned models)
 ```
 
 ### 2. PSSC Label Inference (embedding-based mapping)
@@ -137,6 +138,7 @@ The following environment variables can be used (they override config values):
 - `VLLM_API_KEY`: vLLM API key
 - `VLLM_MODEL_NAME`: Model name for vLLM
 - `DISABLE_FEW_SHOT`: Set to "true" or "1" to disable few-shot examples
+- `USE_RESPONSE_FORMAT`: Set to "true" or "1" to use structured output (default: true)
 - `MAX_WORKERS`: Number of parallel workers for vLLM
 - `TEMPERATURE`: Sampling temperature
 - `MAX_TOKENS`: Maximum tokens per generation

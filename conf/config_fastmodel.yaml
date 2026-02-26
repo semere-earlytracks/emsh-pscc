@@ -19,6 +19,7 @@ data_annotator:
   max_tokens: 8192
   few_shot_dir: data/few-shot-examples
   disable_few_shot: true  # No few-shot examples for fast model
+  use_response_format: false  # Fine-tuned model already outputs JSON
 
 # Step 2: PSSC Label Inference (embedding-based label mapping)
 pssc_labels:

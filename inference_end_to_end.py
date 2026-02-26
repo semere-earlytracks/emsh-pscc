@@ -103,6 +103,7 @@ def run_pipeline(
     os.environ["TEMPERATURE"] = str(cfg.data_annotator.temperature)
     os.environ["MAX_TOKENS"] = str(cfg.data_annotator.max_tokens)
     os.environ["DISABLE_FEW_SHOT"] = str(cfg.data_annotator.disable_few_shot).lower()
+    os.environ["USE_RESPONSE_FORMAT"] = str(cfg.data_annotator.use_response_format).lower()
     
     # Create temporary directories for intermediate results
     temp_base = tempfile.mkdtemp(prefix="inference_pipeline_")

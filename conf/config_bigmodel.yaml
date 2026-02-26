@@ -19,6 +19,7 @@ data_annotator:
   max_tokens: 8192
   few_shot_dir: data/few-shot-examples
   disable_few_shot: false  # Set to true to disable few-shot examples
+  use_response_format: true  # Use structured output for foundation models
 
 # Step 2: PSSC Label Inference (embedding-based label mapping)
 pssc_labels:

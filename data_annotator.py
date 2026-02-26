@@ -174,6 +174,7 @@ def generate_annotation(
     model_name: str,
     temperature: float,
     max_tokens: int,
+    use_response_format: bool = True,
     metadata: Dict[str, Any] = None
 ) -> Dict[str, Any]:
     """
@@ -187,6 +188,7 @@ def generate_annotation(
         model_name: Model name to use for generation
         temperature: Sampling temperature
         max_tokens: Maximum tokens per generation
+        use_response_format: Whether to use response_format (for foundation models)
         metadata: Optional metadata to include in the result
         
     Returns:
@@ -201,23 +203,22 @@ def generate_annotation(
         })
         
         # Call vLLM via OpenAI-compatible API
-        # Try to use JSON mode if available
-        response = client.chat.completions.create(
-            model=model_name,
-            messages=messages,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            #extra_body={
-            #    "guided_json": schema,
-            #    # optional: force backend for this request (if your server supports it)
-            #    "guided_decoding_backend": "xgrammar",
-            #},
-
-            response_format={  # Force JSON output
-                "type": "json_schema", 
+        # Prepare API call parameters
+        api_params = {
+            "model": model_name,
+            "messages": messages,
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+        }
+        
+        # Add response_format for foundation models (not needed for fine-tuned models)
+        if use_response_format:
+            api_params["response_format"] = {
+                "type": "json_schema",
                 "json_schema": {"name": "DocumentSchema", "schema": schema},
-            },
-        )
+            }
+        
+        response = client.chat.completions.create(**api_params)
         
         # Extract the generated content
         generated_content = response.choices[0].message.content
@@ -280,6 +281,7 @@ def process_texts_parallel(
     model_name: str,
     temperature: float,
     max_tokens: int,
+    use_response_format: bool = True,
     max_workers: int = 64
 ) -> List[Dict[str, Any]]:
     """
@@ -296,6 +298,7 @@ def process_texts_parallel(
         model_name: Model name to use
         temperature: Sampling temperature
         max_tokens: Maximum tokens per generation
+        use_response_format: Whether to use response_format (for foundation models)
         max_workers: Maximum number of parallel workers
         
     Returns:
@@ -322,10 +325,11 @@ def process_texts_parallel(
                 model_name,
                 temperature,
                 max_tokens,
+                use_response_format,
                 {"index": idx, "relative_path": doc["relative_path"]}
             ): (idx, doc)
             for idx, doc in enumerate(documents)
-        }
+        }   
         
         # Collect results as they complete and save immediately
         for future in as_completed(future_to_doc):
@@ -420,6 +424,7 @@ def main(input_directory: str = None, output_directory: str = None, num_samples:
     vllm_api_key = os.getenv("VLLM_API_KEY", "EMPTY")
     model_name = os.getenv("VLLM_MODEL_NAME", "ig1/medgemma-27b-text-it-FP8-Dynamic")
     disable_few_shot = os.getenv("DISABLE_FEW_SHOT", "false").lower() not in ("false", "0", "no")
+    use_response_format = os.getenv("USE_RESPONSE_FORMAT", "true").lower() not in ("false", "0", "no")
     max_workers = int(os.getenv("MAX_WORKERS", "64"))
     temperature = float(os.getenv("TEMPERATURE", "0.0"))
     max_tokens = int(os.getenv("MAX_TOKENS", "8192"))
@@ -435,6 +440,7 @@ def main(input_directory: str = None, output_directory: str = None, num_samples:
     print(f"  - Max Tokens: {max_tokens}")
     print(f"  - Max Workers: {max_workers}")
     print(f"  - Disable Few-Shot: {disable_few_shot}")
+    print(f"  - Use Response Format: {use_response_format}")
     
     # Get the JSON schema
     schema = get_document_schema()
@@ -491,6 +497,7 @@ def main(input_directory: str = None, output_directory: str = None, num_samples:
         model_name,
         temperature,
         max_tokens,
+        use_response_format,
         max_workers
     )
     
