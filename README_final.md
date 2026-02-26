@@ -25,7 +25,7 @@ This project uses a **uv-managed** Python environment and is distributed as a **
 ### 1. Unzip the codebase
 
 ```bash
-unzip codebase.zip
+tar -xzvf mon_modele.tar.gz
 cd emsh_llm_datagen
 ```
 
@@ -34,6 +34,8 @@ cd emsh_llm_datagen
 The codebase includes a pre-configured uv virtual environment:
 
 ```bash
+uv venv
+uv sync
 source .venv/bin/activate
 ```
 
