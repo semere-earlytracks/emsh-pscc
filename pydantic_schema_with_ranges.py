@@ -728,6 +728,38 @@ class Biomarker(BaseDocumentModel):
 
     contextsentence: str = Field(..., description="Sentence from the input text supporting this information")
 
+    @field_validator("biomarkermutationstatus", mode="before")
+    @classmethod
+    def _coerce_biomarkermutationstatus(cls, v):
+        choices = ["Mutated", "Wild type", "Variant", "Amplified", "Deleted", "Fused", "Other"]
+        if v is None:
+            return "Other"
+        if v in choices:
+            return v
+        s = str(v).strip()
+        if not s:
+            return "Other"
+        for c in choices:
+            if s.lower() == str(c).lower():
+                return c
+        return "Other"
+
+    @field_validator("biomarkernonmutationstatus", mode="before")
+    @classmethod
+    def _coerce_biomarkernonmutationstatus(cls, v):
+        choices = ["Positive", "Negative", "Elevated", "High", "Low", "Normal", "Other"]
+        if v is None:
+            return "Other"
+        if v in choices:
+            return v
+        s = str(v).strip()
+        if not s:
+            return "Other"
+        for c in choices:
+            if s.lower() == str(c).lower():
+                return c
+        return "Other"
+
     @field_validator("biomarkerresultdate", mode="before")
     @classmethod
     def _parse_date(cls, v):
