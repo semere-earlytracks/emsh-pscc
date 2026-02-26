@@ -1,0 +1,65 @@
+# Fast model configuration file for inference_end_to_end.py
+# This configuration uses a smaller/fine-tuned model without few-shot examples
+
+# Input/Output directories
+input_dir: data/input
+output_dir: data/output
+final_merged_json: predictions.json  # Final merged output file
+
+# Sampling
+num_samples: null  # null means process all files, set to integer to sample N files
+
+# Step 1: Data Annotator (vLLM annotation generation)
+data_annotator:
+  vllm_base_url: ${oc.env:VLLM_BASE_URL,http://localhost:8000/v1}
+  vllm_api_key: ${oc.env:VLLM_API_KEY,EMPTY}
+  model_name: model/checkpoint-300  # Fine-tuned model
+  max_workers: 256
+  temperature: 0.0
+  max_tokens: 8192
+  few_shot_dir: data/few-shot-examples
+  disable_few_shot: true  # No few-shot examples for fast model
+
+# Step 2: PSSC Label Inference (embedding-based label mapping)
+pssc_labels:
+  model: FremyCompany/BioLORD-2023-M  # SentenceTransformers model name
+  labels_dir: data/pssc-labels  # Directory containing embedding .pt files
+  cache_dir: data/label_cache  # Directory to store/load label mappings
+  batch_size: 256
+  device: null  # null=auto-detect, 'cpu', or 'cuda'
+  skip_pass1: false  # Set to true to skip Pass 1 (use existing mappings)
+  map_threshold: null  # JSON string or file path with thresholds per embedding type
+  strip_codes: false  # false=keep full labels (e.g., "C34.9, Lung"), true=strip to "Lung"
+
+# Step 3: Biomarker Inference (exact string matching for biomarkers)
+biomarkers:
+  labels_csv: data/pssc-labels/biomarkername_ext.csv
+  cache_dir: data/label_cache
+  case_sensitive: false
+  skip_pass1: false
+  no_biomarker_inference: false  # Set to true to skip biomarker inference
+
+# Step 4: Remove "other" entries
+remove_other:
+  enabled: true  # Set to false to skip this step
+
+# Step 5: Replace context sentences
+replace_context:
+  enabled: true  # Set to false to skip this step
+
+# Step 6: Merge predictions by patient
+merge_by_patient:
+  enabled: true  # Set to false to skip this step
+
+# Pipeline options
+keep_temp: false  # Set to true to keep temporary directories for debugging
+
+# Hydra configuration
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+  job:
+    chdir: false  # Don't change working directory
