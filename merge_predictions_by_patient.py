@@ -438,6 +438,13 @@ def process_patient_dir(patient_dir: Path, documents: list, patients_out: list) 
         # Add document entry (copy of file JSON with documentid added)
         doc_entry = deepcopy(data)
         doc_entry["documentid"] = p.stem
+
+        # Apply biomarker mapping to normalize biomarker text fields
+        _apply_biomarker_mapping(doc_entry)
+
+        # Apply document-level filtering: measurements and molecule deduplication
+        _filter_metrics_and_molecules(doc_entry)
+
         documents.append(doc_entry)
 
         # Decide what to merge into patient:
