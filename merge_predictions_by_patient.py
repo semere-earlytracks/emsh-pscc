@@ -481,7 +481,7 @@ def main() -> None:
         if child.is_dir():
             process_patient_dir(child, documents, patients)
 
-    out = {"patients": patients, "documents": documents}
+    out = {"patient": patients, "document": documents}
 
     out_path = Path(args.output)
     out_path.write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
