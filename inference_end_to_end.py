@@ -243,28 +243,30 @@ def run_pipeline(
                 if child.is_dir():
                     process_patient_dir(child, documents, patients)
             
-            # Create merged output
-            merged_output = {"patients": patients, "documents": documents}
+            # Create merged output with correct keys (singular: patient, document)
+            merged_output = {"patient": patients, "document": documents}
             
-            # Write merged JSON
-            merged_json_path = output_dir / cfg.final_merged_json
-            with open(merged_json_path, "w", encoding="utf-8") as f:
-                json.dump(merged_output, f, indent=2, ensure_ascii=False)
+            # Create onedate version (this will be the final prediction.json)
+            onedate_output = convert_ranges_to_onedate(deepcopy(merged_output))
             
-            print(f"  Merged output written to: {merged_json_path}")
+            # Write the onedate version as prediction.json (final output)
+            final_output_path = output_dir / cfg.final_merged_json
+            with open(final_output_path, "w", encoding="utf-8") as f:
+                json.dump(onedate_output, f, indent=2, ensure_ascii=False)
+            
+            print(f"  Final output (onedate) written to: {final_output_path}")
             print(f"  Total patients: {len(patients)}")
             print(f"  Total documents: {len(documents)}")
             
-            # Create onedate version
-            onedate_filename = merged_json_path.stem + ".onedate.json"
-            onedate_path = output_dir / onedate_filename
-            onedate_output = convert_ranges_to_onedate(deepcopy(merged_output))
-            with open(onedate_path, "w", encoding="utf-8") as f:
-                json.dump(onedate_output, f, indent=2, ensure_ascii=False)
+            # Optionally write the ranges version with a different name
+            ranges_filename = final_output_path.stem + ".ranges.json"
+            ranges_path = output_dir / ranges_filename
+            with open(ranges_path, "w", encoding="utf-8") as f:
+                json.dump(merged_output, f, indent=2, ensure_ascii=False)
             
-            print(f"  One-date output written to: {onedate_path}")
+            print(f"  Ranges version written to: {ranges_path}")
             
-            print(f"✓ Step 6 complete: {merged_json_path} and {onedate_path}")
+            print(f"✓ Step 6 complete: {final_output_path} (onedate) and {ranges_path} (ranges)")
         else:
             print("\n⊘ Skipping Step 6: Merge by patient (disabled in config)")
             # Copy final output to output_dir
@@ -277,7 +279,8 @@ def run_pipeline(
         print("PIPELINE COMPLETE!")
         print("=" * 80)
         if cfg.merge_by_patient.enabled:
-            print(f"Final merged output: {output_dir / cfg.final_merged_json}")
+            print(f"Final merged output (onedate): {output_dir / cfg.final_merged_json}")
+            print(f"Ranges version: {output_dir / (Path(cfg.final_merged_json).stem + '.ranges.json')}")
         else:
             print(f"Final output directory: {output_dir}")
         
