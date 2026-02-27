@@ -273,8 +273,9 @@ The temporary files will be preserved in `/tmp/inference_pipeline_*` for inspect
 
 ## Notes
 
+- For the date fields if there is no enough information we set it to a default date of 1900-01-01
 - The **foundation model** (Mode 2) provides higher quality but requires more GPU memory and processing time
 - The **fine-tuned model** (Mode 1) is optimized for speed and uses domain-specific training
 - Date ranges are automatically converted to single average dates in the final output
 - Patient-level merging deduplicates entries based on overlapping date ranges and key field matching
-- All text fields are UTF-8 encoded
+- The Technical Documentation PSCC.pdf provides details about the solution 
