@@ -1,5 +1,5 @@
 # Fast model configuration file for inference_end_to_end.py
-# This configuration uses a smaller/fine-tuned model without few-shot examples
+# This configuration uses a smaller/fine-tuned model without few-shot examples while the big one uses few-shot examples
 
 # Input/Output directories
 input_dir: data/input
