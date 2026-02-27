@@ -11,8 +11,8 @@ This project uses a **uv-managed** Python environment and is distributed as a **
 - [Setup](#setup)
 - [Input Data Structure](#input-data-structure)
 - [Running the Pipeline](#running-the-pipeline)
-  - [Mode 1: Foundation Model (medgemma-27b)](#mode-1-foundation-model-medgemma-27b)
-  - [Mode 2: Fine-tuned Model (medgemma-4b)](#mode-2-fine-tuned-model-medgemma-4b)
+  - [Mode 1: Fine-tuned Model (medgemma-4b)](#mode-1-fine-tuned-model-medgemma-4b)
+  - [Mode 2: Foundation Model (medgemma-27b)](#mode-2-foundation-model-medgemma-27b)
 - [Output](#output)
 - [Pipeline Steps](#pipeline-steps)
 - [Configuration](#configuration)
@@ -65,34 +65,9 @@ input/
 
 Each JSON file should contain clinical text to be annotated.
 
----
 
-## Running the Pipeline
 
-The pipeline can be run in two modes, depending on your quality/speed requirements:
-
-### Mode 1: Foundation Model (medgemma-27b)
-
-**Best for:** Higher quality annotations (but slower)
-
-#### Step 1: Start the vLLM server
-
-```bash
-vllm serve ig1/medgemma-27b-text-it-FP8-Dynamic
-```
-
-#### Step 2: Run the annotation pipeline
-
-```bash
-python inference_end_to_end.py \
-    --config-name=config_bigmodel \
-    input_dir=data/input \
-    output_dir=data/output
-```
-
----
-
-### Mode 2: Fine-tuned Model (medgemma-4b)
+### Mode 1: Fine-tuned Model (medgemma-4b) - Recommended
 
 **Best for:** Faster processing with acceptable quality
 
@@ -113,6 +88,31 @@ python inference_end_to_end.py \
     output_dir=data/output
 ```
 
+---
+
+
+## Running the Pipeline
+
+The pipeline can be run in two modes, depending on your quality/speed requirements:
+
+### Mode 2: Foundation Model (medgemma-27b)
+
+**Best for:** Higher quality annotations (but slower)
+
+#### Step 1: Start the vLLM server
+
+```bash
+vllm serve ig1/medgemma-27b-text-it-FP8-Dynamic
+```
+
+#### Step 2: Run the annotation pipeline
+
+```bash
+python inference_end_to_end.py \
+    --config-name=config_bigmodel \
+    input_dir=data/input \
+    output_dir=data/output
+```
 ---
 
 ## Output
@@ -273,8 +273,8 @@ The temporary files will be preserved in `/tmp/inference_pipeline_*` for inspect
 
 ## Notes
 
-- The **foundation model** (Mode 1) provides higher quality but requires more GPU memory and processing time
-- The **fine-tuned model** (Mode 2) is optimized for speed and uses domain-specific training
+- The **foundation model** (Mode 2) provides higher quality but requires more GPU memory and processing time
+- The **fine-tuned model** (Mode 1) is optimized for speed and uses domain-specific training
 - Date ranges are automatically converted to single average dates in the final output
 - Patient-level merging deduplicates entries based on overlapping date ranges and key field matching
 - All text fields are UTF-8 encoded
